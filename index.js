@@ -3,17 +3,18 @@ const path = require("path");
 const ncp = require("ncp").ncp;
 
 const hb = require("handlebars");
+const sass = require("node-sass");
 
 
-const staticDir = "./static/";
-const buildDir = "./build/";
-const pagesDir = "./pages/";
+const pagesDir = "./pages";
+const staticDir = "./static";
+const buildDir = "./build";
 
 const componentModel = {
 	markup: "markup.html",
 	style: "style.scss",
 	context: "index.js",
-}
+};
 
 
 const fetch = (directory) => {
@@ -41,18 +42,25 @@ const compile = ({markup, style}) => (context) => ({
 
 const render = (component) => compile(component)(component.context);
 
+const indexComponent = fetch(".");
+
+const mixinsSource = fs.readFileSync("./utils/mixins.scss").toString();
+const mixins = hb.compile(mixinsSource)(indexComponent.context);
+
+const sassToCss = (source) =>
+	sass.renderSync({data: mixins + source}).css;
+
 
 // Setup build folder
 if (!fs.existsSync(buildDir))
 	fs.mkdirSync(buildDir);
 ncp(staticDir, buildDir);
 
-const indexComponent = fetch(".");
 const indexTemplate = compile(indexComponent);
 const sidebar = render(fetch("./sidebar"));
 
 const index = indexTemplate({...indexComponent.context, sidebar});
 console.log(index);
 
-//fs.writeFileSync(path.join(buildDir, "index.html"), index.markup);
-//fs.writeFileSync(path.join(buildDir, "style.css"), index.style);
+fs.writeFileSync(path.join(buildDir, "index.html"), index.markup);
+fs.writeFileSync(path.join(buildDir, "style.css"), index.style);

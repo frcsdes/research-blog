@@ -1,0 +1,117 @@
+// Color scheme
+{{#with colors}}
+$primary:     {{{primary}}};
+$secondary:   {{{secondary}}};
+$gray-white:  {{{grayWhite}}};
+$gray-light:  {{{grayLight}}};
+$gray-medium: {{{grayMedium}}};
+$gray-dark:   {{{grayDark}}};
+$gray-black:  {{{grayBlack}}};
+{{/with}}
+
+// Breakpoints and common sizes
+{{#with breakpoints}}
+$bp-s: {{{small}}};
+$bp-m: {{{medium}}};
+$bp-l: {{{large}}};
+{{/with}}
+$border-radius: 1px;
+$border-width:  1px;
+$box-shadow-s:  3px  4px  3px fade_out($gray-black, 0.96);
+$box-shadow-m: 10px 12px  9px fade_out($gray-black, 0.97);
+$box-shadow-l: 20px 24px 27px fade_out($gray-black, 0.98);
+$padding-s: 0.5rem;
+$padding-m: 2.5rem;
+$padding-l: 4.0rem;
+
+// Parametric curves
+$duration-s: 0.08s;
+$duration-m: 0.27s;
+$duration-l: 0.5s;
+   $in-s: $duration-s ease-in;
+  $out-s: $duration-s ease-out;
+$inout-s: $duration-s ease-in-out;
+   $in-m: $duration-m ease-in;
+  $out-m: $duration-m ease-out;
+$inout-m: $duration-m ease-in-out;
+   $in-l: $duration-l ease-in;
+  $out-l: $duration-l ease-out;
+$inout-l: $duration-l ease-in-out;
+
+@mixin breakpoint($bp) {
+	     @if $bp == 1   { @media (max-width:  $bp-s),
+	     	                       (max-height: $bp-s) { @content; }}
+	@else if $bp == 12  { @media (max-width:  $bp-m) { @content; }}
+	@else if $bp == 123 { @media (max-width:  $bp-l) { @content; }}
+	@else if $bp == 4   { @media (min-width:  $bp-l)
+	                         and (min-height: $bp-s) { @content; }}
+	@else if $bp == 34  { @media (min-width:  $bp-m)
+	                         and (min-height: $bp-s) { @content; }}
+	@else if $bp == 234 { @media (min-width:  $bp-s)
+	     	                   and (min-height: $bp-s) { @content; }}
+	@else if $bp == 2   { @media (min-width:  $bp-s)
+	                         and (min-height: $bp-s)
+	                         and (max-width:  $bp-m) { @content; }}
+	@else if $bp == 3   { @media (min-width:  $bp-m)
+	                         and (min-height: $bp-s)
+	                         and (max-width:  $bp-l) { @content; }}
+	@else if $bp == 23  { @media (min-width:  $bp-s)
+	                         and (min-height: $bp-s)
+	                         and (max-width:  $bp-l) { @content; }}
+}
+
+// Property-focused behaviour
+@mixin responsive($properties) {
+	@media (max-width:  $bp-s),
+	       (max-height: $bp-s) {
+		@each $p in $properties {
+			#{nth($p, 1)}: nth($p, 2);
+		}
+	}
+	@media (min-width:  $bp-s)
+	   and (min-height: $bp-s)
+	   and (max-width:  $bp-m) {
+		@each $p in $properties {
+			#{nth($p, 1)}: nth($p, 3);
+		}
+	}
+	@media (min-width:  $bp-m)
+	   and (min-height: $bp-s)
+	   and (max-width:  $bp-l) {
+		@each $p in $properties {
+			#{nth($p, 1)}: nth($p, 4);
+		}
+	}
+	@media (min-width:  $bp-l)
+	   and (min-height: $bp-s) {
+		@each $p in $properties {
+			#{nth($p, 1)}: nth($p, 5);
+		}
+	}
+}
+
+// Flex column or row
+@mixin flex($dir, $center: false) {
+	display: flex;
+	flex-wrap: wrap;
+
+	@if $dir == col { flex-flow: column; }
+	@if $dir == row { flex-flow: row; }
+	
+	@if $center {
+		align-items:     center;
+		justify-content: center;
+	}	@else {
+		align-items:     flex-start;
+		justify-content: flex-start;
+	}
+}
+
+@mixin full() {
+	display: block;
+	height: 100%;
+	left: 0;
+	position: relative;
+	top: 0;
+	width: 100%;
+}
