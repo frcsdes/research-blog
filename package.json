@@ -1,0 +1,17 @@
+{
+  "name": "research-blog",
+  "version": "1.0.0",
+  "description": "François Desrichard's research blog",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "author": "François Desrichard",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.0.12",
+    "markdown-it": "^8.4.2",
+    "ncp": "^2.0.0",
+    "node-sass": "^4.11.0"
+  }
+}
