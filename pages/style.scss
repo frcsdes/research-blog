@@ -1,0 +1,8 @@
+body {}
+
+html {}
+
+main {
+	> {{{sidebar.style}}}
+	> {{{content.style}}}
+}
