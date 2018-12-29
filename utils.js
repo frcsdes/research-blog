@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const ncp = require("ncp").ncp;
 const hb = require("handlebars");
+const sass = require("node-sass");
 
 
 // Directory hierarchy and file structure
