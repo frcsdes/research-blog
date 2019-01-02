@@ -1,9 +1,18 @@
-html {}
+{{#each fonts.list}}
+@font-face {
+	font-family: {{family}};
+	font-weight: {{weight}};
+	src: url("{{url}}");
+}
+{{/each}}
 
-body {
+
+html {
 	@include full();
 }
 
-main {
+body {
+	@include full();
+	@include flex(row);
 	> {{{sidebar.style}}}
 }

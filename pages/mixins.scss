@@ -1,4 +1,4 @@
-// Color scheme
+// Color and font scheme
 {{#with colors}}
 $primary:     {{{primary}}};
 $secondary:   {{{secondary}}};
@@ -8,6 +8,8 @@ $gray-medium: {{{grayMedium}}};
 $gray-dark:   {{{grayDark}}};
 $gray-black:  {{{grayBlack}}};
 {{/with}}
+$font-body: {{fonts.body}}, sans-serif;
+$font-display: {{fonts.display}}, serif;
 
 // Breakpoints and common sizes
 {{#with breakpoints}}

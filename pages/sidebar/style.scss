@@ -1,1 +1,17 @@
-aside {}
+aside {
+	@include flex(col);
+
+	flex: 0 0 auto;
+	height: 100%;
+
+	> h1 {
+		font-family: $font-display;
+		font-size: 2rem;
+	}
+
+	> ul {
+		font-family: $font-body;
+		font-size: 1.4rem;
+		font-weight: 300;
+	}
+}
