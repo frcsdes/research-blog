@@ -9,10 +9,24 @@
 
 html {
 	@include full();
+	font-size: 16px;
 }
 
 body {
 	@include full();
 	@include flex(row);
+
+	touch-action: manipulation;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+
+	:focus { outline: none; }
+	::-moz-focus-inner { border: 0; }
+
+	background-color: $gray-white;
+
 	> {{{sidebar.style}}}
 }

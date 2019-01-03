@@ -9,20 +9,19 @@ const colors = {
 	secondary:  "#EA463A",
 	grayWhite:  "#FEFEFF",
 	grayLight:  "#EDEDED",
-	grayMedium: "#E3E3E3",
-	grayDark:   "#333333",
+	grayMedium: "#504D4D",
+	grayDark:   "#232221",
 	grayBlack:  "#050505",
 };
 
 const fonts = {
 	list: [
-		{family: "Vidaloka", weight: 400, url: "fonts/Vidaloka-Regular.ttf"},
-		{family: "Raleway",  weight: 400, url: "fonts/Raleway-Regular.ttf"},
-		{family: "OpenSans", weight: 300, url: "fonts/OpenSans-Light.ttf"},
+		{family: "Bitter", weight: 700, url: "fonts/Bitter-Bold.ttf"},
 		{family: "OpenSans", weight: 400, url: "fonts/OpenSans-Regular.ttf"},
+		{family: "OpenSans", weight: 600, url: "fonts/OpenSans-SemiBold.ttf"},
 	],
 	body: "OpenSans",
-	display: "Vidaloka",
+	display: "Bitter",
 };
 
 
