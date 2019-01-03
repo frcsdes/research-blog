@@ -60,8 +60,8 @@ const compileComponent = ({markup, style}) => (context) => ({
 	style: compile(style)(context),
 });
 
-const renderComponent = (component) =>
-	compileComponent(component)(component.context);
+const renderComponent = (rootContext) => (component) =>
+	compileComponent(component)({...rootContext, ...component.context});
 
 const sassToCss = (mixins) => (source) =>
 	sass.renderSync({data: mixins + source}).css;

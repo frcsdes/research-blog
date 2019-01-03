@@ -8,7 +8,8 @@ const {
 
 // Main template and context
 const mainComponent = component(".");
-const sidebarRender = renderComponent(component("sidebar"));
+const render = renderComponent(mainComponent.context);
+const sidebarRender = render(component("sidebar"));
 const mainTemplate = (content) =>
 	compileComponent(mainComponent)({
 		...mainComponent.context,
@@ -28,7 +29,7 @@ const mainWithContent = (content) =>
 	mainTemplate(compileContentStyle(content));
 
 const mainWithComponent = (filename) =>
-	mainWithContent(renderComponent(component(filename)));
+	mainWithContent(render(component(filename)));
 
 
 // Build directory setup

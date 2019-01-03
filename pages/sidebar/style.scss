@@ -1,40 +1,59 @@
 aside {
-	@include flex(col);
+	@include breakpoint(1) {
+		@include flex(row);
+		width: 100%;
+	};
+	@include breakpoint(234) {
+		@include flex(col);
+		height: 100%;
+	};
 
 	background-color: $gray-dark;
 	color: $gray-white;
 	flex: 0 0 auto;
-	height: 100%;
+	overflow: auto;
 	padding: $padding-m;
 
 	> h1 {
-		$font-size: 2.3rem;
-
+		@include breakpoint(1) { display: none; };
 		color: $gray-white;
 		font-family: $font-display;
-		font-size: $font-size;
+		font-size: 2rem;
 		font-weight: 700;
-		line-height: $font-size + $padding-s;
+		line-height: 2.6rem;
+		margin-bottom: $padding-m;
 	}
 
 	> ul {
-		@include flex(col);
+		@include breakpoint(1) {
+			@include flex(row);
+			height: 100%;
+		};
+		@include breakpoint(234) {
+			@include flex(col);
+			width: 100%;
+		};
 
-		flex: 1 1 0;
+		flex: 0 0 auto;
 		font-family: $font-body;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		font-weight: 600;
-		margin-top: $padding-m;
-		width: 100%;
 
 		> li {
+			@include breakpoint(1) {
+				height: 100%;
+				&:not(:last-child) { margin-right: $padding-m; }
+			};
+			@include breakpoint(234) {
+				margin-top: 2 * $padding-s;
+				width: 100%;
+			};
+			
 			flex: 0 0 auto;
-			margin-top: 2 * $padding-s;
-			width: 100%;
 
 			> a {
 				@include full();
-				border-bottom: 1px solid $gray-medium;
+				@include breakpoint(234) { border-bottom: 1px solid $gray-medium; };
 				display: block;
 				padding-bottom: $padding-s;
 				transition: border-color $in-s;

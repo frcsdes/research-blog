@@ -9,12 +9,13 @@
 
 html {
 	@include full();
-	font-size: 16px;
+	font-size: 17px;
 }
 
 body {
 	@include full();
-	@include flex(row);
+	@include breakpoint(1) { @include flex(col); };
+	@include breakpoint(234) { @include flex(row); };
 
 	touch-action: manipulation;
 	-moz-osx-font-smoothing: grayscale;
@@ -27,6 +28,37 @@ body {
 	::-moz-focus-inner { border: 0; }
 
 	background-color: $gray-white;
+	color: $gray-black;
+	font-family: $font-body;
+	overflow: hidden;
 
-	> {{{sidebar.style}}}
+	{{{sidebar.style}}}
+
+	> main {
+		@include breakpoint(1) { width: 100%; };
+		@include breakpoint(234) { height: 100%; };
+
+		flex: 1 1 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: $padding-m;
+
+		h1,
+		h2,
+		h3 {
+			color: $gray-dark;
+			font-family: $font-display;
+			font-weight: 400;
+			margin-bottom: $padding-s;
+		}
+		h1 {
+			font-size: 2.3rem;
+			line-height: 2.7rem;
+			margin-bottom: $padding-l;
+		}
+		h2 { font-size: 1.8rem; }
+		h3 { font-size: 1.5em; }
+
+		p { margin-top: $padding-s; }
+	}
 }
