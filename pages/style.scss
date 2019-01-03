@@ -9,13 +9,13 @@
 
 html {
 	@include full();
-	font-size: 17px;
+	@include responsive(font-size, 16px 17px 18px 19px);
 }
 
 body {
 	@include full();
-	@include breakpoint(1) { @include flex(col); };
-	@include breakpoint(234) { @include flex(row); };
+	@include responsive-flex-row();
+	@include responsive-switch(overflow, auto hidden);
 
 	touch-action: manipulation;
 	-moz-osx-font-smoothing: grayscale;
@@ -30,18 +30,13 @@ body {
 	background-color: $gray-white;
 	color: $gray-black;
 	font-family: $font-body;
-	overflow: hidden;
 
 	{{{sidebar.style}}}
 
 	> main {
-		@include breakpoint(1) { width: 100%; };
-		@include breakpoint(234) { height: 100%; };
-
-		flex: 1 1 0;
-		overflow-x: hidden;
-		overflow-y: auto;
-		padding: $padding-m;
+		@include padded-flex-col($padding-m);
+		@include responsive-flex-row-child();
+		@include responsive-switch(overflow, visible auto);
 
 		h1,
 		h2,

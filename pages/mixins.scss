@@ -41,55 +41,34 @@ $inout-m: $duration-m ease-in-out;
 $inout-l: $duration-l ease-in-out;
 
 @mixin breakpoint($bp) {
-	     @if $bp == 1   { @media (max-width:  $bp-s),
-	     	                       (max-height: $bp-s) { @content; }}
+	     @if $bp == 1   { @media (max-width:  $bp-s) { @content; }}
 	@else if $bp == 12  { @media (max-width:  $bp-m) { @content; }}
 	@else if $bp == 123 { @media (max-width:  $bp-l) { @content; }}
-	@else if $bp == 4   { @media (min-width:  $bp-l)
-	                         and (min-height: $bp-s) { @content; }}
-	@else if $bp == 34  { @media (min-width:  $bp-m)
-	                         and (min-height: $bp-s) { @content; }}
-	@else if $bp == 234 { @media (min-width:  $bp-s)
-	     	                   and (min-height: $bp-s) { @content; }}
+	@else if $bp == 4   { @media (min-width:  $bp-l) { @content; }}
+	@else if $bp == 34  { @media (min-width:  $bp-m) { @content; }}
+	@else if $bp == 234 { @media (min-width:  $bp-s) { @content; }}
 	@else if $bp == 2   { @media (min-width:  $bp-s)
-	                         and (min-height: $bp-s)
 	                         and (max-width:  $bp-m) { @content; }}
 	@else if $bp == 3   { @media (min-width:  $bp-m)
-	                         and (min-height: $bp-s)
 	                         and (max-width:  $bp-l) { @content; }}
 	@else if $bp == 23  { @media (min-width:  $bp-s)
-	                         and (min-height: $bp-s)
 	                         and (max-width:  $bp-l) { @content; }}
 }
 
-// Property-focused behaviour
-@mixin responsive($properties) {
-	@media (max-width:  $bp-s),
-	       (max-height: $bp-s) {
-		@each $p in $properties {
-			#{nth($p, 1)}: nth($p, 2);
-		}
-	}
+// Property-focused behaviour with all the intervals
+@mixin responsive($property, $values) {
+	@media (max-width:  $bp-s) { #{$property}: nth($values, 1); }
 	@media (min-width:  $bp-s)
-	   and (min-height: $bp-s)
-	   and (max-width:  $bp-m) {
-		@each $p in $properties {
-			#{nth($p, 1)}: nth($p, 3);
-		}
-	}
+	   and (max-width:  $bp-m) { #{$property}: nth($values, 2); }
 	@media (min-width:  $bp-m)
-	   and (min-height: $bp-s)
-	   and (max-width:  $bp-l) {
-		@each $p in $properties {
-			#{nth($p, 1)}: nth($p, 4);
-		}
-	}
-	@media (min-width:  $bp-l)
-	   and (min-height: $bp-s) {
-		@each $p in $properties {
-			#{nth($p, 1)}: nth($p, 5);
-		}
-	}
+	   and (max-width:  $bp-l) { #{$property}: nth($values, 3); }
+	@media (min-width:  $bp-l) { #{$property}: nth($values, 4); }
+}
+
+// Property-focused behaviour with only intervals 1 and 234
+@mixin responsive-switch($property, $values) {
+	@media (max-width:  $bp-s) { #{$property}: nth($values, 1); }
+	@media (min-width:  $bp-s) { #{$property}: nth($values, 2); }
 }
 
 // Flex column or row
@@ -98,17 +77,78 @@ $inout-l: $duration-l ease-in-out;
 	flex-wrap: wrap;
 
 	@if $dir == col { flex-flow: column; }
-	@if $dir == row { flex-flow: row; }
+	@else {@if $dir == row { flex-flow: row; }}
 	
 	@if $center {
 		align-items:     center;
 		justify-content: center;
-	}	@else {
+	} @else {
 		align-items:     flex-start;
 		justify-content: flex-start;
 	}
 }
 
+// Mimics padding along the main flex direction
+@mixin flex-air($size) {
+	@if $size > 0 {
+		&:before,
+		&:after {
+			content: "\00a0";
+			flex: 0 0 $size;
+			overflow: hidden;
+		}
+	}
+}
+
+// Padded flex row container
+@mixin padded-flex-row($padding-main, $padding-cross: 0) {
+	@include flex(row);
+	@include flex-air($padding-main);
+	padding: $padding-cross 0;
+}
+
+// Padded flex col container
+@mixin padded-flex-col($padding-main, $padding-cross: $padding-main) {
+	@include flex(col);
+	@include flex-air($padding-main);
+	padding: 0 $padding-cross;
+}
+
+// Padded flex container acting as a row in interval 234 and col otherwise
+@mixin responsive-flex-row($padding-main: 0, $padding-cross: $padding-main) {
+	@include breakpoint(1) {
+		@include padded-flex-col($padding-main, $padding-cross);
+	}
+	@include breakpoint(234) {
+		@include padded-flex-row($padding-main, $padding-cross);
+	}
+}
+
+// Padded flex container acting as a col in interval 234 and row otherwise
+@mixin responsive-flex-col($padding-main: 0, $padding-cross: $padding-main) {
+	@include breakpoint(1) {
+		@include padded-flex-row($padding-main, $padding-cross);
+	}
+	@include breakpoint(234) {
+		@include padded-flex-col($padding-main, $padding-cross);
+	}
+}
+
+// Child of a responsive flex row
+@mixin responsive-flex-row-child() {
+	flex: 1 1 0;
+	@include breakpoint(1) { width: 100%; }
+	@include breakpoint(234) { height: 100%; }
+}
+
+// Child of a responsive flex col
+@mixin responsive-flex-col-child() {
+	flex: 1 1 0;
+	@include breakpoint(1) { height: 100%; }
+	@include breakpoint(234) { width: 100%; }
+}
+
+// relative full block
 @mixin full() {
 	display: block;
 	height: 100%;
