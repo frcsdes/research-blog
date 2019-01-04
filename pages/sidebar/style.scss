@@ -1,20 +1,18 @@
 aside {
 	@include responsive-flex-col(0, $padding-m);
 	@include responsive-flex-row-child();
-	flex: 0 0 auto;
-
+	@include responsive-switch(flex-grow, 0 1);
+	
 	background-color: $gray-dark;
 	color: $gray-white;
+	flex-basis: auto;
+	flex-shrink: 0;
 	overflow: auto;
 
 	> h1 {
 		@include breakpoint(1) { display: none; };
 		color: $gray-white;
-		font-family: $font-display;
-		font-size: 2rem;
-		font-weight: 700;
-		line-height: 2.6rem;
-		margin: $padding-m 0;
+		margin: $padding-l 0;
 	}
 
 	> ul {
@@ -29,15 +27,17 @@ aside {
 		> li {
 			@include responsive-flex-col-child();
 			@include breakpoint(1) { margin: 0 $padding-m; }
-			@include breakpoint(234) { margin-top: 2 * $padding-s; }
+			@include breakpoint(234) { margin-bottom: $padding-m; }
 			
 			flex: 0 0 auto;
 
 			> a {
 				@include full();
-				@include breakpoint(234) { border-bottom: 1px solid $gray-medium; };
+				@include breakpoint(234) {
+					border-bottom: 1px solid $gray-medium;
+					padding-bottom: $padding-s;
+				};
 				display: block;
-				padding-bottom: $padding-s;
 				transition: border-color $in-s;
 
 				&:hover { border-color: $gray-white; }

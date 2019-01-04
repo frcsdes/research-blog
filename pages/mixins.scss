@@ -148,7 +148,7 @@ $inout-l: $duration-l ease-in-out;
 	@include breakpoint(234) { width: 100%; }
 }
 
-// relative full block
+// Relative full block
 @mixin full() {
 	display: block;
 	height: 100%;
