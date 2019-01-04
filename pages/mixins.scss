@@ -40,35 +40,57 @@ $inout-m: $duration-m ease-in-out;
   $out-l: $duration-l ease-out;
 $inout-l: $duration-l ease-in-out;
 
-@mixin breakpoint($bp) {
-	     @if $bp == 1   { @media (max-width:  $bp-s) { @content; }}
-	@else if $bp == 12  { @media (max-width:  $bp-m) { @content; }}
-	@else if $bp == 123 { @media (max-width:  $bp-l) { @content; }}
-	@else if $bp == 4   { @media (min-width:  $bp-l) { @content; }}
-	@else if $bp == 34  { @media (min-width:  $bp-m) { @content; }}
-	@else if $bp == 234 { @media (min-width:  $bp-s) { @content; }}
-	@else if $bp == 2   { @media (min-width:  $bp-s)
-	                         and (max-width:  $bp-m) { @content; }}
-	@else if $bp == 3   { @media (min-width:  $bp-m)
-	                         and (max-width:  $bp-l) { @content; }}
-	@else if $bp == 23  { @media (min-width:  $bp-s)
-	                         and (max-width:  $bp-l) { @content; }}
+@mixin breakpoint($bp, $orientation: true) {
+	@if $orientation {
+		     @if $bp == 1   { @media (max-width: $bp-s),
+		                             (orientation: portrait)  { @content; }}
+		@else if $bp == 12  { @media (max-width: $bp-m)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 123 { @media (max-width: $bp-l)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 4   { @media (min-width: $bp-l)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 34  { @media (min-width: $bp-m)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 234 { @media (min-width: $bp-s)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 2   { @media (min-width: $bp-s)
+		                         and (max-width: $bp-m)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 3   { @media (min-width: $bp-m)
+		                         and (max-width: $bp-l)
+		                         and (orientation: landscape) { @content; }}
+		@else if $bp == 23  { @media (min-width: $bp-s)
+		                         and (max-width: $bp-l)
+		                         and (orientation: landscape) { @content; }}
+	} @else {
+		     @if $bp == 1   { @media (max-width: $bp-s) { @content; }}
+		@else if $bp == 12  { @media (max-width: $bp-m) { @content; }}
+		@else if $bp == 123 { @media (max-width: $bp-l) { @content; }}
+		@else if $bp == 4   { @media (min-width: $bp-l) { @content; }}
+		@else if $bp == 34  { @media (min-width: $bp-m) { @content; }}
+		@else if $bp == 234 { @media (min-width: $bp-s) { @content; }}
+		@else if $bp == 2   { @media (min-width: $bp-s)
+		                         and (max-width: $bp-m) { @content; }}
+		@else if $bp == 3   { @media (min-width: $bp-m)
+		                         and (max-width: $bp-l) { @content; }}
+		@else if $bp == 23  { @media (min-width: $bp-s)
+		                         and (max-width: $bp-l) { @content; }}
+	}
 }
 
 // Property-focused behaviour with all the intervals
-@mixin responsive($property, $values) {
-	@media (max-width:  $bp-s) { #{$property}: nth($values, 1); }
-	@media (min-width:  $bp-s)
-	   and (max-width:  $bp-m) { #{$property}: nth($values, 2); }
-	@media (min-width:  $bp-m)
-	   and (max-width:  $bp-l) { #{$property}: nth($values, 3); }
-	@media (min-width:  $bp-l) { #{$property}: nth($values, 4); }
+@mixin responsive($property, $values, $orientation: true) {
+	@include breakpoint(1, $orientation) { #{$property}: nth($values, 1); }
+	@include breakpoint(2, $orientation) { #{$property}: nth($values, 2); }
+	@include breakpoint(3, $orientation) { #{$property}: nth($values, 3); }
+	@include breakpoint(4, $orientation) { #{$property}: nth($values, 4); }
 }
 
 // Property-focused behaviour with only intervals 1 and 234
-@mixin responsive-switch($property, $values) {
-	@media (max-width:  $bp-s) { #{$property}: nth($values, 1); }
-	@media (min-width:  $bp-s) { #{$property}: nth($values, 2); }
+@mixin responsive-switch($property, $values, $orientation: true) {
+	@include breakpoint(1,   $orientation) { #{$property}: nth($values, 1); }
+	@include breakpoint(234, $orientation) { #{$property}: nth($values, 2); }
 }
 
 // Flex column or row
@@ -77,7 +99,7 @@ $inout-l: $duration-l ease-in-out;
 	flex-wrap: wrap;
 
 	@if $dir == col { flex-flow: column; }
-	@else {@if $dir == row { flex-flow: row; }}
+	@else if $dir == row { flex-flow: row; }
 	
 	@if $center {
 		align-items:     center;
