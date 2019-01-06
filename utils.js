@@ -11,7 +11,7 @@ const staticDir = "static";
 const buildDir = "build";
 
 const componentModel = {
-	markup: "markup.html",
+	markup: "template.html",
 	style: "style.scss",
 	context: "index.js",
 };
