@@ -1,7 +1,7 @@
 const {
 	readFile, component,
 	compile, compileComponent,
-	renderComponent, sassToCss,
+	renderComponent, lessToCss,
 	setupBuild, writeFile,
 } = require("./utils");
 
@@ -18,25 +18,28 @@ const mainTemplate = (content) =>
 	});
 
 // Style-specific helpers
-const mixinsSource = readFile("mixins.scss");
+const mixinsSource = readFile("mixins.less");
 const mixins = compile(mixinsSource)(mainComponent.context);
-const compileCss = sassToCss(mixins);
-const compileContentStyle = ({style, ...content}) =>
-	({style: compileCss(style), ...content});
+const compileCss = lessToCss(mixins);
+const compileContentStyle = async ({style, ...content}) =>
+	({style: await compileCss(style), ...content});
 
 // Combine the two to get the full instantiation pattern
-const mainWithContent = (content) =>
-	mainTemplate(compileContentStyle(content));
+const mainWithContent = async (content) =>
+	mainTemplate(await compileContentStyle(content));
 
-const mainWithComponent = (filename) =>
-	mainWithContent(render(component(filename)));
+const mainWithComponent = async (file) =>
+	await mainWithContent(render(component(file))).then(({markup}) => markup);
 
 
-// Build directory setup
-setupBuild();
+// Build steps
+(async () => {
+	// Build directory setup
+	setupBuild();
 
-// Rendering individual pages
-writeFile("index.html", mainWithComponent("home").markup);
+	// Rendering individual pages
+	writeFile("index.html", await mainWithComponent("home"));
 
-// Rendering global style
-writeFile("style.css", compileCss(mainTemplate({}).style));
+	// Rendering global style
+	writeFile("style.css", await compileCss(mainTemplate({}).style));
+})();

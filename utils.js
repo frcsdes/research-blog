@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const ncp = require("ncp").ncp;
 const hb = require("handlebars");
-const sass = require("node-sass");
+const less = require("less");
 
 
 // Directory hierarchy and file structure
@@ -12,7 +12,7 @@ const buildDir = "build";
 
 const componentModel = {
 	markup: "template.html",
-	style: "style.scss",
+	style: "style.less",
 	context: "index.js",
 };
 
@@ -66,6 +66,14 @@ const renderComponent = (rootContext) => (component) =>
 const sassToCss = (mixins) => (source) =>
 	sass.renderSync({data: mixins + source}).css;
 
+const lessToCss = (mixins) => async (source) => {
+	try {
+		return await less.render(mixins + source).then(({css}) => css);
+	} catch (exception) {
+		console.error(`Error compiling Less:\n${exception}\n`);
+	}
+};
+
 
 // Build output
 const setupBuild = () => {
@@ -81,6 +89,6 @@ const writeFile = (filename, data) =>
 module.exports = {
 	absolute, readFile, requireAbsolute, component,
 	compile, compileComponent,
-	renderComponent, sassToCss,
+	renderComponent, lessToCss,
 	setupBuild, writeFile,
 };

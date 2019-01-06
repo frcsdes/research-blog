@@ -8,14 +8,14 @@
 
 
 html {
-	@include full();
-	@include responsive(font-size, 16px 17px 18px 19px, false);
+	.full();
+	.responsive(false; font-size; 16px; 17px; 18px; 19px;);
 }
 
 body {
-	@include full();
-	@include responsive-flex-row();
-	@include responsive-switch(overflow, auto hidden);
+	.full();
+	.responsive-flex-row();
+	.responsive-switch(true; overflow; auto; hidden);
 
 	touch-action: manipulation;
 	-moz-osx-font-smoothing: grayscale;
@@ -27,36 +27,36 @@ body {
 	:focus { outline: none; }
 	::-moz-focus-inner { border: 0; }
 
-	background-color: $gray-white;
-	color: $gray-black;
-	font-family: $font-body;
+	background-color: @gray-white;
+	color: @gray-black;
+	font-family: @font-body;
 	line-height: 1.65em;
 
 	h1,
 	h2,
 	h3 {
-		color: $gray-dark;
-		font-family: $font-display;
+		color: @gray-dark;
+		font-family: @font-display;
 		font-weight: 400;
 		line-height: 1.4em;
-		margin-bottom: $padding-s;
+		margin-bottom: @padding-s;
 	}
 	h1 {
 		font-size: 1.8rem;
 		font-weight: 700;
-		margin-bottom: $padding-l;
+		margin-bottom: @padding-l;
 	}
 	h2 { font-size: 1.6rem; }
 	h3 { font-size: 1.3em; }
 
-	p { margin-top: $padding-s; }
+	p { margin-top: @padding-s; }
 
 	{{{sidebar.style}}}
 
 	> main {
-		@include padded-flex-col($padding-l, $padding-m);
-		@include responsive-flex-row-child();
-		@include responsive-switch(overflow, visible auto);
+		.padded-flex-col(@padding-l; @padding-m);
+		.responsive-flex-row-child();
+		.responsive-switch(true; overflow; visible; auto);
 		flex: 5 1 auto;
 	}
 }
