@@ -9,7 +9,7 @@
 
 html {
 	.full();
-	.responsive(false; font-size; 16px; 17px; 18px; 19px;);
+	.responsive(false; font-size; 15px; 16px; 17px; 18px;);
 }
 
 body {
@@ -42,12 +42,12 @@ body {
 		margin-bottom: @padding-s;
 	}
 	h1 {
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 		font-weight: 700;
 		margin-bottom: @padding-l;
 	}
-	h2 { font-size: 1.6rem; }
-	h3 { font-size: 1.3em; }
+	h2 { font-size: 1.5rem; }
+	h3 { font-size: 1.2em; }
 
 	p { margin-top: @padding-s; }
 
@@ -57,6 +57,8 @@ body {
 		.padded-flex-col(@padding-l; @padding-m);
 		.responsive-flex-row-child();
 		.responsive-switch(true; overflow; visible; auto);
+
+		align-items: center;
 		flex: 5 1 auto;
 	}
 }

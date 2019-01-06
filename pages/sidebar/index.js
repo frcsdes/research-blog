@@ -3,6 +3,5 @@ module.exports = {
 		{label: "Home", url: "index.html"},
 		{label: "Papers", url: "#"},
 		{label: "Posts", url: "#"},
-		{label: "Resume", url: "#"},
 	],
 };

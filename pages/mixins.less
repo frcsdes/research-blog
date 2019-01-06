@@ -17,11 +17,8 @@
 @bp-m: {{{medium}}};
 @bp-l: {{{large}}};
 {{/with}}
+@border: 1px solid;
 @border-radius: 1px;
-@border-width:  1px;
-@box-shadow-s:  3px  4px  3px fade_out(@gray-black, 0.96);
-@box-shadow-m: 10px 12px  9px fade_out(@gray-black, 0.97);
-@box-shadow-l: 20px 24px 27px fade_out(@gray-black, 0.98);
 @padding-s: 0.5rem;
 @padding-m: 1.5rem;
 @padding-l: 3rem;
@@ -95,7 +92,7 @@
 
 // Property-focused behaviour with only intervals 1 and 234
 .responsive-switch(@orientation; @property; @bp1; @bp234) {
-	.breakpoint(1  ; @orientation; { @{property}: @bp1; });
+	.breakpoint(1;   @orientation; { @{property}: @bp1; });
 	.breakpoint(234; @orientation; { @{property}: @bp234; });
 }
 
@@ -141,27 +138,27 @@
 
 // Padded flex container acting as a row in interval 234 and col otherwise
 .responsive-flex-row(@padding-main: 0, @padding-cross: @padding-main) {
-	.breakpoint(1  ; true; { .padded-flex-col(@padding-main; @padding-cross); });
+	.breakpoint(1;   true; { .padded-flex-col(@padding-main; @padding-cross); });
 	.breakpoint(234; true; { .padded-flex-row(@padding-main; @padding-cross); });
 }
 
 // Padded flex container acting as a col in interval 234 and row otherwise
 .responsive-flex-col(@padding-main: 0, @padding-cross: @padding-main) {
-	.breakpoint(1  ; true; { .padded-flex-row(@padding-main; @padding-cross); });
+	.breakpoint(1;   true; { .padded-flex-row(@padding-main; @padding-cross); });
 	.breakpoint(234; true; { .padded-flex-col(@padding-main; @padding-cross); });
 }
 
 // Child of a responsive flex row
 .responsive-flex-row-child() {
 	flex: 1 1 0;
-	.breakpoint(1  ; true; { width:  100%; });
+	.breakpoint(1;   true; { width:  100%; });
 	.breakpoint(234; true; { height: 100%; });
 }
 
 // Child of a responsive flex col
 .responsive-flex-col-child() {
 	flex: 1 1 0;
-	.breakpoint(1  ; true; { height: 100%; });
+	.breakpoint(1;   true; { height: 100%; });
 	.breakpoint(234; true; { width:  100%; });
 }
 
