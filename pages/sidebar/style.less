@@ -13,11 +13,11 @@ aside {
 		.breakpoint(1; true; { display: none; });
 
 		color: @gray-white;
-		flex: 0 0 auto;
+		flex: none;
 		margin: @padding-l 0;
 	}
 
-	> ul {
+	> ul.pages {
 		.responsive-flex-col();
 		.responsive-flex-col-child();
 
@@ -30,7 +30,7 @@ aside {
 			.breakpoint(1; true; { margin: 0 @padding-m; });
 			.breakpoint(234; true; { margin-bottom: @padding-m; });
 			
-			flex: 0 0 auto;
+			flex: none;
 
 			> a {
 				.full();
@@ -39,11 +39,27 @@ aside {
 					padding-bottom: @padding-s;
 				});
 
-				display: block;
-				transition: border-color @in-s;
-
+				transition: border-color @timing-s-in;
 				&:hover { border-color: @gray-white; }
 			}
+		}
+	}
+
+	> ul.links {
+		.flex(row);
+		.breakpoint(1; true; { display: none; });
+
+		justify-content: space-between;
+		margin-bottom: @padding-l;
+		width: 100%;
+
+		> li {
+			flex: none;
+			padding: @padding-s;
+			transition: background-color @timing-s-in;
+			&:hover { background-color: @gray-medium; }
+
+			> a > img { height: 2em; }
 		}
 	}
 }

@@ -1,10 +1,21 @@
 <aside>
 	<h1>François<br>Desrichard</h1>
-	<ul>
-		{{#each entries}}
+
+	<ul class="pages">
+		{{#each pages}}
 		<li>
 			<a href="{{url}}">
 				{{label}}
+			</a>
+		</li>
+		{{/each}}
+	</ul>
+
+	<ul class="links">
+		{{#each links}}
+		<li>
+			<a href="{{url}}" target="_blank" rel="noopener noreferrer">
+				<img title="{{label}}" alt="{{label}} logo" src="{{logo}}">
 			</a>
 		</li>
 		{{/each}}
