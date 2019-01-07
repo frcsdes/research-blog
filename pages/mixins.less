@@ -171,3 +171,11 @@
 	top: 0;
 	width: 100%;
 }
+
+// Resetting all <a>'s color to "inherit" acts weirdly, so here is a mixin
+.colored-link(@color) {
+	color: @color;
+	&:link { color: @color; }
+	&:active { color: @color; }
+	&:visited { color: @color; }
+}

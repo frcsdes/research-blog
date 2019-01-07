@@ -9,7 +9,7 @@
 
 html {
 	.full();
-	.responsive(false; font-size; 15px; 16px; 17px; 18px);
+	.responsive(false; font-size; 14px; 15px; 16px; 17px);
 }
 
 body {
@@ -30,7 +30,7 @@ body {
 	background-color: @gray-white;
 	color: @gray-black;
 	font-family: @font-body;
-	line-height: 1.65em;
+	line-height: 1.6em;
 
 	h1,
 	h2,
@@ -38,8 +38,15 @@ body {
 		color: @gray-dark;
 		font-family: @font-display;
 		font-weight: 400;
-		line-height: 1.4em;
+		line-height: 1.2em;
 		margin-bottom: @padding-s;
+
+		small {
+			color: @gray-medium;
+			font-family: @font-body;
+			font-size: 0.85em;
+			margin-right: 0.5em;
+		}
 	}
 	h1 {
 		font-size: 1.7rem;
@@ -49,14 +56,24 @@ body {
 	h2 { font-size: 1.5rem; }
 	h3 { font-size: 1.2em; }
 
-	p { margin-top: @padding-s; }
-
 	{{{sidebar.style}}}
 
 	> main {
 		.padded-flex-col(@padding-l; @padding-m);
 		.responsive-flex-row-child();
 		.responsive-switch(true; overflow; visible; auto);
+		
+		p { margin-bottom: @padding-s; }
+		p + h2 { margin-top: @padding-l; }
+		p + h3 { margin-top: @padding-m; }
+		
+		i { font-style: italic; }
+
+		a {
+			.colored-link(@gray-medium);
+			transition: color @timing-s-inout;
+			&:hover { color: @gray-black; }
+		}
 
 		align-items: center;
 		flex: 5 1 auto;

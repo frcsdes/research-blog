@@ -52,6 +52,12 @@ const component = (directory) => {
 
 
 // Compilation and rendering
+hb.registerHelper("link", (url, label) => new hb.SafeString(
+	`<a href="${url}" target="_blank" rel="noopener noreferrer">${
+		label === "@" ? url : label
+	}</a>`
+));
+
 const compile = (source) => (context) =>
 	hb.compile(source)(context);
 
@@ -76,7 +82,8 @@ const lessToCss = (mixins) => async (source) => {
 const setupBuild = () => {
 	if (!fs.existsSync(buildDir))
 		fs.mkdirSync(buildDir);
-	ncp(staticDir, buildDir);
+	const visible = (filename) => !filename.includes("/.");
+	ncp(staticDir, buildDir, {filter: visible}, () => {});
 };
 
 const writeFile = (filename, data) =>

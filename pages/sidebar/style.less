@@ -26,19 +26,21 @@ aside {
 		font-weight: 600;
 
 		> li {
-			.responsive-flex-col-child();
 			.breakpoint(1; true; { margin: 0 @padding-m; });
 			.breakpoint(234; true; { margin-bottom: @padding-m; });
+			.responsive-flex-col-child();
 			
 			flex: none;
 
 			> a {
-				.full();
 				.breakpoint(234; true; {
 					border-bottom: @border @gray-medium;
 					padding-bottom: @padding-s;
 				});
+				.colored-link(@gray-white);
+				.full();
 
+				display: block;
 				transition: border-color @timing-s-in;
 				&:hover { border-color: @gray-white; }
 			}
@@ -55,11 +57,15 @@ aside {
 
 		> li {
 			flex: none;
-			padding: @padding-s;
-			transition: background-color @timing-s-in;
-			&:hover { background-color: @gray-medium; }
 
-			> a > img { height: 2em; }
+			> a {
+				display: block;
+				padding: 2 * @padding-s;
+				transition: background-color @timing-s-in;
+				&:hover { background-color: @gray-medium; }
+
+				> img { height: 2em; }
+			}
 		}
 	}
 }

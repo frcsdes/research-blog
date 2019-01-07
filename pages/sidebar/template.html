@@ -12,10 +12,10 @@
 	</ul>
 
 	<ul class="links">
-		{{#each links}}
+		{{#each root.links}}
 		<li>
 			<a href="{{url}}" target="_blank" rel="noopener noreferrer">
-				<img title="{{label}}" alt="{{label}} logo" src="{{../root.images}}{{logo}}">
+				<img title="{{label}}" alt="{{label}}" src="{{../root.images}}{{logo}}">
 			</a>
 		</li>
 		{{/each}}
