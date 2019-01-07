@@ -4,7 +4,8 @@
   "description": "François Desrichard's research blog",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "clean": "rm -r build/"
   },
   "author": "François Desrichard",
   "license": "MIT",

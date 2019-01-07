@@ -1,5 +1,5 @@
 // Color and font scheme
-{{#with colors}}
+{{#with root.colors}}
 @primary:     {{{primary}}};
 @secondary:   {{{secondary}}};
 @gray-white:  {{{grayWhite}}};
@@ -8,11 +8,11 @@
 @gray-dark:   {{{grayDark}}};
 @gray-black:  {{{grayBlack}}};
 {{/with}}
-@font-body: {{fonts.body}}, sans-serif;
-@font-display: {{fonts.display}}, serif;
+@font-body: {{root.fonts.body}}, sans-serif;
+@font-display: {{root.fonts.display}}, serif;
 
 // Breakpoints and common sizes
-{{#with breakpoints}}
+{{#with root.breakpoints}}
 @bp-s: {{{small}}};
 @bp-m: {{{medium}}};
 @bp-l: {{{large}}};

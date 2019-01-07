@@ -1,15 +1,15 @@
-{{#each fonts.list}}
+{{#each root.fonts.list}}
 @font-face {
 	font-family: {{family}};
 	font-weight: {{weight}};
-	src: url("{{url}}");
+	src: url("{{../directory}}{{url}}");
 }
 {{/each}}
 
 
 html {
 	.full();
-	.responsive(false; font-size; 15px; 16px; 17px; 18px;);
+	.responsive(false; font-size; 15px; 16px; 17px; 18px);
 }
 
 body {

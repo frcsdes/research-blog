@@ -61,10 +61,7 @@ const compileComponent = ({markup, style}) => (context) => ({
 });
 
 const renderComponent = (rootContext) => (component) =>
-	compileComponent(component)({...rootContext, ...component.context});
-
-const sassToCss = (mixins) => (source) =>
-	sass.renderSync({data: mixins + source}).css;
+	compileComponent(component)({root: rootContext, ...component.context});
 
 const lessToCss = (mixins) => async (source) => {
 	try {
