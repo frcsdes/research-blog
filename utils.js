@@ -58,6 +58,10 @@ hb.registerHelper("link", (url, label) => new hb.SafeString(
 	}</a>`
 ));
 
+hb.registerHelper("date", (date) => `${
+	date.getDate()}/${date.getMonth()}/${date.getFullYear()
+}`);
+
 const compile = (source) => (context) =>
 	hb.compile(source)(context);
 

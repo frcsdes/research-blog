@@ -75,7 +75,14 @@ body {
 			&:hover { color: @gray-black; }
 		}
 
+		> article {
+			.flex(col);
+			flex: none;
+			max-width: @max-width;
+			width: 100%;
+		}
+
 		align-items: center;
-		flex: 5 1 auto;
+		flex: 20 1 0;
 	}
 }

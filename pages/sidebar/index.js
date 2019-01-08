@@ -6,7 +6,7 @@ module.exports = {
 		},
 		{
 			label: "Papers",
-			url: "#"
+			url: "papers.html"
 		},
 		{
 			label: "Posts",

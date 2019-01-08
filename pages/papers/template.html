@@ -1,0 +1,15 @@
+<article>
+	<h1>Papers (more to come hopefully)</h1>
+
+	{{#each list}}
+	<figure>
+		<img alt="{{title}}" src="{{../root.images}}{{../papers}}{{image}}">
+		<figcaption>
+			<span>{{title}}</span>
+			{{authors}}
+			<small>{{date published}}, {{journal}}</small>
+			{{link url "@"}}
+		</figcaption>
+	</figure>
+	{{/each}}
+</article>
