@@ -13,7 +13,7 @@ const list = [
 		image: "jfig-2018.jpg",
 		title: "Analysis of Path Space for Layered Light Editing",
 		authors: authors([frcs, dlyr]),
-		published: new Date(2018, 11, 15),
+		date: new Date(2018, 11, 15),
 		journal: "Journées j.FIG 2018 Poitiers",
 		url: "https://hal.archives-ouvertes.fr/hal-01941014",
 	},

@@ -58,9 +58,7 @@ hb.registerHelper("link", (url, label) => new hb.SafeString(
 	}</a>`
 ));
 
-hb.registerHelper("date", (date) => `${
-	date.getDate()}/${date.getMonth()}/${date.getFullYear()
-}`);
+hb.registerHelper("format", (date) => date.toISOString().slice(0, 10));
 
 const compile = (source) => (context) =>
 	hb.compile(source)(context);
