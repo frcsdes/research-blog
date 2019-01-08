@@ -1,16 +1,26 @@
 article {
 	> figure {
-		.responsive(true; flex-direction; column; column; row; row);
+		.breakpoint(12; true; { flex-direction: column; });
+		.breakpoint(34; true; { flex-direction: row; });
 
 		display: flex;
 		flex: none;
 		width: 100%;
+		&:not(:last-child) { margin-bottom: @padding-l; }
 
 		> img {
-			.responsive(true; align-self; flex-start; flex-start; center; center);
-			.responsive(true; margin-bottom; @padding-m; @padding-m; 0; 0);
-			.responsive(true; margin-right; 0; 0; @padding-m; @padding-m);
-			.responsive(true; width; 100%; 100%; @max-width / 2; @max-width / 2);
+			.breakpoint(12; true; {
+				align-self: flex-start;
+				margin-bottom: @padding-s;
+				margin-right: 0;
+				width: 100%;
+			});
+			.breakpoint(34; true; {
+				align-self: center;
+				margin-bottom: 0;
+				margin-right: @padding-m;
+				width: @max-width / 2;
+			});
 
 			flex: 1 1 0;
 			max-width: 3 * @max-width / 4;
@@ -22,7 +32,7 @@ article {
 			flex: 2 2 0;
 
 			> span { font-size: 1.3em; }
-			> small { margin-top: @padding-m; }
+			> small { margin-top: @padding-s; }
 		}
 	}
 }

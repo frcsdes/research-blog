@@ -68,11 +68,13 @@
 	@media (min-width: @bp-s) and (max-width: @bp-l) { @rules(); }
 }
 
-.breakpoint-oriented(@bp; @rules) when (@bp = 1) {
+.breakpoint-oriented(@bp; @rules) when (@bp = 1), (@bp = 12), (@bp = 123) {
 	@media (orientation: portrait) { @rules(); };
 	.breakpoint-basic(@bp; @rules);
 }
-.breakpoint-oriented(@bp; @rules) when not (@bp = 1) {
+.breakpoint-oriented(@bp; @rules) when not (@bp = 1)
+                                   and not (@bp = 12)
+                                   and not (@bp = 123) {
 	@media (orientation: landscape) { .breakpoint-basic(@bp; @rules); }
 }
 
