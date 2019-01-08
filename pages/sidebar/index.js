@@ -10,7 +10,7 @@ module.exports = {
 		},
 		{
 			label: "Posts",
-			url: "#"
+			url: "posts.html"
 		},
 	],
 };

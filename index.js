@@ -41,6 +41,7 @@ const mainWithComponent = async (file) =>
 	// Rendering individual pages
 	writeFile("index.html", await mainWithComponent("home"));
 	writeFile("papers.html", await mainWithComponent("papers"));
+	writeFile("posts.html", await mainWithComponent("posts"));
 
 	// Rendering global style
 	writeFile("style.css", await compileCss(mainTemplate({}).style));
