@@ -12,7 +12,7 @@ const render = renderComponent(mainComponent.context);
 const sidebarRender = render(component("sidebar"));
 const mainTemplate = (content) =>
 	compileComponent(mainComponent)({
-		root: mainComponent.context,
+		...mainComponent.context,
 		sidebar: sidebarRender,
 		content,
 	});
@@ -20,7 +20,7 @@ const mainTemplate = (content) =>
 
 // Style-specific helpers
 const mixinsSource = readFile("mixins.less");
-const mixins = compile(mixinsSource)({root: mainComponent.context});
+const mixins = compile(mixinsSource)(mainComponent.context);
 const compileCss = renderCss(mixins);
 const compileContentStyle = async ({style, ...content}) =>
 	({style: await compileCss(style), ...content});

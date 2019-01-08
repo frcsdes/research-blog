@@ -50,11 +50,14 @@ const lipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 
 module.exports = {
-	title: "Research Blog",
-	breakpoints,
-	colors,
-	fonts,
-	images,
-	links,
-	lipsum,
+	root: {
+		breakpoints,
+		colors,
+		fonts,
+		images,
+		links,
+		lipsum,
+	},
+	pagetitle: "Research Blog",
+	depth: 0,
 };

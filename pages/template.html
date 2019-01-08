@@ -12,19 +12,23 @@
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="style.css">
 
-	<title>{{root.title}}</title>
+	<title>{{pagetitle}}</title>
+	{{#if content.style}}
 
 	<style>{{{content.style}}}</style>
+	{{/if}}
 </head>
 
 <body>
 	{{{sidebar.markup}}}
+	{{#if content.markup}}
 
 	<main>
 		<article id="scope">
 			{{{content.markup}}}
 		</article>
 	</main>
+	{{/if}}
 </body>
 
 </html>

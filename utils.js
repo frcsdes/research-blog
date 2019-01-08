@@ -70,7 +70,7 @@ const compileComponent = ({markup, style}) => (context) => ({
 });
 
 const renderComponent = (rootContext) => (component) =>
-	compileComponent(component)({root: rootContext, ...component.context});
+	compileComponent(component)({...rootContext, ...component.context});
 
 const renderCss = (mixins) => async (source) => {
 	try {
