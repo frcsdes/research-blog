@@ -1,15 +1,13 @@
-<article>
-	<h1>Papers</h1>
+<h1>Papers</h1>
 
-	{{#each list}}
-	<figure>
-		<img alt="{{title}}" src="{{../root.images}}{{../papers}}{{image}}">
-		<figcaption>
-			<span>{{title}}</span>
-			{{authors}}
-			<small>{{format date}}, {{journal}}</small>
-			{{link url "@"}}
-		</figcaption>
-	</figure>
-	{{/each}}
-</article>
+{{#each list}}
+<figure>
+	<img alt="{{title}}" src="{{../root.images}}{{../papers}}{{image}}">
+	<figcaption>
+		<span>{{title}}</span>
+		{{authors}}
+		<small>{{format date}}, {{journal}}</small>
+		{{link url "@"}}
+	</figcaption>
+</figure>
+{{/each}}

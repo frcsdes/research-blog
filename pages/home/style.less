@@ -1,21 +1,23 @@
+#scope {
+
 {{{cube.style}}}
 
-article {
-	.my-face {
-		.responsive-flex-row();
-		flex: none;
-		width: 100%;
-	}
+.my-face {
+	.responsive-flex-row();
+	flex: none;
+	width: 100%;
+}
 
-	img {
-		.breakpoint(1; true; { margin: @padding-m 0; });
-		.breakpoint(234; true; { margin-right: @padding-m; });
+img {
+	.breakpoint(1; true; { margin: @padding-m 0; });
+	.breakpoint(234; true; { margin-right: @padding-m; });
 
-		align-self: center;
-		border: 2px solid @gray-medium;
-		border-radius: 50%;
-		height: 8em;
-		padding: 2px;
-		width: 8em;
-	}
+	align-self: center;
+	border: 2px solid @gray-medium;
+	border-radius: 50%;
+	height: 8em;
+	padding: 2px;
+	width: 8em;
+}
+
 }
