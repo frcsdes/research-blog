@@ -6,6 +6,7 @@ const read = (file) => fs.readFileSync(path.join(__dirname, file)).toString();
 
 module.exports = {
 	title: "Centralizing Data in a Qt Application",
+	slug: "centralizing-data-qt-application",
 	date: new Date(2019, 1, 8),
 	markdown: read("content.md"),
 };

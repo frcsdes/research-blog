@@ -3,12 +3,12 @@ const dlyr = "David Vanderhaeghe";
 
 const authors = ([head, ...tail]) =>
 	head
-		? tail && tail.length > 0
+		? tail.length > 0
 			? `${head}, ${authors(tail)}`
 			: head
 		: ""
 
-const list = [
+const papers = [
 	{
 		image: "jfig-2018.jpg",
 		title: "Analysis of Path Space for Layered Light Editing",
@@ -20,7 +20,4 @@ const list = [
 ];
 
 
-module.exports = {
-	papers: "papers/",
-	list,
-};
+module.exports = {papers};

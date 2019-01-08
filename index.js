@@ -1,7 +1,7 @@
 const {
 	readFile, component,
 	compile, compileComponent,
-	renderComponent, lessToCss,
+	renderComponent, renderCss, renderMarkdown,
 	setupBuild, writeFile,
 } = require("./utils");
 
@@ -21,7 +21,7 @@ const mainTemplate = (content) =>
 // Style-specific helpers
 const mixinsSource = readFile("mixins.less");
 const mixins = compile(mixinsSource)({root: mainComponent.context});
-const compileCss = lessToCss(mixins);
+const compileCss = renderCss(mixins);
 const compileContentStyle = async ({style, ...content}) =>
 	({style: await compileCss(style), ...content});
 
@@ -31,6 +31,11 @@ const mainWithContent = async (content) =>
 
 const mainWithComponent = async (file) =>
 	await mainWithContent(render(component(file))).then(({markup}) => markup);
+
+const writePost = ({slug, markdown, ...rest}) => {
+	const markup = renderMarkdown(markdown)(rest);
+	writeFile(`posts/${slug}.html`, mainTemplate({markup}).markup);
+}
 
 
 // Build steps
@@ -42,6 +47,7 @@ const mainWithComponent = async (file) =>
 	writeFile("index.html", await mainWithComponent("home"));
 	writeFile("papers.html", await mainWithComponent("papers"));
 	writeFile("posts.html", await mainWithComponent("posts"));
+	component("posts").context.posts.forEach(writePost);
 
 	// Rendering global style
 	writeFile("style.css", await compileCss(mainTemplate({}).style));

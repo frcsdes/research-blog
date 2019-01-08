@@ -3,6 +3,7 @@ const path = require("path");
 const ncp = require("ncp").ncp;
 const hb = require("handlebars");
 const less = require("less");
+const md = new require("markdown-it")();
 
 
 // Directory hierarchy and file structure
@@ -71,13 +72,16 @@ const compileComponent = ({markup, style}) => (context) => ({
 const renderComponent = (rootContext) => (component) =>
 	compileComponent(component)({root: rootContext, ...component.context});
 
-const lessToCss = (mixins) => async (source) => {
+const renderCss = (mixins) => async (source) => {
 	try {
 		return await less.render(mixins + source).then(({css}) => css);
 	} catch (exception) {
 		console.error(`Error compiling Less:\n${exception}\n`);
 	}
 };
+
+const renderMarkdown = (source) => (context) =>
+	md.render(compile(source)(context));
 
 
 // Build output
@@ -95,6 +99,6 @@ const writeFile = (filename, data) =>
 module.exports = {
 	absolute, readFile, requireAbsolute, component,
 	compile, compileComponent,
-	renderComponent, lessToCss,
+	renderComponent, renderCss, renderMarkdown,
 	setupBuild, writeFile,
 };

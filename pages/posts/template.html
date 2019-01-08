@@ -1,5 +1,8 @@
 <h1>Posts</h1>
 
 {{#each posts}}
-<h2><small>{{format date}}</small>{{title}}</h2>
+<h2>
+	<small>{{format date}}</small>
+	<a href="posts/{{slug}}.html">{{title}}</a>
+</h2>
 {{/each}}
