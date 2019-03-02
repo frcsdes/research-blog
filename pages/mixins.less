@@ -95,8 +95,8 @@
 
 // Property-focused behaviour with only intervals 1 and 234
 .responsive-switch(@orientation; @property; @bp1; @bp234) {
-	.breakpoint(1;   @orientation; { @{property}: @bp1; });
 	.breakpoint(234; @orientation; { @{property}: @bp234; });
+	.breakpoint(1;   @orientation; { @{property}: @bp1; });
 }
 
 // Flex column or row
@@ -141,28 +141,28 @@
 
 // Padded flex container acting as a row in interval 234 and col otherwise
 .responsive-flex-row(@padding-main: 0, @padding-cross: @padding-main) {
-	.breakpoint(1;   true; { .padded-flex-col(@padding-main; @padding-cross); });
 	.breakpoint(234; true; { .padded-flex-row(@padding-main; @padding-cross); });
+	.breakpoint(1;   true; { .padded-flex-col(@padding-main; @padding-cross); });
 }
 
 // Padded flex container acting as a col in interval 234 and row otherwise
 .responsive-flex-col(@padding-main: 0, @padding-cross: @padding-main) {
-	.breakpoint(1;   true; { .padded-flex-row(@padding-main; @padding-cross); });
 	.breakpoint(234; true; { .padded-flex-col(@padding-main; @padding-cross); });
+	.breakpoint(1;   true; { .padded-flex-row(@padding-main; @padding-cross); });
 }
 
 // Child of a responsive flex row
 .responsive-flex-row-child() {
 	flex: 1 1 0;
-	.breakpoint(1;   true; { width:  100%; });
 	.breakpoint(234; true; { height: 100%; });
+	.breakpoint(1;   true; { width:  100%; });
 }
 
 // Child of a responsive flex col
 .responsive-flex-col-child() {
 	flex: 1 1 0;
-	.breakpoint(1;   true; { height: 100%; });
 	.breakpoint(234; true; { width:  100%; });
+	.breakpoint(1;   true; { height: 100%; });
 }
 
 // Relative full block

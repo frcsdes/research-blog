@@ -16,10 +16,10 @@ const colors = {
 
 const fonts = {
 	list: [
-		{family: "Bitter", weight: 400, url: "fonts/Bitter-Regular.ttf"},
-		{family: "Bitter", weight: 700, url: "fonts/Bitter-Bold.ttf"},
 		{family: "OpenSans", weight: 400, url: "fonts/OpenSans-Regular.ttf"},
 		{family: "OpenSans", weight: 600, url: "fonts/OpenSans-SemiBold.ttf"},
+		{family: "Bitter", weight: 400, url: "fonts/Bitter-Regular.ttf"},
+		{family: "Bitter", weight: 700, url: "fonts/Bitter-Bold.ttf"},
 	],
 	body: "OpenSans",
 	display: "Bitter",
@@ -58,6 +58,6 @@ module.exports = {
 		links,
 		lipsum,
 	},
-	pagetitle: "Research Blog",
+	pagetitle: "François Desrichard - Research Blog",
 	depth: 0,
 };

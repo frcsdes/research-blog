@@ -2,20 +2,15 @@
 
 {{{cube.style}}}
 
-.my-face {
-	.responsive-flex-row();
-	flex: none;
-	width: 100%;
-}
+.when-small { .responsive-switch(true; display; initial; none); }
+.when-big { .responsive-switch(true; display; none; initial); }
 
 img {
-	.breakpoint(1; true; { margin: @padding-m 0; });
-	.breakpoint(234; true; { margin-right: @padding-m; });
-
 	align-self: center;
 	border: 2px solid @gray-medium;
 	border-radius: 50%;
 	height: 8em;
+	margin-bottom: @padding-l;
 	padding: 2px;
 	width: 8em;
 }
