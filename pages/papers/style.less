@@ -1,36 +1,51 @@
 #scope {
 
 > figure {
-	.breakpoint(12; true; { flex-direction: column; });
-	.breakpoint(34; true; { flex-direction: row; });
+	.breakpoint(12; true; {
+		align-items: center;
+		flex-direction: column;
+	});
+	.breakpoint(34; true; {
+		align-items: flex-start;
+		flex-direction: row;
+	});
 
 	display: flex;
 	flex: none;
 	width: 100%;
 	&:not(:last-child) { margin-bottom: @padding-l; }
 
+	> img,
+	> figcaption {
+		max-width: 3 * @max-width / 4;
+		min-width: @max-width / 4;
+	}
+
 	> img {
 		.breakpoint(12; true; {
-			align-self: flex-start;
 			margin-bottom: @padding-s;
 			margin-right: 0;
 			width: 100%;
 		});
 		.breakpoint(34; true; {
-			align-self: center;
 			margin-bottom: 0;
 			margin-right: @padding-m;
 			width: @max-width / 2;
 		});
 
 		flex: 1 1 0;
-		max-width: 3 * @max-width / 4;
-		min-width: @max-width / 4;
 	}
 
 	> figcaption {
 		.flex(col);
-		flex: 2 2 0;
+		.breakpoint(12; true; {
+			flex: 0 0 auto;
+			width: 100%;
+		});
+		.breakpoint(34; true; {
+			flex: 2 2 0;
+			height: auto;
+		});
 
 		> span { font-size: 1.3em; }
 		> small { margin-top: @padding-s; }
