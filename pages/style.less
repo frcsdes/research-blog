@@ -1,9 +1,17 @@
 {{#each root.fonts.list}}
 @font-face {
-	font-display: fallback;
+	font-display: {{display}};
 	font-family: {{family}};
 	font-weight: {{weight}};
-	src: url("{{../root.fonts.directory}}{{url}}");
+
+	// From google-webfonts-helper
+	src: url("{{../root.fonts.directory}}{{family}}/{{prefix}}.eot"); // IE9 Compat Modes
+	src: local("{{prefix}}"),
+	     url("{{../root.fonts.directory}}{{family}}/{{prefix}}.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+	     url("{{../root.fonts.directory}}{{family}}/{{prefix}}.woff2") format("woff2"), // Super Modern Browsers
+	     url("{{../root.fonts.directory}}{{family}}/{{prefix}}.woff") format("woff"), // Modern Browsers
+	     url("{{../root.fonts.directory}}{{family}}/{{prefix}}.ttf") format("truetype"), // Safari, Android, iOS
+	     url("{{../root.fonts.directory}}{{family}}/{{prefix}}.svg#{{family}}") format("svg"); // Legacy iOS
 }
 {{/each}}
 

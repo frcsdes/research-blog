@@ -19,22 +19,26 @@ const fonts = {
 		{
 			family: "OpenSans",
 			weight: 400,
-			url: "OpenSans-Regular.ttf"
+			prefix: "OpenSans-Regular",
+			display: "fallback",
 		},
 		{
 			family: "OpenSans",
 			weight: 600,
-			url: "OpenSans-SemiBold.ttf"
+			prefix: "OpenSans-SemiBold",
+			display: "fallback",
 		},
 		{
 			family: "Bitter",
 			weight: 400,
-			url: "Bitter-Regular.ttf"
+			prefix: "Bitter-Regular",
+			display: "swap",
 		},
 		{
 			family: "Bitter",
 			weight: 700,
-			url: "Bitter-Bold.ttf"
+			prefix: "Bitter-Bold",
+			display: "swap",
 		},
 	],
 	body: "OpenSans",
@@ -43,13 +47,6 @@ const fonts = {
 };
 
 const images = "images/";
-
-const preload = [
-	{
-		href: `${fonts.directory}${fonts.list[0].url}`,
-		as: "font",
-	},
-];
 
 const links = [
 	{
@@ -78,7 +75,6 @@ module.exports = {
 		colors,
 		fonts,
 		images,
-		preload,
 		links,
 		lipsum,
 	},

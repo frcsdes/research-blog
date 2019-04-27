@@ -10,7 +10,7 @@ const fetch = (folder) => {
 	return {markdown: `${header}\n${markdown}`, ...rest};
 };
 
-const all = ["cpp-store"];
+const all = [];
 
 
 module.exports = {posts: all.map(fetch)};

@@ -2,7 +2,7 @@ module.exports = {
 	pages: [
 		{
 			label: "Home",
-			url: "index.html"
+			url: "."
 		},
 		{
 			label: "Papers",
