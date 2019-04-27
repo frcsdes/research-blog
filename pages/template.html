@@ -19,25 +19,31 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="theme-color" content="{{colors.primary}}">
 
-	<link rel="stylesheet" href="./reset.css">
-	<link rel="stylesheet" href="./style.css">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="theme-color" content="{{root.colors.primary}}">
+
+	<link rel="stylesheet" href="/reset.css">
+	<link rel="stylesheet" href="/style.css">
+
+	{{#each root.preload}}
+	<link rel="preload" href="{{href}}" as="{{as}}">
+	{{/each}}
 
 	<title>{{pagetitle}}</title>
-	{{#if content.style}}
 
+	{{#if content.style}}
 	<style>{{{content.style}}}</style>
 	{{/if}}
 </head>
 
 <body>
 	{{{sidebar.markup}}}
-	{{#if content.markup}}
 
+	{{#if content.markup}}
 	<main>
 		<article id="scope">
 			{{{content.markup}}}

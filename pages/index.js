@@ -16,10 +16,26 @@ const colors = {
 
 const fonts = {
 	list: [
-		{family: "OpenSans", weight: 400, url: "fonts/OpenSans-Regular.ttf"},
-		{family: "OpenSans", weight: 600, url: "fonts/OpenSans-SemiBold.ttf"},
-		{family: "Bitter", weight: 400, url: "fonts/Bitter-Regular.ttf"},
-		{family: "Bitter", weight: 700, url: "fonts/Bitter-Bold.ttf"},
+		{
+			family: "OpenSans",
+			weight: 400,
+			url: "OpenSans-Regular.ttf"
+		},
+		{
+			family: "OpenSans",
+			weight: 600,
+			url: "OpenSans-SemiBold.ttf"
+		},
+		{
+			family: "Bitter",
+			weight: 400,
+			url: "Bitter-Regular.ttf"
+		},
+		{
+			family: "Bitter",
+			weight: 700,
+			url: "Bitter-Bold.ttf"
+		},
 	],
 	body: "OpenSans",
 	display: "Bitter",
@@ -27,6 +43,13 @@ const fonts = {
 };
 
 const images = "images/";
+
+const preload = [
+	{
+		href: `${fonts.directory}${fonts.list[0].url}`,
+		as: "font",
+	},
+];
 
 const links = [
 	{
@@ -55,6 +78,7 @@ module.exports = {
 		colors,
 		fonts,
 		images,
+		preload,
 		links,
 		lipsum,
 	},

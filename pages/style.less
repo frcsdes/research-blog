@@ -1,8 +1,9 @@
 {{#each root.fonts.list}}
 @font-face {
+	font-display: fallback;
 	font-family: {{family}};
 	font-weight: {{weight}};
-	src: url("{{../directory}}{{url}}");
+	src: url("{{../root.fonts.directory}}{{url}}");
 }
 {{/each}}
 

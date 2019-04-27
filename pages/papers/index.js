@@ -8,7 +8,7 @@ const authors = ([head, ...tail]) =>
 			: head
 		: ""
 
-const papers = [
+const list = [
 	{
 		image: "jfig-2018.jpg",
 		title: "Analysis of Path Space for Layered Light Editing",
@@ -19,5 +19,10 @@ const papers = [
 	},
 ];
 
+const papers = "papers/";
 
-module.exports = {papers};
+
+module.exports = {
+	list,
+	papers,
+};
