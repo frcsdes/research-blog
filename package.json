@@ -10,7 +10,7 @@
   "author": "François Desrichard",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.4.5",
     "less": "^3.9.0",
     "markdown-it": "^8.4.2",
     "ncp": "^2.0.0"
