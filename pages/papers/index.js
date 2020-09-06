@@ -32,7 +32,15 @@ const list = [
 const papers = "papers/";
 
 
-module.exports = {
-	list,
-	papers,
+const hook = async (pb) => {
+	const markup = pb.renderHb(
+		await pb.readTemplate(),
+		pb.extendedContext({list, papers})
+	);
+	const style = await pb.renderLess(await pb.readLess());
+
+	pb.writeFile("papers.html", pb.renderPage({markup, style}));
 };
+
+
+module.exports = {hook};

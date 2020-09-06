@@ -1,22 +1,20 @@
-// Color and font scheme
-{{#with root.colors}}
-@primary:     {{{primary}}};
-@secondary:   {{{secondary}}};
-@gray-white:  {{{grayWhite}}};
-@gray-light:  {{{grayLight}}};
-@gray-medium: {{{grayMedium}}};
-@gray-dark:   {{{grayDark}}};
-@gray-black:  {{{grayBlack}}};
-{{/with}}
-@font-body: {{root.fonts.body}}, sans-serif;
-@font-display: {{root.fonts.display}}, serif;
+// Color scheme
+@primary:     #F45449;
+@secondary:   #EA463A;
+@gray-white:  #FEFEFF;
+@gray-light:  #EDEDED;
+@gray-medium: #6A6464;
+@gray-dark:   #232221;
+@gray-black:  #050505;
+
+// Fonts
+@font-body:    OpenSans, sans-serif;
+@font-display: Bitter, serif;
 
 // Breakpoints and common sizes
-{{#with root.breakpoints}}
-@bp-s: {{{small}}};
-@bp-m: {{{medium}}};
-@bp-l: {{{large}}};
-{{/with}}
+@bp-s: 600px;
+@bp-m: 1200px;
+@bp-l: 1600px;
 @border: 1px solid;
 @border-radius: 1px;
 @padding-s: 0.5rem;
@@ -28,14 +26,14 @@
 @duration-s: 0.08s;
 @duration-m: 0.27s;
 @duration-l: 0.5s;
-   @timing-s-in: @duration-s ease-in;
-  @timing-s-out: @duration-s ease-out;
+@timing-s-in:    @duration-s ease-in;
+@timing-s-out:   @duration-s ease-out;
 @timing-s-inout: @duration-s ease-in-out;
-   @timing-m-in: @duration-m ease-in;
-  @timing-m-out: @duration-m ease-out;
+@timing-m-in:    @duration-m ease-in;
+@timing-m-out:   @duration-m ease-out;
 @timing-m-inout: @duration-m ease-in-out;
-   @timing-l-in: @duration-l ease-in;
-  @timing-l-out: @duration-l ease-out;
+@timing-l-in:    @duration-l ease-in;
+@timing-l-out:   @duration-l ease-out;
 @timing-l-inout: @duration-l ease-in-out;
 
 
@@ -119,7 +117,7 @@
 .flex-air(@size) when (@size > 0) {
 	&:before,
 	&:after {
-		content: "\00a0";
+		content: "";
 		flex: 0 0 @size;
 		overflow: hidden;
 	}

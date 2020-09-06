@@ -27,22 +27,23 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
 	<link rel="manifest" href="/manifest.json">
-	<meta name="theme-color" content="{{root.colors.primary}}">
 
-	<title>{{pagetitle}}</title>
+	<title>{{title}}</title>
 
-	{{#if content.style}}
-	<style>{{{content.style}}}</style>
+	{{#if style}}
+	<style>
+		{{{style}}}
+	</style>
 	{{/if}}
 </head>
 
 <body>
 	{{{sidebar.markup}}}
 
-	{{#if content.markup}}
+	{{#if markup}}
 	<main>
 		<article id="scope">
-			{{{content.markup}}}
+			{{{markup}}}
 		</article>
 	</main>
 	{{/if}}
