@@ -1,5 +1,8 @@
 #scope {
 
-a { .colored-link(@gray-black); }
+.link {
+	.colored-link(@gray-black);
+	&:hover { color: @gray-medium; }
+}
 
 }

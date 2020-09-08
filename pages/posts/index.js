@@ -1,16 +1,28 @@
-const fs = require("fs");
-const path = require("path");
-
-const read = (file) => fs.readFileSync(path.join(__dirname, file)).toString();
-
-const header = read("header.md");
-
-const fetch = (folder) => {
-	const {markdown, ...rest} = require("./" + folder);
-	return {markdown: `${header}\n${markdown}`, ...rest};
+const posts = {
+	2020: [
+		{
+			title: "C++ Swizzling part 1",
+			date: new Date(2020, 9, 8),
+			url: "#",
+		},
+		{
+			title: "C++ Swizzling part 2",
+		},
+		{
+			title: "C++ Pattern matching",
+		},
+	],
 };
 
-const all = [];
+
+const hook = async (pb) => {
+	const markup = pb.renderHb(
+		await pb.readTemplate(),
+		pb.extendedContext({posts})
+	);
+	const style = await pb.renderLess(await pb.readLess());
+	pb.writeFile("posts.html", pb.renderPage({markup, style}));
+};
 
 
-module.exports = {posts: all.map(fetch)};
+module.exports = {hook};

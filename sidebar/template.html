@@ -4,9 +4,7 @@
 	<ul class="pages">
 		{{#each pages}}
 		<li>
-			<a href="{{url}}">
-				{{label}}
-			</a>
+			{{link url label}}
 		</li>
 		{{/each}}
 	</ul>
@@ -14,7 +12,7 @@
 	<ul class="links">
 		{{#each root.links}}
 		<li>
-			<a href="{{url}}" title="{{label}}" rel="noopener noreferrer">
+			<a href="{{url}}" title="{{label}}" rel="noopener noreferrer" class="link">
 				<img alt="{{label}}" src="{{../root.images}}{{logo}}">
 			</a>
 		</li>

@@ -7,7 +7,7 @@ const md = new require("markdown-it")();
 
 
 hb.registerHelper("link", (url, label) => new hb.SafeString(
-	`<a href="${url}" rel="noopener noreferrer">${
+	`<a href="${url}" rel="noopener noreferrer" class="link">${
 		label === "@" ? url : label
 	}</a>`
 ));
