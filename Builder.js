@@ -3,7 +3,7 @@ const path = require("path");
 
 const hb = require("handlebars");
 const less = require("less");
-const md = new require("markdown-it")();
+const md = require("markdown-it")().use(require("markdown-it-highlightjs"));
 
 
 hb.registerHelper("link", (url, label) => new hb.SafeString(

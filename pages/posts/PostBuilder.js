@@ -25,10 +25,15 @@ class PostBuilder extends PageBuilder {
 		);
 	}
 
+	readContent() {
+		return this.readFile("content.md");
+	}
+
 	// Third party languages support
 	renderPage(contextAppend) {
+		const context = this.extendedContext(contextAppend);
 		return super.renderPage({
-			markup: PostBuilder.#postTemplate_(this.extendedContext(contextAppend)),
+			markup: PostBuilder.#postTemplate_(context),
 			style: PostBuilder.#postStyle_,
 		});
 	}

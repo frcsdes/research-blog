@@ -7,7 +7,8 @@ const url = "ubo_convenience_class.html";
 const keywords = ["C++", "OpenGL"];
 
 const hook = async (pb) => {
-	pb.writeFile(url, pb.renderPage({content: "Content"}));
+	const content = pb.renderMd(await pb.readContent());
+	pb.writeFile(url, pb.renderPage({content}));
 };
 
 
