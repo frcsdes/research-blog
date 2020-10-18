@@ -1,2 +1,13 @@
 <h1>{{title}}</h1>
-<small class="date">{{format date}}</small>
+
+<small class="date">Published {{format date}}</small>
+
+{{#if keywords}}
+<ul class="keywords">
+	{{#each keywords}}
+	<li class="keyword">{{this}}</li>
+	{{/each}}
+</ul>
+{{/if}}
+
+{{content}}

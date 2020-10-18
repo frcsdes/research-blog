@@ -28,8 +28,4 @@ const lipsum =
 	"mollit anim id est laborum.";
 
 
-module.exports = {
-	images,
-	links,
-	lipsum,
-};
+module.exports = {images, links, lipsum};
