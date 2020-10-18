@@ -1,10 +1,10 @@
 aside {
-	.responsive-flex-col(0; @padding-m);
+	.responsive-flex-col(0; @g-space-m);
 	.responsive-flex-row-child();
 	.responsive-switch(true; flex-grow; 0; 1);
 
-	background-color: @gray-dark;
-	color: @gray-white;
+	background-color: @g-gray-1;
+	color: @g-gray-4;
 	flex-basis: auto;
 	flex-shrink: 0;
 	overflow: auto;
@@ -12,37 +12,37 @@ aside {
 	> h1 {
 		.breakpoint(1; true; { display: none; });
 
-		color: @gray-white;
+		color: @g-gray-4;
 		flex: none;
-		margin: @padding-l 0;
+		margin: @g-space-l 0;
 	}
 
 	> ul.pages {
 		.responsive-flex-col();
 		.responsive-flex-col-child();
 
-		font-family: @font-body;
+		font-family: @g-font-body;
 		font-size: 1.1rem;
 		font-weight: 600;
 
 		> li {
-			.breakpoint(1; true; { margin: 0 @padding-m; });
-			.breakpoint(234; true; { margin-bottom: @padding-m; });
+			.breakpoint(1; true; { margin: 0 @g-space-m; });
+			.breakpoint(234; true; { margin-bottom: @g-space-m; });
 			.responsive-flex-col-child();
 			
 			flex: none;
 
 			.link {
 				.breakpoint(234; true; {
-					border-bottom: @border @gray-medium;
-					padding-bottom: @padding-s;
+					border-bottom: @g-border @g-gray-2;
+					padding-bottom: @g-space-s;
 				});
-				.colored-link(@gray-white);
+				.colored-link(@g-gray-4);
 				.full();
 
 				display: block;
-				transition: border-color @timing-s-in;
-				&:hover { border-color: @gray-white; }
+				transition: border-color @g-duration-s ease-in;
+				&:hover { border-color: @g-gray-4; }
 			}
 		}
 	}
@@ -52,7 +52,7 @@ aside {
 		.breakpoint(1; true; { display: none; });
 
 		justify-content: space-between;
-		margin-bottom: @padding-l;
+		margin-bottom: @g-space-l;
 		width: 100%;
 
 		> li {
@@ -60,9 +60,9 @@ aside {
 
 			> .link {
 				display: block;
-				padding: 2 * @padding-s;
-				transition: background-color @timing-s-in;
-				&:hover { background-color: @gray-medium; }
+				padding: 2 * @g-space-s;
+				transition: background-color @g-duration-s ease-in;
+				&:hover { background-color: @g-gray-2; }
 
 				> img { height: 2em; }
 			}

@@ -1,101 +1,90 @@
 // Color scheme
-@primary:     #F45449;
-@secondary:   #EA463A;
-@gray-white:  #FEFEFF;
-@gray-light:  #EDEDED;
-@gray-medium: #5A5454;
-@gray-dark:   #232221;
-@gray-black:  #050505;
+@g-gray-4: #FEFEFF;
+@g-gray-3: #EDEDED;
+@g-gray-2: #5A5454;
+@g-gray-1: #232221;
+@g-gray-0: #050505;
 
 // Fonts
-@font-body:    OpenSans, sans-serif;
-@font-display: Bitter, serif;
+@g-font-body: OpenSans, sans-serif;
+@g-font-display: Bitter, serif;
 
 // Breakpoints and common sizes
-@bp-s: 600px;
-@bp-m: 1200px;
-@bp-l: 1600px;
-@border: 1px solid;
-@border-radius: 3px;
-@padding-xs: 0.2rem;
-@padding-s:  0.5rem;
-@padding-m:  1.5rem;
-@padding-l:  3rem;
-@max-width:  40rem;
+@g-bp-s: 600px;
+@g-bp-m: 1200px;
+@g-bp-l: 1600px;
+@g-border: 1px solid;
+@g-border-radius: 3px;
+@g-space-xs: 0.2rem;
+@g-space-s:  0.5rem;
+@g-space-m:  1.5rem;
+@g-space-l:  3rem;
+@g-max-width: 40rem;
 
-// Parametric curves
-@duration-s: 0.08s;
-@duration-m: 0.27s;
-@duration-l: 0.5s;
-@timing-s-in:    @duration-s ease-in;
-@timing-s-out:   @duration-s ease-out;
-@timing-s-inout: @duration-s ease-in-out;
-@timing-m-in:    @duration-m ease-in;
-@timing-m-out:   @duration-m ease-out;
-@timing-m-inout: @duration-m ease-in-out;
-@timing-l-in:    @duration-l ease-in;
-@timing-l-out:   @duration-l ease-out;
-@timing-l-inout: @duration-l ease-in-out;
+// Time values
+@g-duration-s: 0.06s;
+@g-duration-m: 0.27s;
+@g-duration-l: 0.5s;
 
 
 // Breakpoint-focused behaviour
-.breakpoint-basic(@bp; @rules) when (@bp = 1) {
-	@media (max-width: @bp-s) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 1) {
+	@media (max-width: @g-bp-s) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 12) {
-	@media (max-width: @bp-m) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 12) {
+	@media (max-width: @g-bp-m) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 123) {
-	@media (max-width: @bp-l) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 123) {
+	@media (max-width: @g-bp-l) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 4) {
-	@media (min-width: @bp-l) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 4) {
+	@media (min-width: @g-bp-l) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 34) {
-	@media (min-width: @bp-m) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 34) {
+	@media (min-width: @g-bp-m) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 234) {
-	@media (min-width: @bp-s) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 234) {
+	@media (min-width: @g-bp-s) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 2) {
-	@media (min-width: @bp-s) and (max-width: @bp-m) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 2) {
+	@media (min-width: @g-bp-s) and (max-width: @g-bp-m) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 3) {
-	@media (min-width: @bp-m) and (max-width: @bp-l) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 3) {
+	@media (min-width: @g-bp-m) and (max-width: @g-bp-l) { @rules(); }
 }
-.breakpoint-basic(@bp; @rules) when (@bp = 23) {
-	@media (min-width: @bp-s) and (max-width: @bp-l) { @rules(); }
+.breakpoint-basic(@g-bp; @rules) when (@g-bp = 23) {
+	@media (min-width: @g-bp-s) and (max-width: @g-bp-l) { @rules(); }
 }
 
-.breakpoint-oriented(@bp; @rules) when (@bp = 1), (@bp = 12), (@bp = 123) {
+.breakpoint-oriented(@g-bp; @rules) when (@g-bp = 1), (@g-bp = 12), (@g-bp = 123) {
 	@media (orientation: portrait) { @rules(); };
-	.breakpoint-basic(@bp; @rules);
+	.breakpoint-basic(@g-bp; @rules);
 }
-.breakpoint-oriented(@bp; @rules) when not (@bp = 1)
-                                   and not (@bp = 12)
-                                   and not (@bp = 123) {
-	@media (orientation: landscape) { .breakpoint-basic(@bp; @rules); }
+.breakpoint-oriented(@g-bp; @rules) when not (@g-bp = 1)
+                                     and not (@g-bp = 12)
+                                     and not (@g-bp = 123) {
+	@media (orientation: landscape) { .breakpoint-basic(@g-bp; @rules); }
 }
 
-.breakpoint(@bp; @orientation; @rules) when (@orientation) {
-	.breakpoint-oriented(@bp; @rules);
+.breakpoint(@g-bp; @orientation; @rules) when (@orientation) {
+	.breakpoint-oriented(@g-bp; @rules);
 }
-.breakpoint(@bp; @orientation; @rules) when not (@orientation) {
-	.breakpoint-basic(@bp; @rules);
+.breakpoint(@g-bp; @orientation; @rules) when not (@orientation) {
+	.breakpoint-basic(@g-bp; @rules);
 }
 
 // Property-focused behaviour with all the intervals
-.responsive(@orientation; @property; @bp1; @bp2; @bp3; @bp4) {
-	.breakpoint(1; @orientation; { @{property}: @bp1; });
-	.breakpoint(2; @orientation; { @{property}: @bp2; });
-	.breakpoint(3; @orientation; { @{property}: @bp3; });
-	.breakpoint(4; @orientation; { @{property}: @bp4; });
+.responsive(@orientation; @property; @g-bp1; @g-bp2; @g-bp3; @g-bp4) {
+	.breakpoint(1; @orientation; { @{property}: @g-bp1; });
+	.breakpoint(2; @orientation; { @{property}: @g-bp2; });
+	.breakpoint(3; @orientation; { @{property}: @g-bp3; });
+	.breakpoint(4; @orientation; { @{property}: @g-bp4; });
 }
 
 // Property-focused behaviour with only intervals 1 and 234
-.responsive-switch(@orientation; @property; @bp1; @bp234) {
-	.breakpoint(1;   @orientation; { @{property}: @bp1; });
-	.breakpoint(234; @orientation; { @{property}: @bp234; });
+.responsive-switch(@orientation; @property; @g-bp1; @g-bp234) {
+	.breakpoint(1;   @orientation; { @{property}: @g-bp1; });
+	.breakpoint(234; @orientation; { @{property}: @g-bp234; });
 }
 
 // Flex column or row

@@ -42,23 +42,23 @@ body {
 	:focus { outline: none; }
 	::-moz-focus-inner { border: 0; }
 
-	background-color: @gray-white;
-	color: @gray-black;
-	font-family: @font-body;
+	background-color: @g-gray-4;
+	color: @g-gray-0;
+	font-family: @g-font-body;
 	line-height: 1.6em;
 
 	h1,
 	h2,
 	h3 {
-		color: @gray-dark;
-		font-family: @font-display;
+		color: @g-gray-1;
+		font-family: @g-font-display;
 		font-weight: 400;
 		line-height: 1.2em;
-		margin-bottom: @padding-s;
+		margin-bottom: @g-space-s;
 
 		.date {
-			color: @gray-medium;
-			font-family: @font-body;
+			color: @g-gray-2;
+			font-family: @g-font-body;
 			font-size: 0.85em;
 			margin-right: 0.5em;
 		}
@@ -66,7 +66,7 @@ body {
 	h1 {
 		font-size: 1.7rem;
 		font-weight: 700;
-		margin-bottom: @padding-l;
+		margin-bottom: @g-space-l;
 	}
 	h2 { font-size: 1.5rem; }
 	h3 { font-size: 1.2em; }
@@ -74,26 +74,26 @@ body {
 	{{{sidebar.style}}}
 
 	> main {
-		.padded-flex-col(@padding-l; @padding-m);
+		.padded-flex-col(@g-space-l; @g-space-m);
 		.responsive-flex-row-child();
 		.responsive-switch(true; overflow; visible; auto);
 		
-		p { margin-bottom: @padding-s; }
-		p + h2 { margin-top: @padding-l; }
-		p + h3 { margin-top: @padding-m; }
+		p { margin-bottom: @g-space-s; }
+		p + h2 { margin-top: @g-space-l; }
+		p + h3 { margin-top: @g-space-m; }
 		
 		i { font-style: italic; }
 
 		.link {
-			.colored-link(@gray-medium);
-			transition: color @timing-s-inout;
-			&:hover { color: @gray-black; }
+			.colored-link(@g-gray-2);
+			transition: color @g-duration-s ease-in;
+			&:hover { color: @g-gray-0; }
 		}
 
 		> article {
 			.flex(col);
 			flex: none;
-			max-width: @max-width;
+			max-width: @g-max-width;
 			width: 100%;
 		}
 

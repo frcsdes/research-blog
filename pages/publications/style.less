@@ -13,24 +13,24 @@
 	display: flex;
 	flex: none;
 	width: 100%;
-	&:not(:last-child) { margin-bottom: @padding-l; }
+	&:not(:last-child) { margin-bottom: @g-space-l; }
 
 	> img,
 	> figcaption {
-		max-width: 3 * @max-width / 4;
-		min-width: @max-width / 4;
+		max-width: 3 * @g-max-width / 4;
+		min-width: @g-max-width / 4;
 	}
 
 	> img {
 		.breakpoint(12; true; {
-			margin-bottom: 2 * @padding-s;
+			margin-bottom: 2 * @g-space-s;
 			margin-right: 0;
 			width: 100%;
 		});
 		.breakpoint(34; true; {
 			margin-bottom: 0;
-			margin-right: @padding-m;
-			width: @max-width / 2;
+			margin-right: @g-space-m;
+			width: @g-max-width / 2;
 		});
 
 		flex: 1 1 0;
@@ -48,7 +48,7 @@
 		});
 
 		> span { font-size: 1.3em; }
-		> .date { margin-top: @padding-s; }
+		> .date { margin-top: @g-space-s; }
 	}
 }
 
