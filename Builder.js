@@ -1,9 +1,11 @@
 const fs = require("fs/promises");
 const path = require("path");
+const ncp = require("ncp").ncp;
 
 const hb = require("handlebars");
 const less = require("less");
-const md = require("markdown-it")().use(require("markdown-it-highlightjs"));
+const md = require("markdown-it")()
+	.use(require("markdown-it-highlightjs"), {auto: false});
 
 
 hb.registerHelper("link", (url, label) => new hb.SafeString(
@@ -69,6 +71,13 @@ class Builder {
 
 	async writeFile(name, data) {
 		return fs.writeFile(path.join(this.#buildPath_, name), data);
+	}
+
+	copyFile(name) {
+		ncp(
+			path.join(this.#sourcePath_, name),
+			path.join(this.#buildPath_, name)
+		);
 	}
 
 	// Third party languages support

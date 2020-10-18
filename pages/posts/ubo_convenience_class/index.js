@@ -9,6 +9,7 @@ const keywords = ["C++", "OpenGL"];
 const hook = async (pb) => {
 	const content = pb.renderMd(await pb.readContent());
 	pb.writeFile(url, pb.renderPage({content}));
+	pb.copyFile("ubo.h");
 };
 
 

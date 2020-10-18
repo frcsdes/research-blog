@@ -34,7 +34,7 @@ aside {
 
 			.link {
 				.breakpoint(234; true; {
-					border-bottom: @g-border @g-gray-2;
+					border-bottom: 2px solid @g-gray-2;
 					padding-bottom: @g-space-s;
 				});
 				.colored-link(@g-gray-4);
@@ -60,7 +60,7 @@ aside {
 
 			> .link {
 				display: block;
-				padding: 2 * @g-space-s;
+				padding: @g-space-s;
 				transition: background-color @g-duration-s ease-in;
 				&:hover { background-color: @g-gray-2; }
 

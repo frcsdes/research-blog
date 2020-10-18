@@ -45,7 +45,7 @@ body {
 	background-color: @g-gray-4;
 	color: @g-gray-0;
 	font-family: @g-font-body;
-	line-height: 1.6em;
+	line-height: 1.5em;
 
 	h1,
 	h2,
@@ -78,13 +78,15 @@ body {
 		.responsive-flex-row-child();
 		.responsive-switch(true; overflow; visible; auto);
 		
+		h2 { margin-top: 2 * @g-space-m; }
+		h3 { margin-top: @g-space-m; }
+
 		p { margin-bottom: @g-space-s; }
-		p + h2 { margin-top: @g-space-l; }
-		p + h3 { margin-top: @g-space-m; }
+		p + ul { margin-top: -@g-space-s; }
 		
 		i { font-style: italic; }
 
-		.link {
+		a[href] {
 			.colored-link(@g-gray-2);
 			transition: color @g-duration-s ease-in;
 			&:hover { color: @g-gray-0; }
