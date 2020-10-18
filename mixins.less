@@ -117,7 +117,7 @@
 .flex-air(@size) when (@size > 0) {
 	&:before,
 	&:after {
-		content: "";
+		content: "\00a0";
 		flex: 0 0 @size;
 		overflow: hidden;
 	}
