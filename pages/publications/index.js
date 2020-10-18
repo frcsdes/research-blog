@@ -29,17 +29,17 @@ const list = [
 	},
 ];
 
-const papers = "papers/";
+const publications = "publications/";
 
 
 const hook = async (pb) => {
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({list, papers})
+		pb.extendedContext({list, publications})
 	);
 	const style = await pb.renderLess(await pb.readLess());
 
-	pb.writeFile("papers.html", pb.renderPage({markup, style}));
+	pb.writeFile("publications.html", pb.renderPage({markup, style}));
 };
 
 

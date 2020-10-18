@@ -4,8 +4,8 @@ const pages = [
 		url: "."
 	},
 	{
-		label: "Papers",
-		url: "papers.html"
+		label: "Publications",
+		url: "publications.html"
 	},
 	{
 		label: "Posts",

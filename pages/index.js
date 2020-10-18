@@ -7,9 +7,9 @@ const hook = async (b) => {
 	const less = b.renderHb(await b.readLess());
 	b.writeFile("style.css", await b.renderLess(less));
 
-	b.delegate("home",   "", {}, PagesBuilder);
-	b.delegate("papers", "", {}, PagesBuilder);
-	b.delegate("posts",  "", {}, PagesBuilder);
+	b.delegate("home", "", {}, PagesBuilder);
+	b.delegate("publications", "", {}, PagesBuilder);
+	b.delegate("posts", "", {}, PagesBuilder);
 };
 
 
