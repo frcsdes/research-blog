@@ -21,7 +21,7 @@ const build = async () => {
 	const context = {root: constants, title: "François Desrichard - PhD Student"};
 	const builder = new Builder(dir.source, dir.build, context);
 	const sidebar = await builder.delegate("sidebar");
-	builder.delegate("pages", "", {sidebar});
+	builder.delegate("pages", "/", {sidebar});
 };
 
 const setup = async () => {

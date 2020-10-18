@@ -1,15 +1,15 @@
 const pages = [
 	{
 		label: "Home",
-		url: "."
+		url: "/"
 	},
 	{
 		label: "Publications",
-		url: "publications.html"
+		url: "/publications.html"
 	},
 	{
 		label: "Posts",
-		url: "posts.html"
+		url: "/posts.html"
 	},
 ];
 

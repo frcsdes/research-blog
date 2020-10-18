@@ -1,7 +1,7 @@
 const {Builder} = require("../Builder");
 
 
-class PagesBuilder extends Builder {
+class PageBuilder extends Builder {
 	static #pageTemplate_
 
 	// Constructor
@@ -14,7 +14,7 @@ class PagesBuilder extends Builder {
 		sourcePathSuffix,
 		buildPathSuffix = "",
 		contextAppend = {},
-		childClass = PagesBuilder
+		childClass = PageBuilder
 	) {
 		return super.delegate(
 			sourcePathSuffix,
@@ -26,13 +26,13 @@ class PagesBuilder extends Builder {
 
 	// Third party languages support
 	renderPage(contextAppend) {
-		return PagesBuilder.#pageTemplate_(this.extendedContext(contextAppend));
+		return PageBuilder.#pageTemplate_(this.extendedContext(contextAppend));
 	}
 
 	static setPageTemplate(template) {
-		PagesBuilder.#pageTemplate_ = template;
+		PageBuilder.#pageTemplate_ = template;
 	}
 }
 
 
-module.exports = {PagesBuilder};
+module.exports = {PageBuilder};

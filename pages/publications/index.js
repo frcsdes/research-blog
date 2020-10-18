@@ -9,7 +9,9 @@ const authors = ([head, ...tail]) =>
 			: head
 		: ""
 
-const list = [
+const publicationsDir = "publications/";
+
+const publicationsList = [
 	{
 		image: "egsr-2019.jpg",
 		title: "Global Illumination Shadow Layers",
@@ -29,13 +31,11 @@ const list = [
 	},
 ];
 
-const publications = "publications/";
-
 
 const hook = async (pb) => {
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({list, publications})
+		pb.extendedContext({publicationsDir, publicationsList})
 	);
 	const style = await pb.renderLess(await pb.readLess());
 

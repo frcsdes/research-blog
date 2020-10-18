@@ -1,15 +1,15 @@
-const {PagesBuilder} = require("./PagesBuilder");
+const {PageBuilder} = require("./PageBuilder");
 
 
 const hook = async (b) => {
-	PagesBuilder.setPageTemplate(b.compileHb(await b.readTemplate()));
+	PageBuilder.setPageTemplate(b.compileHb(await b.readTemplate()));
 
 	const less = b.renderHb(await b.readLess());
 	b.writeFile("style.css", await b.renderLess(less));
 
-	b.delegate("home", "", {}, PagesBuilder);
-	b.delegate("publications", "", {}, PagesBuilder);
-	b.delegate("posts", "", {}, PagesBuilder);
+	b.delegate("home", "", {}, PageBuilder);
+	b.delegate("publications", "", {}, PageBuilder);
+	b.delegate("posts", "", {}, PageBuilder);
 };
 
 

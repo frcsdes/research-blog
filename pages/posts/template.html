@@ -1,14 +1,5 @@
 <h1>Posts</h1>
 
-{{#each posts}}
-<h2><small class="date">{{@key}}</small></h2>
-	{{#each this}}
-	<h3>
-		{{#if url}}
-		{{link url title}}
-		{{else}}
-		{{title}}
-		{{/if}}
-	</h3>
-	{{/each}}
+{{#each postsList}}
+<h2><small class="date">{{format date}}</small>{{link url title}}</h2>
 {{/each}}

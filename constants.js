@@ -1,4 +1,4 @@
-const images = "images/";
+const images = "/images/";
 
 const links = [
 	{
