@@ -1,16 +1,12 @@
 <h1>{{title}}</h1>
 
-<small class="date">Published {{format date}}</small>
-
-{{#if keywords}}
-<ul class="keywords">
+<p class="header">
+	<small class="date">Published {{format date}}</small>
 	{{#each keywords}}
-	<li class="keyword">{{this}}</li>
+	<span class="keyword">{{this}}</span>
 	{{/each}}
-</ul>
-{{/if}}
-
-<small class="disclaimer">Code is not tested and omits many details, intentionally or not.</small>
+	<small class="disclaimer">Code is not tested and omits many details, intentionally or not.</small>
+</p>
 
 
 {{{content}}}

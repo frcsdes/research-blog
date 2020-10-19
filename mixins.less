@@ -11,8 +11,9 @@
 @g-red:    #EC7575;
 
 // Fonts
-@g-font-body: OpenSans, sans-serif;
-@g-font-display: Bitter, serif;
+@g-font-title: "Rubik Light", serif;
+@g-font-body:  "Open Sans", sans-serif;
+@g-font-mono:  "Roboto Mono", monospace;
 
 // Breakpoints and common sizes
 @g-bp-s: 600px;
@@ -145,14 +146,14 @@
 
 // Child of a responsive flex row
 .responsive-flex-row-child() {
-	flex: 1 1 0;
+	flex: 1 1 0%;
 	.breakpoint(1;   true; { width:  100%; });
 	.breakpoint(234; true; { height: 100%; });
 }
 
 // Child of a responsive flex col
 .responsive-flex-col-child() {
-	flex: 1 1 0;
+	flex: 1 1 0%;
 	.breakpoint(1;   true; { height: 100%; });
 	.breakpoint(234; true; { width:  100%; });
 }

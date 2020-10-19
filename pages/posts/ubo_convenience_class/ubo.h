@@ -29,7 +29,7 @@ public:
 
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    void write(void const* data) {
+    void write(void const* data) const {
         glBindBuffer(GL_UNIFORM_BUFFER, buffer_id_);
         glBufferSubData(GL_UNIFORM_BUFFER, offset<I>(), size<I>(), data);
     }

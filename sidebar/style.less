@@ -1,5 +1,6 @@
 aside {
-	.responsive-flex-col(0; @g-space-m);
+	.breakpoint(1;   true; { .padded-flex-row(0; @g-space-m); });
+	.breakpoint(234; true; { .padded-flex-col(@g-space-l); });
 	.responsive-flex-row-child();
 	.responsive-switch(true; flex-grow; 0; 1);
 
@@ -52,7 +53,6 @@ aside {
 		.breakpoint(1; true; { display: none; });
 
 		justify-content: space-between;
-		margin-bottom: @g-space-l;
 		width: 100%;
 
 		> li {

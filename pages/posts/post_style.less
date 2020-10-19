@@ -1,28 +1,28 @@
 #scope {
 
-> .date {
-	font-style: italic;
-	margin-bottom: @g-space-s;
-}
-
-> .keywords {
-	.flex(row);
-	margin-bottom: @g-space-s;
+> .header {
+	> .date {
+		display: block;
+		font-style: italic;
+	}
 
 	> .keyword {
-		border-radius: 2 * @g-border-radius;
+		border-radius: @g-border-radius;
 		background: @g-gray-2;
 		color: @g-gray-4;
-		padding: @g-space-xs @g-space-s;
-		margin-right: @g-space-xs;
+		display: inline-block;
+		margin: @g-space-xs @g-space-xs @g-space-xs 0;
+		padding: @g-space-xs (@g-space-s + @g-space-xs);
 	}
+
+	.disclaimer { display: block; }
 }
 
-> ul:not(.keywords) {
+> ul {
 	list-style-position: outside;
 	list-style-type: disc;
 	margin-bottom: @g-space-s;
-	padding-left: 1.1em;
+	padding-left: 1.5em;
 }
 
 }

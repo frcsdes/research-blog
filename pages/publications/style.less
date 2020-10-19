@@ -33,7 +33,7 @@
 			width: @g-max-width / 2;
 		});
 
-		flex: 1 1 0;
+		flex: 1 1 0%;
 	}
 
 	> figcaption {
@@ -43,11 +43,14 @@
 			width: 100%;
 		});
 		.breakpoint(34; true; {
-			flex: 2 2 0;
+			flex: 2 2 0%;
 			height: auto;
 		});
 
-		> span { font-size: 1.3em; }
+		> .title {
+			font-family: @g-font-title;
+			font-size: 1.3em;
+		}
 		> .date { margin-top: @g-space-s; }
 	}
 }

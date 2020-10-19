@@ -1,26 +1,30 @@
-.include-font(@family, @name, @weight, @display) {
-	@prefix: "fonts/@{family}/@{name}";
+.include-font(@family, @style, @weight, @file) {
+	@path: "fonts/@{family}/@{file}";
 
 	@font-face {
-		font-display: @display;
+		font-display: swap;
 		font-family: @family;
+		font-style: @style;
 		font-weight: @weight;
 
 		// From google-webfonts-helper
-		src: url("@{prefix}.eot"); // IE9 Compat Modes
-		src: local("@{prefix}"),
-		     url("@{prefix}.eot?#iefix") format("embedded-opentype"), // IE6-IE8
-		     url("@{prefix}.woff2") format("woff2"), // Super Modern Browsers
-		     url("@{prefix}.woff") format("woff"), // Modern Browsers
-		     url("@{prefix}.ttf") format("truetype"), // Safari, Android, iOS
-		     url("@{prefix}.svg#{{family}}") format("svg"); // Legacy iOS
+		src: url("@{path}.eot"); // IE9 Compat Modes
+		src: local("@{path}"),
+		     url("@{path}.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+		     url("@{path}.woff2") format("woff2"), // Super Modern Browsers
+		     url("@{path}.woff") format("woff"), // Modern Browsers
+		     url("@{path}.ttf") format("truetype"), // Safari, Android, iOS
+		     url("@{path}.svg#{{family}}") format("svg"); // Legacy iOS
 	}
 }
 
-.include-font("OpenSans", "OpenSans-Regular",  400, "fallback");
-.include-font("OpenSans", "OpenSans-SemiBold", 600, "fallback");
-.include-font("Bitter",   "Bitter-Regular",    400, "swap");
-.include-font("Bitter",   "Bitter-Bold",       700, "swap");
+.include-font("Rubik Light", normal, 400, "rubik-400");
+.include-font("Rubik Light", normal, 500, "rubik-500");
+
+.include-font("Open Sans", normal, 400, "opensans-400");
+.include-font("Open Sans", normal, 600, "opensans-600");
+
+.include-font("Roboto Mono", normal, 400, "roboto-mono-400");
 
 
 html {
@@ -36,7 +40,6 @@ body {
 	touch-action: manipulation;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
-	-webkit-overflow-scrolling: touch;
 	-webkit-tap-highlight-color: transparent;
 
 	:focus { outline: none; }
@@ -45,31 +48,71 @@ body {
 	background-color: @g-gray-4;
 	color: @g-gray-0;
 	font-family: @g-font-body;
+	font-size: 400;
 	line-height: 1.5em;
 
 	h1,
 	h2,
 	h3 {
-		color: @g-gray-1;
-		font-family: @g-font-display;
+		font-family: @g-font-title;
 		font-weight: 400;
 		line-height: 1.2em;
-		margin-bottom: @g-space-s;
 
 		.date {
 			color: @g-gray-2;
-			font-family: @g-font-body;
 			font-size: 0.85em;
 			margin-right: 0.5em;
 		}
 	}
+
 	h1 {
 		font-size: 1.7rem;
-		font-weight: 700;
+		font-weight: 500;
 		margin-bottom: @g-space-l;
 	}
-	h2 { font-size: 1.5rem; }
-	h3 { font-size: 1.2em; }
+	p + h1,
+	pre + h1 { margin-top: 2 * @g-space-l; }
+
+	h2 {
+		font-size: 1.5rem;
+		margin-bottom: @g-space-s;
+	}
+	p + h2,
+	pre + h2 { margin-top: 2 * @g-space-m; }
+
+	h3 {
+		font-size: 1.3rem;
+		margin-bottom: @g-space-s;
+	}
+	p + h3,
+	pre + h3 { margin-top: 2 * @g-space-m; }
+
+	pre {
+		background: @g-gray-2;
+		border: solid @g-space-m transparent;
+		color: @g-gray-4;
+		font-size: 0.9em;
+		line-height: 1.3em;
+		overflow-x: auto;
+		overflow-y: hidden;
+		transform: translateX(-@g-space-m);
+		width: calc(100% + 2 * @g-space-m);
+
+		p + & { margin-top: 0; }
+	}
+
+	code {
+		font-family: @g-font-mono;
+		line-height: normal;
+
+		&.hljs {
+			.hljs-comment { color: @g-green; }
+			.hljs-keyword { color: @g-blue; }
+			.hljs-meta    { color: @g-orange; }
+			.hljs-literal { color: @g-red; }
+			.hljs-number  { color: @g-red; }
+		}
+	}
 
 	{{{sidebar.style}}}
 
@@ -78,11 +121,12 @@ body {
 		.responsive-flex-row-child();
 		.responsive-switch(true; overflow; visible; auto);
 		
-		h2 { margin-top: 2 * @g-space-m; }
-		h3 { margin-top: @g-space-m; }
-
-		p { margin-bottom: @g-space-s; }
-		p + ul { margin-top: -@g-space-s; }
+		p { width: 100%; }
+		p,
+		pre { margin-bottom: @g-space-s; }
+		pre + p { margin-top: @g-space-s; }
+		p + ul,
+		pre + ul { margin-top: -@g-space-s; }
 		
 		i { font-style: italic; }
 
@@ -100,6 +144,6 @@ body {
 		}
 
 		align-items: center;
-		flex: 20 1 0;
+		flex: 20 1 0%;
 	}
 }

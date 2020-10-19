@@ -6,8 +6,6 @@ const hook = async (b) => {
 
 	const style = await b.renderLess(b.renderHb(await b.readLess()));
 	b.writeFile("style.css", style);
-	const hljs = await b.renderLess(b.renderHb(await b.readFile("hljs.less")));
-	b.writeFile("hljs.css", hljs);
 
 	b.delegate("home", "", {}, PageBuilder);
 	b.delegate("publications", "publications", {}, PageBuilder);

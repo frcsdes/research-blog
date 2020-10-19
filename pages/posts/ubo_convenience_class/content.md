@@ -4,14 +4,14 @@
 
 Take for instance the transformation matrices of the scene's camera, which are often used in many shader programs.
 One way to access their value from shaders is through uniforms, bound before each program's execution.
-However, this is a typical use case for UBOs which offer two advantages over uniforms here.
+However, this is a typical use case where UBOs offer two advantages over uniforms.
 * Rendering is more efficient, as the UBO is only bound once.
 * Inside the C++ code, you are not required to expose the camera data to shaders anymore.
   It can be refactored away, reducing coupling between the classes.
 
-In this post, we will create a UBO class that handles boilerplate OpenGL code, and offers a simple syntax to write data inside the buffer.
+In this post, we will create a UBO class that handles boilerplate OpenGL code and offers a simple syntax to write data inside the buffer.
 
-## Memory management
+## Memory Management
 
 A uniform buffer is described by two properties: a binding point, and a memory layout.
 For the user, memory is segmented according to the different variables; in our camera example, we store the view and projection as `mat4`.
@@ -55,7 +55,7 @@ UBO() {
 
 The fold expression `(Size + ...)` sums over the template parameter pack `Size` and returns the total size of the buffer.
 In the last line, `glBindBufferRange`  makes the connection between the UBO binding point `Bind` and the newly created buffer.
-Memory is freed in the destructor:
+Memory is freed by the destructor:
 
 ```cpp
 ~UBO() {
@@ -63,7 +63,7 @@ Memory is freed in the destructor:
 }
 ```
 
-## Writing data to the buffer
+## Writing Data to the Buffer
 
 Now that our buffer is set up, we can populate it with data.
 We will use simple member function templates to provide a nice syntax on the user side by hiding the offset calculations.
@@ -74,7 +74,7 @@ Compared to `static_assert`, `requires` does not provide a custom error message,
 ```cpp
 template<std::size_t I>
 requires (I < sizeof...(Size))
-void write(void const* data) {
+void write(void const* data) const {
     glBindBuffer(GL_UNIFORM_BUFFER, buffer_id_);
     glBufferSubData(GL_UNIFORM_BUFFER, offset<I>(), size<I>(), data);
 }
@@ -94,7 +94,7 @@ static constexpr GLintptr offset() noexcept {
 ```
 
 The `if` `constexpr` is needed here: a ternary operator would try to instantiate the recursive calls as well, quickly leading to an integer underflow...
-To get the `I`-th element of the `Size` parameter pack, we resort to a temporary `tuple`:
+To get the `I`-th element of the `Size` parameter pack, we resort to `<tuple>`:
 
 ```cpp
 template<std::size_t I>
@@ -106,7 +106,7 @@ static constexpr GLsizeiptr size() noexcept {
 
 Note that both functions are static members as they only depend on the template parameters, and that they involve only `noexcept` operations that should resolve during compilation.
 
-## Closing thoughts
+## Closing Thoughts
 
 That's about it for our minimal UBO class!
 We can now wrap up the camera example:
