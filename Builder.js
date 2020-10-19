@@ -42,12 +42,22 @@ class Builder {
 		contextAppend = {},
 		childClass = Builder
 	) {
-		const {hook} = require(path.join(this.#sourcePath_, sourcePathSuffix));
-		return hook(new childClass(
-			path.join(this.#sourcePath_, sourcePathSuffix),
-			path.join(this.#buildPath_, buildPathSuffix),
-			{...this.#context_, ...contextAppend}
-		));
+		const newSourcePath = path.join(this.#sourcePath_, sourcePathSuffix);
+		const newBuildPath = path.join(this.#buildPath_, buildPathSuffix);
+		const build = async () => {
+			console.log("Building", sourcePathSuffix);
+			const {hook} = require(newSourcePath);
+			return hook(new childClass(
+				newSourcePath,
+				newBuildPath,
+				{...this.#context_, ...contextAppend}
+			));
+		};
+		return fs.access(newBuildPath, fs.W_OK).catch(() => {
+			fs.mkdir(newBuildPath).catch((err) => {
+				console.log(`Error setting up delegate directory:\n${err}`);
+			});
+		}).then(build);
 	}
 
 	extendedContext(contextAppend) {

@@ -10,8 +10,8 @@ const hook = async (b) => {
 	b.writeFile("hljs.css", hljs);
 
 	b.delegate("home", "", {}, PageBuilder);
-	b.delegate("publications", "", {}, PageBuilder);
-	b.delegate("posts", "", {}, PageBuilder);
+	b.delegate("publications", "publications", {}, PageBuilder);
+	b.delegate("posts", "posts", {}, PageBuilder);
 };
 
 

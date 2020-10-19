@@ -5,11 +5,11 @@ const pages = [
 	},
 	{
 		label: "Publications",
-		url: "/publications.html"
+		url: "/publications/"
 	},
 	{
 		label: "Posts",
-		url: "/posts.html"
+		url: "/posts/"
 	},
 ];
 

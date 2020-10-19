@@ -1,7 +1,5 @@
 const {PostBuilder} = require("./PostBuilder");
 
-const postsDir = "posts/";
-
 const postsSubDirs = [
 	"ubo_convenience_class",
 ];
@@ -14,18 +12,18 @@ const hook = async (pb) => {
 	PostBuilder.setPostStyle(postStyle);
 
 	const addPost = (post) => {
-		const {title, date, url, keywords, ...rest} = require(`./${post}`);
-		pb.delegate(post, "posts", {title, date, keywords}, PostBuilder);
-		return {title, date, url: `${postsDir}${url}`};
+		const {title, date, keywords, ...rest} = require(`./${post}`);
+		pb.delegate(post, post, {title, date, keywords}, PostBuilder);
+		return {title, date, url: `./${post}/`};
 	};
-
 	const postsList = postsSubDirs.map(addPost);
+
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({postsDir, postsList})
+		pb.extendedContext({postsList})
 	);
 	const style = await pb.renderLess(await pb.readLess());
-	pb.writeFile("posts.html", pb.renderPage({markup, style}));
+	pb.writeFile("index.html", pb.renderPage({markup, style}));
 };
 
 

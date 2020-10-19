@@ -21,14 +21,14 @@ const build = async () => {
 	const context = {root: constants, title: "François Desrichard - PhD Student"};
 	const builder = new Builder(dir.source, dir.build, context);
 	const sidebar = await builder.delegate("sidebar");
-	builder.delegate("pages", "/", {sidebar});
+	builder.delegate("pages", "", {sidebar});
 };
 
 const setup = async () => {
 	fs.access(dir.build, fs.W_OK).catch(() => {
 		fs.mkdir(dir.build).catch((err) => {
 			console.log(`Error setting up the build directory:\n${err}`);
-		}).then(build);
+		});
 	}).then(build);
 };
 

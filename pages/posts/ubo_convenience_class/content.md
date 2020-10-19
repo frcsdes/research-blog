@@ -1,13 +1,13 @@
 ## Introduction
 
-[Uniform Buffer Objects](https://www.khronos.org/opengl/wiki/Uniform_Buffer_Object) (UBOs) were introduced in OpenGL 3.1; they are essentially small buffers of data shared between shader programs.
+[Uniform Buffer Objects](https://www.khronos.org/opengl/wiki/Uniform_Buffer_Object) (UBOs) were introduced in OpenGL 3.1; they are essentially small, fixed-size buffers of data shared between shader programs.
 
-Take for instance the transformation matrices of the scene's camera: their size is small and fixed, and I use them in many of my shader programs.
+Take for instance the transformation matrices of the scene's camera, which are often used in many shader programs.
 One way to access their value from shaders is through uniforms, bound before each program's execution.
-However, this is a typical use case for UBOs which offer two advantages here.
+However, this is a typical use case for UBOs which offer two advantages over uniforms here.
 * Rendering is more efficient, as the UBO is only bound once.
-* Inside the C++ code, I am not required to expose the camera data to shaders anymore.
-  I can refactor it away, and reduce coupling between my classes.
+* Inside the C++ code, you are not required to expose the camera data to shaders anymore.
+  It can be refactored away, reducing coupling between the classes.
 
 In this post, we will create a UBO class that handles boilerplate OpenGL code, and offers a simple syntax to write data inside the buffer.
 
@@ -29,19 +29,19 @@ namespace std140 {
 }
 ```
 
-The binding point and memory layout are our two class template parameters here:
+The binding point and memory layout are the two class template parameters here:
 
 ```cpp
 template<GLuint Bind, GLsizeiptr... Size>
 class UBO {
 public:
-    ...
+    /* ... */
 private:
     GLuint buffer_id_ = 0;
 };
 ```
 
-We will use variable `buffer_id_` to store the index of the buffer OpenGL will provide us.
+We will use variable `buffer_id_` to store the buffer index OpenGL provides us.
 We request this new buffer inside the constructor, bind it, and initialize it right away:
 
 ```cpp
@@ -65,16 +65,16 @@ Memory is freed in the destructor:
 
 ## Writing data to the buffer
 
-Now that our buffer is set up, we need to populate it with data.
-We will use simple template members functions to provide a nice syntax on the user side; we will hide the offset calculation and refer to memory segments using their index `I`.
-In our example, we will point at the view matrix at index 0, and at the projection matrix at 1.
+Now that our buffer is set up, we can populate it with data.
+We will use simple member function templates to provide a nice syntax on the user side by hiding the offset calculations.
+Memory segments will be referred to by their index `I`: in our example, index 0 points at the camera view matrix, and index 1 at the projection matrix.
 We must take care that `I` remains in bounds, which we can check easily in C++ 20.
 Compared to `static_assert`, `requires` does not provide a custom error message, but it halts compilation on the spot.
 
 ```cpp
 template<std::size_t I>
 requires (I < sizeof...(Size))
-void write(GLvoid const* data) {
+void write(void const* data) {
     glBindBuffer(GL_UNIFORM_BUFFER, buffer_id_);
     glBufferSubData(GL_UNIFORM_BUFFER, offset<I>(), size<I>(), data);
 }
@@ -106,10 +106,10 @@ static constexpr GLsizeiptr size() noexcept {
 
 Note that both functions are static members as they only depend on the template parameters, and that they involve only `noexcept` operations that should resolve during compilation.
 
-## Closing words
+## Closing thoughts
 
 That's about it for our minimal UBO class!
-We can wrap up our camera example now:
+We can now wrap up the camera example:
 
 ```cpp
 UBO<0,
@@ -122,8 +122,11 @@ ubo.write<1>(matrix_proj_.data());
 ```
 
 The comments are hinting towards a possible improvement: being able to name the memory segments.
-With no zero overhead at runtime?
+With zero overhead at runtime?
+Probably.
+Without template ugliness?
 Tricky.
+
 Additionally, some operations such as binding could be extracted into separate member functions for more flexibility.
 Of course, one should also check if the `gl*` operations performed as expected.
-You can find the final header here: [ubo.h](./ubo.h)
+You can find the final header here: [ubo.h](./ubo.h).

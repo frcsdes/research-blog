@@ -39,7 +39,7 @@ const hook = async (pb) => {
 	);
 	const style = await pb.renderLess(await pb.readLess());
 
-	pb.writeFile("publications.html", pb.renderPage({markup, style}));
+	pb.writeFile("index.html", pb.renderPage({markup, style}));
 };
 
 
