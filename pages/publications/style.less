@@ -39,7 +39,7 @@
 	> figcaption {
 		.flex(col);
 		.breakpoint(12; true; {
-			flex: 0 0 auto;
+			flex: none;
 			width: 100%;
 		});
 		.breakpoint(34; true; {
@@ -50,6 +50,7 @@
 		> .title {
 			font-family: @g-font-title;
 			font-size: 1.3em;
+			margin-bottom: @g-space-s;
 		}
 		> .date { margin-top: @g-space-s; }
 	}

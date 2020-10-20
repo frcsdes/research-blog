@@ -1,11 +1,7 @@
 <aside>
-	<ul class="pages">
-		{{#each pages}}
-		<li>
-			{{link url label}}
-		</li>
-		{{/each}}
-	</ul>
+	{{#each pages}}
+	{{link url label}}
+	{{/each}}
 
 	<ul class="links">
 		{{#each root.links}}

@@ -1,5 +1,5 @@
 aside {
-	.breakpoint(1;   true; { .padded-flex-row(0; @g-space-m); });
+	.breakpoint(1;   true; { .padded-flex-row(@g-space-m); });
 	.breakpoint(234; true; { .padded-flex-col(@g-space-l); });
 	.responsive-flex-row-child();
 	.responsive-switch(true; flex-grow; 0; 1);
@@ -8,45 +8,29 @@ aside {
 	color: @g-gray-4;
 	flex-basis: auto;
 	flex-shrink: 0;
+	justify-content: flex-start;
 	overflow: auto;
 
-	> h1 {
-		.breakpoint(1; true; { display: none; });
-
-		color: @g-gray-4;
-		flex: none;
-		margin: @g-space-l 0;
-	}
-
-	> ul.pages {
-		.responsive-flex-col();
+	> .link {
+		.breakpoint(1; true; {
+			&:not(:last-of-type) { margin-right: @g-space-m; }
+		});
+		.breakpoint(234; true; {
+			border-bottom: 2px solid @g-gray-2;
+			padding-bottom: @g-space-s;
+			margin-bottom: @g-space-m;
+		});
+		.colored-link(@g-gray-4);
 		.responsive-flex-col-child();
 
+		display: block;
+		flex: none;
 		font-family: @g-font-body;
 		font-size: 1.1rem;
 		font-weight: 600;
+		transition: border-color @g-duration-s ease-in;
 
-		> li {
-			.breakpoint(1; true; { margin: 0 @g-space-m; });
-			.breakpoint(234; true; { margin-bottom: @g-space-m; });
-			.responsive-flex-col-child();
-			
-			flex: none;
-
-			.link {
-				.breakpoint(234; true; {
-					border-bottom: 2px solid @g-gray-2;
-					padding-bottom: @g-space-s;
-				});
-				.colored-link(@g-gray-4);
-				.full();
-
-				display: block;
-				transition: border-color @g-duration-s ease-in;
-
-				&:hover { border-color: @g-gray-4; }
-			}
-		}
+		&:hover { border-color: @g-gray-4; }
 	}
 
 	> ul.links {
@@ -54,6 +38,7 @@ aside {
 		.breakpoint(1; true; { display: none; });
 
 		justify-content: space-between;
+		margin-top: auto;
 		width: 100%;
 
 		> li {
