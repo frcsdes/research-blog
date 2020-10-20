@@ -131,9 +131,9 @@ body {
 		i { font-style: italic; }
 
 		a[href] {
-			.colored-link(@g-gray-2);
+			.colored-link();
 			transition: color @g-duration-s ease-in;
-			&:hover { color: @g-gray-0; }
+			&:hover { text-decoration: underline; }
 		}
 
 		> article {

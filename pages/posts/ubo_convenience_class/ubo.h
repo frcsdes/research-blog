@@ -4,7 +4,7 @@
 
 
 namespace std140 {
-    inline GLsizeiptr constexpr scal = 4;
+    inline GLsizeiptr constexpr scal = sizeof(GLfloat);
     inline GLsizeiptr constexpr vec2 = 2 * scal;
     inline GLsizeiptr constexpr vec3 = 4 * scal;
     inline GLsizeiptr constexpr vec4 = 4 * scal;

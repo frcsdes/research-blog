@@ -16,11 +16,11 @@ In this post, we will create a UBO class that handles boilerplate OpenGL code an
 A uniform buffer is described by two properties: a binding point, and a memory layout.
 For the user, memory is segmented according to the different variables; in our camera example, we store the view and projection as `mat4`.
 As for the machine, this segmentation must respect a certain set of rules.
-The simplest one is `std140`, which can be summed up like this:
+The simplest one is `std140`, which looks like this for floating-point values:
 
 ```cpp
 namespace std140 {
-    inline GLsizeiptr constexpr scal = 4;
+    inline GLsizeiptr constexpr scal = sizeof(GLfloat);
     inline GLsizeiptr constexpr vec2 = 2 * scal;
     inline GLsizeiptr constexpr vec3 = 4 * scal;
     inline GLsizeiptr constexpr vec4 = 4 * scal;
@@ -67,7 +67,7 @@ Memory is freed by the destructor:
 
 Now that our buffer is set up, we can populate it with data.
 We will use simple member function templates to provide a nice syntax on the user side by hiding the offset calculations.
-Memory segments will be referred to by their index `I`: in our example, index 0 points at the camera view matrix, and index 1 at the projection matrix.
+Memory segments will be referred to by their index `I`: in our example, index `0` points at the camera view matrix, and index `1` at the projection matrix.
 We must take care that `I` remains in bounds, which we can check easily in C++ 20.
 Compared to `static_assert`, `requires` does not provide a custom error message, but it halts compilation on the spot.
 
@@ -104,7 +104,7 @@ static constexpr GLsizeiptr size() noexcept {
 }
 ```
 
-Note that both functions are static members as they only depend on the template parameters, and that they involve only `noexcept` operations that should resolve during compilation.
+Note that both functions are static members as they only depend on the template parameters, and that they involve only `noexcept` operations that may resolve during compilation.
 
 ## Closing Thoughts
 

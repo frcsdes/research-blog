@@ -10,6 +10,8 @@
 @g-orange: #DDAC51;
 @g-red:    #EC7575;
 
+@g-link:   #0F178E;
+
 // Fonts
 @g-font-title: "Rubik Light", serif;
 @g-font-body:  "Open Sans", sans-serif;
@@ -169,9 +171,9 @@
 }
 
 // Resetting all <a>'s color to "inherit" acts weirdly, so here is a mixin
-.colored-link(@color) {
-	color: @color;
-	&:link { color: @color; }
-	&:active { color: @color; }
+.colored-link(@color: @g-link) {
+	&,
+	&:link,
+	&:active,
 	&:visited { color: @color; }
 }
