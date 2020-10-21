@@ -7,10 +7,9 @@
 		<span class="title">{{title}}</span>
 		{{authors}}
 		<small class="date">{{format date}}, {{journal}}</small>
-		{{link hal "@"}}
-		{{#if url}}
-		{{link url "@"}}
-		{{/if}}
+		<div class="resources">
+			{{link hal "HAL deposit"}}{{#if url}}&nbsp;-&nbsp;{{link url "Website"}}{{/if}}
+		</div>
 	</figcaption>
 </figure>
 {{/each}}

@@ -1,9 +1,21 @@
 #scope {
 
-> .post {
-	margin: 0 0 @g-space-m;
+> h3 {
+	margin-bottom: -@g-space-s / 2;
 
-	> .link { .colored-link(@g-gray-0); }
+	> .link {
+		.colored-link(@g-gray-0);
+	}
+}
+
+> .details {
+	.flex(row);
+
+	align-items: center;
+
+	&:not(:last-child) {
+		margin-bottom: @g-space-m;
+	}
 }
 
 }

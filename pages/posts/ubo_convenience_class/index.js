@@ -1,4 +1,4 @@
-const title = "UBO Convenience Class for OpenGL / C++";
+const title = "UBO Convenience Class";
 
 const date = new Date(2020, 9, 19);
 

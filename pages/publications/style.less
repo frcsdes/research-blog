@@ -13,7 +13,12 @@
 	display: flex;
 	flex: none;
 	width: 100%;
-	&:not(:last-child) { margin-bottom: @g-space-l; }
+
+	&:not(:last-child) {
+		border-bottom: 1px solid @g-gray-3;
+		margin-bottom: @g-space-l;
+		padding-bottom: @g-space-l;
+	}
 
 	> img,
 	> figcaption {
@@ -52,7 +57,16 @@
 			font-size: 1.3em;
 			margin-bottom: @g-space-s;
 		}
-		> .date { margin-top: @g-space-s; }
+
+		> .date {
+			margin: @g-space-s 0;
+		}
+
+		> .resources {
+			.flex(row);
+
+			align-items: center;
+		}
 	}
 }
 

@@ -14,7 +14,7 @@ const hook = async (pb) => {
 	const addPost = (post) => {
 		const {title, date, keywords, ...rest} = require(`./${post}`);
 		pb.delegate(post, post, {title, date, keywords}, PostBuilder);
-		return {title, date, url: `./${post}/`};
+		return {title, date, keywords, url: `./${post}/`};
 	};
 	const postsList = postsSubDirs.map(addPost);
 
