@@ -1,0 +1,9 @@
+RewriteEngine on
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !=desrichard.fr
+RewriteRule .* https://desrichard.fr%{REQUEST_URI} [R=301]
+
+Options -Indexes
+ErrorDocument 403 /404
+RewriteRule /404 /404 [L,R=404]
