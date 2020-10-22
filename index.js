@@ -18,8 +18,7 @@ const build = async () => {
 	ncp(dir.static, dir.build, {filter: visible}, () => {});
 
 	Builder.setMixins(await fs.readFile("mixins.less"));
-	const context = {root: constants, title: "François Desrichard - PhD Student"};
-	const builder = new Builder(dir.source, dir.build, context);
+	const builder = new Builder(dir.source, dir.build, {root: constants});
 	const sidebar = await builder.delegate("sidebar");
 	builder.delegate("pages", "", {sidebar});
 };

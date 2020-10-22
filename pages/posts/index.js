@@ -23,7 +23,8 @@ const hook = async (pb) => {
 		pb.extendedContext({postsList})
 	);
 	const style = await pb.renderLess(await pb.readLess());
-	pb.writeFile("index.html", pb.renderPage({markup, style}));
+	const title = "Posts";
+	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
 };
 
 
