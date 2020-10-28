@@ -1,6 +1,7 @@
 const {PostBuilder} = require("./PostBuilder");
 
 const postsSubDirs = [
+	"compile_time_swizzling",
 	"ubo_convenience_class",
 ];
 

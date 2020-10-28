@@ -1,8 +1,8 @@
 const title = "UBO Convenience Class";
 
-const date = new Date(2020, 9, 19);
+const date = new Date("2020-10-18 EDT");
 
-const keywords = ["C++", "OpenGL"];
+const keywords = ["C++", "OpenGL", "Sugar"];
 
 const hook = async (pb) => {
 	const content = pb.renderMd(await pb.readContent());

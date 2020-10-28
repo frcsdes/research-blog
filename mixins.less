@@ -6,7 +6,7 @@
 @g-gray-0: #050505;
 
 @g-blue:   #779EEA;
-@g-green:  #56A85A;
+@g-green:  #5DAA61;
 @g-orange: #DDAC51;
 @g-red:    #EC7575;
 
@@ -96,7 +96,7 @@
 // Flex column or row
 .flex(@dir; @center: false) {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 }
 .flex(@dir; @center: false) when (@dir = col) { flex-flow: column; }
 .flex(@dir; @center: false) when (@dir = row) { flex-flow: row; }
@@ -110,26 +110,41 @@
 }
 
 // Mimics padding along the main flex direction
-.flex-air(@size) when (@size > 0) {
+.flex-air(@dir; @size) when (@size > 0) {
 	&:before,
 	&:after {
 		content: "\00a0";
+		display: block;
 		flex: 0 0 @size;
 		overflow: hidden;
+		position: relative;
+
+	}
+}
+.flex-air(@dir; @size) when (@dir = col) {
+	&:before,
+	&:after {
+		width: 100%;
+	}
+}
+.flex-air(@dir; @size) when (@dir = row) {
+	&:before,
+	&:after {
+		height: 100%;
 	}
 }
 
 // Padded flex row container
 .padded-flex-row(@padding-main; @padding-cross: @padding-main) {
 	.flex(row);
-	.flex-air(@padding-main);
+	.flex-air(row, @padding-main);
 	padding: @padding-cross 0;
 }
 
 // Padded flex col container
 .padded-flex-col(@padding-main; @padding-cross: @padding-main) {
 	.flex(col);
-	.flex-air(@padding-main);
+	.flex-air(col, @padding-main);
 	padding: 0 @padding-cross;
 }
 

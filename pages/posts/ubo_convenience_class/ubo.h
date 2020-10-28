@@ -37,7 +37,7 @@ public:
 private:
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    static constexpr GLintptr offset() noexcept {
+    static constexpr GLintptr offset() {
         if constexpr (I == 0)
             return 0;
         else
@@ -46,8 +46,8 @@ private:
 
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    static constexpr GLsizeiptr size() noexcept {
-        return std::get<I>(std::forward_as_tuple(Size...));
+    static constexpr GLsizeiptr size() {
+        return std::get<I>(std::make_tuple(Size...));
     }
 
 private:
