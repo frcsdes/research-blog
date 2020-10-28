@@ -1,20 +1,19 @@
 const fs = require("fs/promises");
 const path = require("path");
 const ncp = require("ncp").ncp;
+const less = require("less");
 
 const hb = require("handlebars");
-const less = require("less");
-const md = require("markdown-it")()
-	.use(require("markdown-it-highlightjs"), {auto: false});
-
-
 hb.registerHelper("link", (url, label) => new hb.SafeString(
 	`<a href="${url}" rel="noopener noreferrer" class="link">${
 		label === "@" ? url : label
 	}</a>`
 ));
-
 hb.registerHelper("format", (date) => date.toISOString().slice(0, 10));
+
+const {cpp20} = require("./languages");
+const md = require("markdown-it")()
+	.use(require("markdown-it-highlightjs"), {auto: false, register: {cpp20}});
 
 
 class Builder {
