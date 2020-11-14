@@ -5,8 +5,8 @@
 template<template<class> class Pointer, class OtherType, class Type>
 concept IsConvertibleSmart =
     std::is_convertible_v<OtherType*, Type*> && (
-        std::is_same_v<Pointer<Type>, std::unique_ptr<Type>> ||
-        std::is_same_v<Pointer<Type>, std::shared_ptr<Type>>
+        std::is_same_v<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
+        std::is_same_v<Pointer<OtherType>, std::shared_ptr<OtherType>>
     );
 
 
@@ -14,7 +14,7 @@ template<class Type>
 class DumbPointer {
 public:
     constexpr DumbPointer() noexcept {}
-    constexpr DumbPointer(nullptr_t) noexcept {}
+    constexpr DumbPointer(std::nullptr_t) noexcept {}
 
     template<class OtherType>
     requires (std::is_convertible_v<OtherType*, Type*>)

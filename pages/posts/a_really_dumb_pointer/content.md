@@ -21,7 +21,7 @@ template<class Type>
 class DumbPointer {
 public:
     constexpr DumbPointer() noexcept {}
-    constexpr DumbPointer(nullptr_t) noexcept {}
+    constexpr DumbPointer(std::nullptr_t) noexcept {}
 
     /* ... */
 
@@ -49,8 +49,8 @@ constexpr DumbPointer(DumbPointer<OtherType> other) noexcept :
 ## Ensuring a Dumb Pointer
 
 The next step is to support conversion from smart pointers.
-This time, we need to check if the base class template (`std::unique_ptr` for instance) is smart and handles ownership by itself.
-We also want to recover the type of the pointed resource to cleanly constrain it and check its convertibility.
+This time, we need to check if the base class template (`std::unique_ptr` for instance) is smart and defines how ownership is managed.
+We also want to recover the type of the pointed resource to check its convertibility.
 One way to do this without relying on the member types of the smart pointer class is to take a template template parameter `Smart`, and constrain it using a concept:
 
 ```cpp20
@@ -64,8 +64,8 @@ constexpr DumbPointer(Smart<OtherType> const& pointer) noexcept :
 template<template<class> class Pointer, class OtherType, class Type>
 concept IsConvertibleSmart =
     std::is_convertible_v<OtherType*, Type*> && (
-        std::is_same_v<Pointer<Type>, std::unique_ptr<Type>> ||
-        std::is_same_v<Pointer<Type>, std::shared_ptr<Type>>
+        std::is_same_v<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
+        std::is_same_v<Pointer<OtherType>, std::shared_ptr<OtherType>>
     );
 ```
 
@@ -116,9 +116,9 @@ It is not only that I don't have a clue how to, it is also because raw pointers 
 Somewhere in your code, there might be a function that exposes a pointer as the return value of a function.
 If this pointer is a smart one, you already know how ownership is managed: it is conveyed along with the type.
 Here, our little trick of deleting the rvalue reference constructor works fine.
-If the pointer is raw however, there is no telling if you should assume ownership or not from a strict C++ point of view.
+If the pointer is raw however, it is difficult to tell if you should take ownership or not from a strict C++ point of view.
 
-The only possibility I see to convey that ownership is already managed in a way that can be disambiguated by the code is to return an lvalue reference to a raw pointer.
+The only possibility I see to convey that ownership is already assumed in a way that can be disambiguated by the code is to return an lvalue reference to a raw pointer.
 Yeah, nobody does that, and it is simply impossible if you are dealing with C interfaces.
 And that is a fundamental limitation of raw pointers: their behavior does not differ whether you use copies or references to pass them around.
 
