@@ -71,7 +71,10 @@ body {
 	}
 	p + h1,
 	ul + h1,
-	pre + h1 { margin-top: 2 * @g-space-l; }
+	pre + h1,
+	table + h1 {
+		margin-top: 2 * @g-space-l;
+	}
 
 	h2 {
 		font-size: 1.5rem;
@@ -79,7 +82,10 @@ body {
 	}
 	p + h2,
 	ul + h2,
-	pre + h2 { margin-top: 2 * @g-space-m; }
+	pre + h2,
+	table + h2 {
+		margin-top: 2 * @g-space-m;
+	}
 
 	h3 {
 		font-size: 1.3rem;
@@ -87,7 +93,10 @@ body {
 	}
 	p + h3,
 	ul + h3,
-	pre + h3 { margin-top: 2 * @g-space-m; }
+	pre + h3,
+	table + h3 {
+		margin-top: 2 * @g-space-s;
+	}
 
 	code {
 		font-family: @g-font-mono;
@@ -126,6 +135,25 @@ body {
 		}
 	}
 
+	table {
+		align-self: center;
+		border-collapse: collapse;
+
+		thead {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+
+		&, th, td {
+			border: 1px solid @g-gray-2;
+		}
+
+		th, td {
+			min-width: 4rem;
+			padding: 0.1rem 0.4rem;
+			text-align: center;
+		}
+	}
+
 	> {{{sidebar.style}}}
 
 	> main {
@@ -157,12 +185,12 @@ body {
 			&:hover { text-decoration: underline; }
 		}
 
-		.keyword {
+		.tag {
 			border: 1px solid @g-gray-0;
 			border-radius: @g-border-radius;
 			display: inline-block;
 			font-size: 0.8em;
-			margin: @g-space-s 0;
+			margin: 0 0 @g-space-s;
 			padding: 0 @g-space-s;
 
 			&:not(:last-of-type) {

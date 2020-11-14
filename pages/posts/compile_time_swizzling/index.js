@@ -2,7 +2,7 @@ const title = "Compile Time Swizzling";
 
 const date = new Date("2020-10-25 EDT");
 
-const keywords = ["C++", "Sugar", "Templates"];
+const tags = ["C++", "Sugar", "Templates"];
 
 const hook = async (pb) => {
 	const content = pb.renderMd(await pb.readContent());
@@ -11,4 +11,4 @@ const hook = async (pb) => {
 };
 
 
-module.exports = {title, date, keywords, hook};
+module.exports = {title, date, tags, hook};

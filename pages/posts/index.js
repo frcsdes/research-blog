@@ -13,9 +13,9 @@ const hook = async (pb) => {
 	PostBuilder.setPostStyle(postStyle);
 
 	const addPost = (post) => {
-		const {title, date, keywords, ...rest} = require(`./${post}`);
-		pb.delegate(post, post, {title, date, keywords}, PostBuilder);
-		return {title, date, keywords, url: `./${post}/`};
+		const {title, date, tags, ...rest} = require(`./${post}`);
+		pb.delegate(post, post, {title, date, tags}, PostBuilder);
+		return {title, date, tags, url: `./${post}/`};
 	};
 	const postsList = postsSubDirs.map(addPost);
 

@@ -2,7 +2,7 @@ const title = "UBO Convenience Class";
 
 const date = new Date("2020-10-18 EDT");
 
-const keywords = ["C++", "OpenGL", "Sugar"];
+const tags = ["C++", "OpenGL", "Sugar"];
 
 const hook = async (pb) => {
 	const content = pb.renderMd(await pb.readContent());
@@ -11,4 +11,4 @@ const hook = async (pb) => {
 };
 
 
-module.exports = {title, date, keywords, hook};
+module.exports = {title, date, tags, hook};
