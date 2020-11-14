@@ -1,9 +1,9 @@
 const keyword =
 	"void bool char int short long float double signed unsigned sizeof " +
 	"namespace static inline const constexpr " +
-	"public protected private friend " +
+	"class struct union enum public protected private friend " +
 	"if else for while switch case default goto return " +
-	"template class typename requires auto decltype";
+	"template typename requires concept auto decltype using noexcept";
 const literal = "true false nullptr";
 
 const number = {
