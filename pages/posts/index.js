@@ -1,6 +1,7 @@
 const {PostBuilder} = require("./PostBuilder");
 
 const postsSubDirs = [
+	"resource_tickets",
 	"a_really_dumb_pointer",
 	"compile_time_swizzling",
 	"ubo_convenience_class",

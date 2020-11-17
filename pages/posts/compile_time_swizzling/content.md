@@ -49,6 +49,7 @@ template<class Type, std::size_t Size>
 class Vec {
 public:
     /* ... */
+
 private:
     std::array<Type, Size> coefficients_;
 };

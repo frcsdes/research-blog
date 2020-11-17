@@ -46,6 +46,7 @@ template<GLuint Bind, GLsizeiptr... Size>
 class UBO {
 public:
     /* ... */
+
 private:
     GLuint buffer_id_ = 0;
 };
