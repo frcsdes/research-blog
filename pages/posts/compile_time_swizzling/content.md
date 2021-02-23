@@ -123,6 +123,7 @@ This swizzling operator quickly shows its limits as it only copies the subscript
 Enabling assignment is actually straightforward: the swizzling operator should form an `std::tuple` of references to coefficients when called on non-const instances.
 Then in a wrapper class, you can add proper assignment operators and reach a working prototype in no time.
 However, a number of subtleties - mostly related to move semantics - have to be taken into account, leading to rather lenghty code.
+Also, [rebind vs. assign-through](https://thephd.github.io/to-bind-and-loose-a-reference-optional) is a consideration.
 
 Suggestions welcome!
 Header file here: [swizzling.h](./swizzling.h).
