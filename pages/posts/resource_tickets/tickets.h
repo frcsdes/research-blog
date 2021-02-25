@@ -6,12 +6,6 @@
 
 
 template<class Type>
-inline void hashCombine(std::size_t& seed, Type const& value) {
-    seed ^= std::hash<Type>{}(value) + 0x9E3779B9 + (seed << 6) + (seed >> 2);
-}
-
-
-template<class Type>
 concept Reproducible = Type::has_pure_constructors && Type::is_read_only;
 
 template<class Type>
@@ -20,11 +14,16 @@ concept Hashable = requires(Type value) {
 };
 
 
+template<Hashable Type>
+inline void hashCombine(std::size_t& seed, Type const& value) {
+    seed ^= std::hash<Type>{}(value) + 0x9E3779B9 + (seed << 6) + (seed >> 2);
+}
+
+
 template<class Type>
 class Ticket {
 public:
     template<class... Args>
-    requires(Hashable<Args> && ...)
     explicit Ticket(Args const&... args) :
         number_{[&args...]() {
             auto seed = typeid(Type).hash_code();
@@ -44,8 +43,7 @@ private:
 
 class Manager {
 public:
-    template<class Type, class... Args>
-    requires(Reproducible<Type>)
+    template<Reproducible Type, class... Args>
     Ticket<Type> emplace(Args&&... args) {
         Ticket<Type> ticket{args...};
         resources_.try_emplace(

@@ -10,7 +10,7 @@ In a nutshell:
 3. Constructors are pure: called with the same arguments, they yield the same resource.
 4. A given resource may be requested several times, but should be instanciated only once.
 
-In my approach, a manager will hand out tickets that can later be used to access the resource:
+In my approach, a manager hands out tickets that can later be used to access the resource:
 ```cpp20
 Manager manager;
 auto ticket_car   = manager.emplace<Model>("model.ply");
@@ -36,7 +36,6 @@ template<class Type>
 class Ticket {
 public:
     template<class... Args>
-    requires(Hashable<Args> && ...)
     explicit Ticket(Args const&... args) :
         number_{/* hashing... */}
     {}
@@ -63,7 +62,7 @@ concept Hashable = requires(Type value) {
 To combine mutiple hashes into one, we adapt the utility function `hashCombine` from [boost](https://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine):
 
 ```cpp20
-template<class Type>
+template<Hashable Type>
 inline void hashCombine(std::size_t& seed, Type const& value) {
     seed ^= std::hash<Type>{}(value) + 0x9E3779B9 + (seed << 6) + (seed >> 2);
 }
@@ -104,11 +103,10 @@ private:
 Indexing the map with `std::size_t` allows the use of different `Ticket` specializations as keys, but indirectly so: we will ask for the ticket number when inserting or retrieving an element.
 
 The first operation the manager proposes is to emplace a resource, and get a ticket in exchange.
-This member function will depend on the `Type` of resource we want to create, and the list of arguments that will be forwarded to the constructor:
+This member function depends on the `Type` of resource we want to create, and the list of arguments that will be forwarded to the constructor:
 
 ```cpp20
-template<class Type, class... Args>
-requires(Reproducible<Type>)
+template<Reproducible Type, class... Args>
 Ticket<Type> emplace(Args&&... args) {
     Ticket<Type> ticket{args...};
     resources_.try_emplace(
@@ -120,9 +118,9 @@ Ticket<Type> emplace(Args&&... args) {
 }
 ```
 
-The map member function `try_emplace` will do nothing if the key is already present, and effectively prevents duplicate resources. `std::in_place_type_t` is just a disambiguation argument that specifies which type to create for the new `std::any`.
+The map member function `try_emplace` does nothing if the key is already present, and effectively prevents duplicate resources. `std::in_place_type_t` is just a disambiguation argument that specifies which type to create for the new `std::any`.
 Here, we call `Reproducible` a type that has pure constructors and is read-only.
-These two constraints are impossible to check automatically, so each type will somehow indicate if it respects them:
+These two constraints are impossible to check automatically, so each type must somehow indicate if it respects them:
 
 ```cpp20
 template<class Type>
@@ -138,7 +136,7 @@ Type const& get(Ticket<Type> ticket) const {
 }
 ```
 
-With these two basic operations, we have achieved our goal: we can carelessly ask for resources to be created, and the manager will take care of doing the minimum amount of work for us.
+With these two basic operations, we have achieved our goal: we can carelessly ask for resources to be created, and the manager takes care of doing the minimum amount of work for us.
 
 ## Limitations
 
