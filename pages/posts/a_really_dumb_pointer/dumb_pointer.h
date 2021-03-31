@@ -1,12 +1,12 @@
+#include <concepts>
 #include <memory>
-#include <type_traits>
 
 
 template<template<class> class Pointer, class OtherType, class Type>
 concept IsConvertibleSmart =
-    std::is_convertible_v<OtherType*, Type*> && (
-        std::is_same_v<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
-        std::is_same_v<Pointer<OtherType>, std::shared_ptr<OtherType>>
+    std::convertible_to<OtherType*, Type*> && (
+        std::same_as<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
+        std::same_as<Pointer<OtherType>, std::shared_ptr<OtherType>>
     );
 
 
@@ -17,7 +17,7 @@ public:
     constexpr DumbPointer(std::nullptr_t) noexcept {}
 
     template<class OtherType>
-    requires (std::is_convertible_v<OtherType*, Type*>)
+    requires (std::convertible_to<OtherType*, Type*>)
     constexpr DumbPointer(DumbPointer<OtherType> other) noexcept :
         pointer_{other.get()}
     {}

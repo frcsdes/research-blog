@@ -1,12 +1,12 @@
 #include <any>
+#include <concepts>
 #include <functional>
 #include <typeinfo>
-#include <type_traits>
 #include <unordered_map>
 
 
 template<class Type>
-concept Reproducible = Type::has_pure_constructors && Type::is_read_only;
+concept Reproducible = Type::is_equality_preserving && Type::is_read_only;
 
 template<class Type>
 concept Hashable = requires(Type value) {

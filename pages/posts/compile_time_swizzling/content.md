@@ -56,7 +56,7 @@ private:
 ```
 
 Ideally, the constructor should support list initialization as advertised above.
-We can use a contructor template that matches anything, and then contrains the type of arguments:
+We can use a contructor template that matches anything, and then constrains the type of arguments:
 
 ```cpp20
 template<class... Args>

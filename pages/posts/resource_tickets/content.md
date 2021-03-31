@@ -7,7 +7,7 @@ I feel this problem is general enough to present a simple solution, the *resourc
 In a nutshell:
 1. We need to manage read-only data encapsulated as resources by classes following [RAII](https://en.cppreference.com/w/cpp/language/raii).
 2. The resources can be represented by various, unrelated classes.
-3. Constructors are pure: called with the same arguments, they yield the same resource.
+3. Constructors are equality-preserving: called with equal inputs, they yield equal resources.
 4. A given resource may be requested several times, but should be instanciated only once.
 
 In my approach, a manager hands out tickets that can later be used to access the resource:
@@ -49,7 +49,7 @@ private:
 };
 ```
 
-Because the constructors of `Type` are assumed to be pure, hashing their arguments `args...` is enough to identify the constructed resource.
+Because the constructors of `Type` are assumed to be equality-preserving, hashing their arguments `args...` is enough to identify the constructed resource.
 Every constructor argument should be hashable, which we can check using this concept from [cppreference](https://en.cppreference.com/w/cpp/language/constraints):
 
 ```cpp20
@@ -119,12 +119,12 @@ Ticket<Type> emplace(Args&&... args) {
 ```
 
 The map member function `try_emplace` does nothing if the key is already present, and effectively prevents duplicate resources. `std::in_place_type_t` is just a disambiguation argument that specifies which type to create for the new `std::any`.
-Here, we call `Reproducible` a type that has pure constructors and is read-only.
+Here, we call `Reproducible` a type that has equality-preserving constructors and is read-only.
 These two constraints are impossible to check automatically, so each type must somehow indicate if it respects them:
 
 ```cpp20
 template<class Type>
-concept Reproducible = Type::has_pure_constructors && Type::is_read_only;
+concept Reproducible = Type::is_equality_preserving && Type::is_read_only;
 ```
 
 The second operation is to get a resource by redeeming a ticket; this is where having kept track of `Type` as a template parameter comes in handy, as we know what the return type will be:
