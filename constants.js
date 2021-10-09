@@ -7,11 +7,6 @@ const links = [
 		url: "https://github.com/frcsdes",
 	},
 	{
-		label: "LinkedIn",
-		logo: "logo-linkedin.svg",
-		url: "https://www.linkedin.com/in/francois-desrichard/",
-	},
-	{
 		label: "Medium",
 		logo: "logo-medium.svg",
 		url: "https://medium.com/@f.desrichard",
