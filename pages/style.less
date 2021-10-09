@@ -35,7 +35,6 @@ html {
 body {
 	.full();
 	.responsive-flex-row();
-	.responsive-switch(true; overflow; auto; hidden);
 
 	background-color: @g-gray-4;
 	color: @g-gray-0;
@@ -162,7 +161,10 @@ body {
 	> main {
 		.padded-flex-col(@g-space-l; @g-space-m);
 		.responsive-flex-row-child();
-		.responsive-switch(true; overflow; visible; auto);
+
+		align-items: center;
+		flex: 20 1 0%;
+		overflow: auto;
 		
 		p {
 			width: 100%;
@@ -208,8 +210,5 @@ body {
 			max-width: @g-max-width;
 			width: 100%;
 		}
-
-		align-items: center;
-		flex: 20 1 0%;
 	}
 }

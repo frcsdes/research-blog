@@ -55,7 +55,7 @@ private:
 };
 ```
 
-Ideally, the constructor should support list initialization as advertised above.
+Ideally, the constructor should mimic list initialization as advertised above.
 We can use a contructor template that matches anything, and then constrains the type of arguments:
 
 ```cpp20
