@@ -13,13 +13,23 @@ const publicationsDir = "publications/";
 
 const publicationsList = [
 	{
+		image: "cgf-2021.jpg",
+		title: "Shadow Layers for Participating Media",
+		authors: authors([frcs, dlyr, mths]),
+		date: new Date("2021-12-14 EDT"),
+		journal: "Computer Graphics Forum",
+		doi: "https://doi.org/10.1111/cgf.14429",
+		hal: "https://hal.archives-ouvertes.fr/hal-03480926/",
+	},
+	{
 		image: "egsr-2019.jpg",
 		title: "Global Illumination Shadow Layers",
 		authors: authors([frcs, dlyr, mths]),
 		date: new Date("2019-07-10 EDT"),
 		journal: "Computer Graphics Forum 38",
+		doi: "https://doi.org/10.1111/cgf.13781",
 		hal: "https://hal.archives-ouvertes.fr/hal-02174327",
-		url: "https://www.irit.fr/STORM/site/global-illumination-shadow-layers/",
+		web: "https://www.irit.fr/STORM/site/global-illumination-shadow-layers/",
 	},
 	{
 		image: "jfig-2018.jpg",

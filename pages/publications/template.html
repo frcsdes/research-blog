@@ -8,7 +8,15 @@
 		{{authors}}
 		<small class="date">{{format date}}, {{journal}}</small>
 		<div class="resources">
-			{{link hal "HAL deposit"}}{{#if url}}&nbsp;-&nbsp;{{link url "Website"}}{{/if}}
+			{{link hal "HAL deposit"}}
+			{{#if doi}}
+				&nbsp;-&nbsp;
+				{{link doi "Editor version"}}
+			{{/if}}
+			{{#if web}}
+				&nbsp;-&nbsp;
+				{{link web "Website"}}
+			{{/if}}
 		</div>
 	</figcaption>
 </figure>
