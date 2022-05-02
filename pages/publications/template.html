@@ -1,4 +1,4 @@
-<h1>Publications</h1>
+<h1>List of Publications</h1>
 
 {{#each publicationsList}}
 <figure>
@@ -6,17 +6,11 @@
 	<figcaption>
 		<span class="title">{{title}}</span>
 		{{authors}}
-		<small class="date">{{format date}}, {{journal}}</small>
+		<small class="date">{{journal}}, {{format date}}</small>
 		<div class="resources">
-			{{link hal "HAL deposit"}}
-			{{#if doi}}
-				&nbsp;-&nbsp;
-				{{link doi "Editor version"}}
-			{{/if}}
-			{{#if web}}
-				&nbsp;-&nbsp;
-				{{link web "Website"}}
-			{{/if}}
+			{{#each links}}
+				<span class="link-wrapper">{{link url label}}</span>
+			{{/each}}
 		</div>
 	</figcaption>
 </figure>

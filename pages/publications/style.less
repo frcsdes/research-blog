@@ -66,6 +66,13 @@
 			.flex(row);
 
 			align-items: center;
+
+			> .link-wrapper ~ .link-wrapper {
+				&:before {
+					content: "-";
+					margin: 0 @g-space-s;
+				}
+			}
 		}
 	}
 }
