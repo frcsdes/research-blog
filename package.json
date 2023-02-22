@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
+    "start": "http-server build",
     "clean": "rm -r build/"
   },
   "author": "François Desrichard",
@@ -12,8 +13,9 @@
   "dependencies": {
     "handlebars": "^4.7.6",
     "highlight.js": "^10.3.1",
+    "http-server": "^14.1.1",
     "less": "^3.12.2",
-    "markdown-it": "^13.0.0",
+    "markdown-it": "^13.0.1",
     "markdown-it-highlightjs": "^3.3.0",
     "ncp": "^2.0.0"
   }
