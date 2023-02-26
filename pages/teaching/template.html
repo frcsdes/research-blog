@@ -1,0 +1,19 @@
+<h1>Teaching</h1>
+
+{{#each modulesList}}
+<h3>{{@key}}</h3>
+
+{{#each this}}
+{{#if url}}
+<h4>{{link url title}}</h4>
+{{else}}
+<h4>{{title}}</h4>
+{{/if}}
+<div class="details">
+	{{#each tags}}
+	<span class="tag">{{this}}</span>
+	{{/each}}
+</div>
+{{/each}}
+
+{{/each}}

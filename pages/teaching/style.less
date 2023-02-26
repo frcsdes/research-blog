@@ -1,0 +1,22 @@
+#scope {
+
+> h4 > .link {
+	.colored-link(@g-gray-0);
+}
+
+> .details {
+	.flex(row);
+
+	align-items: center;
+	flex-wrap: wrap;
+
+	&:not(:last-child) {
+		margin-bottom: @g-space-s;
+	}
+}
+
+> .details + h3 {
+	margin-top: @g-space-m;
+}
+
+}

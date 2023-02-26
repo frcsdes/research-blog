@@ -11,6 +11,10 @@ const pages = [
 		label: "Posts",
 		url: "/posts/"
 	},
+	{
+		label: "Teaching",
+		url: "/teaching/"
+	},
 ];
 
 

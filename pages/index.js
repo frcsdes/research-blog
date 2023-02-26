@@ -10,6 +10,7 @@ const hook = async (b) => {
 	b.delegate("home", "", {}, PageBuilder);
 	b.delegate("publications", "publications", {}, PageBuilder);
 	b.delegate("posts", "posts", {}, PageBuilder);
+	b.delegate("teaching", "teaching", {}, PageBuilder);
 };
 
 
