@@ -22,9 +22,13 @@ const publicationsList = [
 		image: "2022-HVL.jpg",
 		title: "Harmonics Virtual Lights : fast projection of luminance field on spherical harmonics for efficient rendering",
 		authors: authors([pier, frcs, dlyr, mths]),
-		date: new Date("2022-01-05 EDT"),
-		journal: "To appear in Computer Graphics Forum",
+		date: new Date("2022-05-27 EDT"),
+		journal: "Computer Graphics Forum",
 		links: [
+			{
+				label: doi,
+				url: "https://doi.org/10.1111/cgf.14564",
+			},
 			{
 				label: arx,
 				url: "https://arxiv-export1.library.cornell.edu/abs/2201.01487",
