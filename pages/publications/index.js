@@ -111,12 +111,11 @@ const publicationsList = [
 
 
 const hook = async (pb) => {
+	const title = "List of Publications";
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({publicationsDir, publicationsList})
+		pb.extendedContext({title, publicationsDir, publicationsList})
 	);
-
-	const title = "List of Publications";
 	const style = await pb.renderLess(await pb.readLess());
 	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
 };

@@ -1,12 +1,12 @@
 const ups = "Université Paul Sabatier";
 const upv = "Université Paul Valery";
 
-const modulesList = {
+const yearsMap = {
 	[`2022 - 2023, ${upv}`]: [
 		{
 			title: "Approche technique du rendu 3D",
 			tags: ["M2", "TW421CRI"],
-			url: "./2022_2023/m2_rendu",
+			url: "upv_m2_creanum_rendu",
 		},
 	],
 	[`2020 - 2021, ${ups}`]: [
@@ -67,12 +67,19 @@ const modulesList = {
 
 
 const hook = async (pb) => {
+	const addYear = (year) => {
+		year.
+			filter((course) => course.url).
+			forEach(({url}) => { pb.delegate(url); });
+	};
+	Object.values(yearsMap).forEach(addYear);
+
+	const title = "Teaching Resources";
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({modulesList})
+		pb.extendedContext({title, yearsMap})
 	);
 	const style = await pb.renderLess(await pb.readLess());
-	const title = "Teaching";
 	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
 };
 

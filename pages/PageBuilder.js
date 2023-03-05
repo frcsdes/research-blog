@@ -12,7 +12,7 @@ class PageBuilder extends Builder {
 	// Build tree navigation
 	async delegate(
 		sourcePathSuffix,
-		buildPathSuffix = "",
+		buildPathSuffix = sourcePathSuffix,
 		contextAppend = {},
 		childClass = PageBuilder
 	) {

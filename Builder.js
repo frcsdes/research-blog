@@ -37,7 +37,7 @@ class Builder {
 	// Build tree navigation
 	async delegate(
 		sourcePathSuffix,
-		buildPathSuffix = "",
+		buildPathSuffix = sourcePathSuffix,
 		contextAppend = {},
 		childClass = Builder
 	) {
@@ -53,7 +53,7 @@ class Builder {
 			));
 		};
 		return fs.access(newBuildPath, fs.W_OK).catch(() => {
-			fs.mkdir(newBuildPath).catch((err) => {
+			fs.mkdir(newBuildPath, {recursive: true}).catch((err) => {
 				console.log(`Error setting up delegate directory:\n${err}`);
 			});
 		}).then(build);

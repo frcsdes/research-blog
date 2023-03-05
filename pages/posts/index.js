@@ -1,7 +1,7 @@
 const {PostBuilder} = require("./PostBuilder");
 
 const postsSubDirs = [
-	"a_remark_about_views",
+	//"a_remark_about_views",
 	"resource_tickets",
 	"a_really_dumb_pointer",
 	"compile_time_swizzling",
@@ -22,12 +22,12 @@ const hook = async (pb) => {
 	};
 	const postsList = postsSubDirs.map(addPost);
 
+	const title = "Blog Posts";
 	const markup = pb.renderHb(
 		await pb.readTemplate(),
-		pb.extendedContext({postsList})
+		pb.extendedContext({title, postsList})
 	);
 	const style = await pb.renderLess(await pb.readLess());
-	const title = "Blog Posts";
 	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
 };
 
