@@ -197,11 +197,6 @@ body {
 		pre + p {
 			margin-top: @g-space-s;
 		}
-		p + ol,
-		p + ul,
-		pre + ul {
-			margin-top: -@g-space-s;
-		}
 		
 		i, em {
 			font-style: italic;
@@ -210,6 +205,8 @@ body {
 		a[href] {
 			.colored-link();
 			transition: color @g-duration-s ease-in;
+			word-break: break-word;
+
 			&:focus,
 			&:hover { text-decoration: underline; }
 		}

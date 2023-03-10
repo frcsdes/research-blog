@@ -50,6 +50,15 @@ table {
 a {
 	text-decoration: none;
 }
+b, strong {
+	font-weight: bolder;
+}
+i, em {
+	font-style: italic;
+}
+u {
+	text-decoration: underline;
+}
 img {
 	text-align: center;
 }
