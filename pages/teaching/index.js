@@ -76,10 +76,10 @@ const hook = async (pb) => {
 
 	const title = "Teaching Resources";
 	const markup = pb.renderHb(
-		await pb.readTemplate(),
+		await pb.readFile("template.html"),
 		pb.extendedContext({title, yearsMap})
 	);
-	const style = await pb.renderLess(await pb.readLess());
+	const style = await pb.renderLess(await pb.readFile("style.less"));
 	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
 };
 

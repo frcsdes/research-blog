@@ -34,7 +34,7 @@ aside {
 		&:hover { border-color: @g-gray-4; }
 	}
 
-	> ul.links {
+	> .links {
 		.flex(row);
 		.breakpoint(1; true; { display: none; });
 
@@ -42,18 +42,15 @@ aside {
 		margin-top: auto;
 		width: 100%;
 
-		> li {
+		> .link {
+			display: block;
 			flex: none;
+			padding: @g-space-s;
+			transition: background-color @g-duration-s ease-in;
+			&:focus,
+			&:hover { background-color: @g-gray-2; }
 
-			> .link {
-				display: block;
-				padding: @g-space-s;
-				transition: background-color @g-duration-s ease-in;
-				&:focus,
-				&:hover { background-color: @g-gray-2; }
-
-				> img { height: 2em; }
-			}
+			> img { height: 2em; }
 		}
 	}
 }

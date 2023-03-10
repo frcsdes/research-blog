@@ -5,7 +5,7 @@ const date = new Date("2021-02-23 EDT");
 const tags = ["C++", "Templates"];
 
 const hook = async (pb) => {
-	const content = pb.renderMd(await pb.readContent());
+	const content = pb.renderMd(await pb.readFile("content.md"));
 	pb.writeFile("index.html", pb.renderPage({content}));
 	pb.copyFile("tickets.h");
 };

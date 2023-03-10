@@ -20,10 +20,10 @@ const pages = [
 
 const hook = async (b) => {
 	const markup = b.renderHb(
-		await b.readTemplate(),
+		await b.readFile("template.html"),
 		b.extendedContext({pages})
 	);
-	const style = await b.renderLess(await b.readLess());
+	const style = await b.renderLess(await b.readFile("style.less"));
 
 	return {markup, style};
 };

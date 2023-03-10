@@ -22,10 +22,6 @@ class Builder {
 	#context_
 
 	static #mixins_ = ""
-	static #files_ = {
-		template: "template.html",
-		less: "style.less",
-	}
 
 	// Constructor
 	constructor(sourcePath, buildPath, context) {
@@ -68,14 +64,6 @@ class Builder {
 		return fs.readFile(path.join(this.#sourcePath_, name))
 			.catch((err) => { console.log(`Error reading file\n${err}`); })
 			.then((raw) => raw.toString());
-	}
-
-	async readTemplate() {
-		return this.readFile(Builder.#files_.template);
-	}
-
-	async readLess() {
-		return this.readFile(Builder.#files_.less);
 	}
 
 	async writeFile(name, data) {

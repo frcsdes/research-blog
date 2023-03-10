@@ -3,13 +3,11 @@
 	{{link url label}}
 	{{/each}}
 
-	<ul class="links">
+	<div class="links">
 		{{#each root.links}}
-		<li>
-			<a href="{{url}}" title="{{label}}" rel="noopener noreferrer" class="link">
-				<img alt="{{label}}" src="{{../root.images}}{{logo}}">
-			</a>
-		</li>
+		<a href="{{url}}" title="{{label}}" rel="noopener noreferrer" class="link">
+			<img alt="{{label}}" src="{{../root.images}}{{logo}}">
+		</a>
 		{{/each}}
-	</ul>
+	</div>
 </aside>
