@@ -17,6 +17,7 @@
     "less": "^3.12.2",
     "markdown-it": "^13.0.1",
     "markdown-it-highlightjs": "^3.3.0",
+    "markdown-it-link-attributes": "^4.0.1",
     "ncp": "^2.0.0"
   }
 }

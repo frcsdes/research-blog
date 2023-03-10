@@ -3,6 +3,7 @@ const path = require("path");
 const ncp = require("ncp").ncp;
 const less = require("less");
 
+// Handlebar setup
 const hb = require("handlebars");
 hb.registerHelper("link", (url, label) => new hb.SafeString(
 	`<a href="${url}" rel="noopener noreferrer" class="link">${
@@ -11,9 +12,17 @@ hb.registerHelper("link", (url, label) => new hb.SafeString(
 ));
 hb.registerHelper("format", (date) => date.toISOString().slice(0, 10));
 
+// Markdown setup
 const {cpp20} = require("./languages");
-const md = require("markdown-it")()
-	.use(require("markdown-it-highlightjs"), {auto: false, register: {cpp20}});
+const md = require("markdown-it")();
+md.use(
+	require("markdown-it-highlightjs"),
+	{auto: false, register: {cpp20}},
+);
+md.use(
+	require("markdown-it-link-attributes"),
+	{attrs: {rel: "noopener noreferrer", class: "link"}},
+);
 
 
 class Builder {
