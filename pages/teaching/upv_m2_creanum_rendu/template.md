@@ -2,23 +2,13 @@
 
 ## Introduction
 
-**Slides de cours**
+[Slide de cours (PDF)](resources/1_Introduction.pdf)
 
-- [Format PDF (images compressées)](resources/1_Introduction.pdf)
-
-- [Format PPTX](resources/1_Introduction.pptx)
-
-**Images de référence**
-
-- [Archive ZIP (17 MB)](resources/References.zip)
+[Images de référence (ZIP, 17 MB)](resources/References.zip)
 
 ## Modélisation de la lumière
 
-**Slides de cours**
-
-- [Format PDF (images compressées)](resources/2_Modelisation_lumiere.pdf)
-
-- [Format PPTX](resources/2_Modelisation_lumiere.pptx)
+[Slides de cours (PDF)](resources/2_Modelisation_lumiere.pdf)
 
 **Sources lumineuses**
 

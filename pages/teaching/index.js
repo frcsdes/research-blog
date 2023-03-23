@@ -5,7 +5,7 @@ const yearsMap = {
 	[`2022 - 2023, ${upv}`]: [
 		{
 			title: "Approche technique du rendu 3D",
-			tags: ["M2", "TP", "TW421CRI"],
+			tags: ["M2", "TD", "TW421CRI"],
 			url: "upv_m2_creanum_rendu",
 		},
 	],
