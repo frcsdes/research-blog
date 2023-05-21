@@ -220,14 +220,15 @@ article
 
 	pre
 	{
-		.padded-flex-row(var(--space-m));
-
 		background: var(--gray-2);
 		color: var(--gray-4);
+		display: flex;
 		flex: none;
+		flex-flow: row;
 		overflow-x: auto;
 		overflow-y: visible;
-		transform: translateX(-var(--space-m));
+		padding: var(--space-m);
+		transform: translateX(calc(-1 * var(--space-m)));
 		width: calc(100% + 2 * var(--space-m));
 
 		p + &
@@ -295,16 +296,19 @@ article
 		}
 	}
 
+	.tags-list
+	{
+		display: flex;
+		flex-flow: row;
+		flex-wrap: wrap;
+		gap: var(--space-s);
+	}
+
 	.tag {
 		border: 1px solid var(--gray-0);
 		border-radius: var(--border-radius);
 		display: inline-block;
 		font-size: 0.8em;
-		margin: 0 0 var(--space-s);
 		padding: 0 var(--space-s);
-
-		&:not(:last-of-type) {
-			margin-right: var(--space-s);
-		}
 	}
 }

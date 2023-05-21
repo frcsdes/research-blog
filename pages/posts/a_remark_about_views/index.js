@@ -2,6 +2,8 @@ const title = "A Remark About Views";
 
 const date = new Date("2022-08-14 EDT");
 
+const intro = "";
+
 const tags = ["C++", "Ranges", "Sugar"];
 
 const hook = async (pb) => {
@@ -11,4 +13,4 @@ const hook = async (pb) => {
 };
 
 
-module.exports = {title, date, tags, hook};
+module.exports = {title, date, intro, tags, hook};

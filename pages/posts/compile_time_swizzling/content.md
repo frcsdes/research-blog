@@ -41,42 +41,32 @@ std::cout << sequence << reversed;
 
 ## A Simple Vector Class
 
-Let's start off by building a simple `Vec` class template with a constructor and a stream output operator.
+Let's start off by building a simple `Vec` data structure.
 The template parameters will be its `Type` and `Size`, mimicking `std::array`; in fact, I will use an `std::array` to store the vector coefficients:
 
 ```cpp20
 template<class Type, std::size_t Size>
-class Vec {
-public:
-    /* ... */
+struct Vec
+{
+    std::array<Type, Size> coefficients;
 
-private:
-    std::array<Type, Size> coefficients_;
+    /* ... */
 };
 ```
 
-Ideally, the constructor should mimic list initialization as advertised above.
-We can use a contructor template that matches anything, and then constrains the type of arguments:
+We then create an output stream operator for the vector structure that simply folds over the pack of coefficients provided by `std::apply`:
 
 ```cpp20
-template<class... Args>
-requires (std::is_convertible_v<Args, Type> && ...)
-constexpr Vec(Args&&... args) :
-    coefficients_{std::forward<Args>(args)...}
-{}
-```
+friend std::ostream& operator<<(std::ostream& os, Vec const& vec)
+{
+    std::apply(
+        [&os](auto&&... c)
+        {
+            ((os << c << ' '), ...) << '\n';
+        },
+        vec.coefficients
+    );
 
-Realistic code would also check for `std::is_nothrow_convertible` and mark the constructor `noexcept` accordingly.
-Interestingly, `std::is_constructible` would always be false here, as arrays do not have constructors.
-In order to support aggregate initialization, `std::array` has a single public data member, the underlying raw array; that's another, simpler possibility.
-
-The output stream operator simply folds over the pack of coefficients provided by `std::apply`:
-
-```cpp20
-friend std::ostream& operator<<(std::ostream& os, Vec const& vec) {
-    std::apply([&os](auto const&... coefficient) {
-        ((os << coefficient << ' '), ...) << '\n';
-    }, vec.coefficients_);
     return os;
 }
 ```
@@ -89,13 +79,16 @@ To swizzle using a string, we must first transform characters into their corresp
 For brevity, I shrunk the number of lines and omitted `[[fallthrough]]` but admittedly, this utility function could be more legible.
 
 ```cpp20
-constexpr std::size_t axisIndex(char axis) {
-    switch (axis) {
-        case 'x': case 'r': case 's': case 'u': return 0;
-        case 'y': case 'g': case 't': case 'v': return 1;
-        case 'z': case 'b': case 'p':           return 2;
-        case 'w': case 'a': case 'q':           return 3;
+constexpr std::size_t axisIndex(char axis)
+{
+    switch (axis)
+    {
+    case 'x': case 'r': case 's': case 'u': return 0;
+    case 'y': case 'g': case 't': case 'v': return 1;
+    case 'z': case 'b': case 'p':           return 2;
+    case 'w': case 'a': case 'q':           return 3;
     }
+
     return 0;
 }
 ```
@@ -105,10 +98,14 @@ It returns a vector holding the same `Type` with length `N - 1`, because of the 
 
 ```cpp20
 template<std::size_t N>
-constexpr auto operator[](char const (&axes)[N]) const {
-    return [this, &axes]<std::size_t... I>(std::index_sequence<I...>) {
-        return Vec<Type, N - 1>{coefficients_.at(axisIndex(axes[I]))...};
-    }(std::make_index_sequence<N - 1>{});
+constexpr auto operator[](char const (&axes)[N]) const
+{
+    return [this, &axes]<std::size_t... I>(std::index_sequence<I...>)
+    {
+        return Vec<Type, N - 1>{coefficients.at(axisIndex(axes[I]))...};
+    }(
+        std::make_index_sequence<N - 1>{}
+    );
 }
 ```
 

@@ -1,18 +1,22 @@
+#pragma once
+
 #include <concepts>
 #include <memory>
 
 
 template<template<class> class Pointer, class OtherType, class Type>
 concept IsConvertibleSmart =
-    std::convertible_to<OtherType*, Type*> && (
-        std::same_as<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
-        std::same_as<Pointer<OtherType>, std::shared_ptr<OtherType>>
-    );
+std::convertible_to<OtherType*, Type*> && (
+    std::same_as<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
+    std::same_as<Pointer<OtherType>, std::shared_ptr<OtherType>>
+);
 
 
 template<class Type>
-class DumbPointer {
+class DumbPointer
+{
 public:
+
     constexpr DumbPointer() noexcept {}
     constexpr DumbPointer(std::nullptr_t) noexcept {}
 
@@ -32,10 +36,12 @@ public:
     requires (IsConvertibleSmart<Smart, OtherType, Type>)
     DumbPointer(Smart<OtherType>&&) = delete;
 
-    constexpr Type* get() const noexcept {
+    constexpr Type* get() const noexcept
+    {
         return pointer_;
     }
 
 private:
-    Type* pointer_ = nullptr;
+
+    Type* pointer_{nullptr};
 };

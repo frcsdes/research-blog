@@ -1,4 +1,5 @@
 ## The Problem
+
 When writing 3D software, I need to parse scene files that load or create various resources into memory.
 This data is typically read-only and very large: think 3D models, or texture images.
 Sometimes, several scenes will be parsed that may request the same data, without a way to communicate; in this case, I want them to share this data automatically.
@@ -33,14 +34,17 @@ We rely on hashing to compute an identification number and store it inside each 
 
 ```cpp20
 template<class Type>
-class Ticket {
+class Ticket
+{
 public:
+
     template<class... Args>
     explicit Ticket(Args const&... args) :
         number_{/* hashing... */}
     {}
 
-    auto number() const {
+    std::size_t number() const
+    {
         return number_;
     }
 
@@ -54,7 +58,8 @@ Every constructor argument should be hashable, which we can check using this con
 
 ```cpp20
 template<class Type>
-concept Hashable = requires(Type value) {
+concept Hashable = requires(Type value)
+{
     { std::hash<Type>{}(value) } -> std::convertible_to<std::size_t>;
 };
 ```
@@ -63,7 +68,8 @@ To combine mutiple hashes into one, we adapt the utility function `hashCombine` 
 
 ```cpp20
 template<Hashable Type>
-inline void hashCombine(std::size_t& seed, Type const& value) {
+inline void hashCombine(std::size_t& seed, Type const& value)
+{
     seed ^= std::hash<Type>{}(value) + 0x9E3779B9 + (seed << 6) + (seed >> 2);
 }
 ```
@@ -74,11 +80,14 @@ After calling `hashCombine` on each constructor argument inside a lambda, the fi
 
 ```cpp20
 /* ...hashing */
-number_{[&args...]() {
-    auto seed = typeid(Type).hash_code();
-    (hashCombine(seed, args), ...);
-    return seed;
-}()}
+number_{
+    [&args...]()
+    {
+        auto seed = typeid(Type).hash_code();
+        (hashCombine(seed, args), ...);
+        return seed;
+    }()
+}
 ```
 
 We now have a simple class template that can be used to identify resources of any type from their construction arguments.
@@ -91,11 +100,14 @@ In this solution, our `Manager` class is responsible for resources of various ty
 To do that, we resort to the type erasure mechanism provided by `std::any`, and store type-erased resources inside of an associative container:
 
 ```cpp20
-class Manager {
+class Manager
+{
 public:
+
     /* ... */
 
 private:
+
     std::unordered_map<std::size_t, std::any const> resources_;
 };
 ```
@@ -107,13 +119,16 @@ This member function depends on the `Type` of resource we want to create, and th
 
 ```cpp20
 template<Reproducible Type, class... Args>
-Ticket<Type> emplace(Args&&... args) {
+Ticket<Type> emplace(Args&&... args)
+{
     Ticket<Type> ticket{args...};
+
     resources_.try_emplace(
         ticket.number(),
         std::in_place_type_t<Type>{},
         std::forward<Args>(args)...
     );
+
     return ticket;
 }
 ```
@@ -131,7 +146,8 @@ The second operation is to get a resource by redeeming a ticket; this is where h
 
 ```cpp20
 template<class Type>
-Type const& get(Ticket<Type> ticket) const {
+Type const& get(Ticket<Type> ticket) const
+{
     return std::any_cast<Type const&>(resources_.at(ticket.number()));
 }
 ```

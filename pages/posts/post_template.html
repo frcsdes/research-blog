@@ -1,9 +1,8 @@
 <h1>{{title}}</h1>
 
-<p class="header">
-	<small class="date">Published {{format date}}</small>
+<p>Published {{format date}}. Code is not tested and omits many details, intentionally or not.</p>
+<p class="tags-list">
 	{{#each tags}}<span class="tag">{{this}}</span>{{/each}}
-	<small class="disclaimer">Code is not tested and omits many details, intentionally or not.</small>
-</p>
+<p>
 
 {{{content}}}

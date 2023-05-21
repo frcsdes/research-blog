@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 
 {{#each yearsMap}}
-<h3>{{@key}}</h3>
+<h2>{{@key}}</h2>
 
 {{#each this}}
 {{#if url}}
@@ -9,11 +9,9 @@
 {{else}}
 <h4>{{title}}</h4>
 {{/if}}
-<div class="details">
-	{{#each tags}}
-	<span class="tag">{{this}}</span>
-	{{/each}}
-</div>
+<p class="tags-list">
+	{{#each tags}}<span class="tag">{{this}}</span>{{/each}}
+</p>
 {{/each}}
 
 {{/each}}

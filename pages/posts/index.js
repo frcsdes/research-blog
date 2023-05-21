@@ -11,14 +11,12 @@ const postsSubDirs = [
 
 const hook = async (pb) => {
 	const postTemplate = pb.compileHb(await pb.readFile("post_template.html"));
-	const postStyle = await pb.renderLess(await pb.readFile("post_style.less"));
 	PostBuilder.setPostTemplate(postTemplate);
-	PostBuilder.setPostStyle(postStyle);
 
 	const addPost = (post) => {
-		const {title, date, tags, ...rest} = require(`./${post}`);
-		pb.delegate(post, post, {title, date, tags}, PostBuilder);
-		return {title, date, tags, url: `./${post}/`};
+		const {title, date, intro, tags, ...rest} = require(`./${post}`);
+		pb.delegate(post, post, {title, intro, date, tags}, PostBuilder);
+		return {title, date, intro, tags, url: `./${post}/`};
 	};
 	const postsList = postsSubDirs.map(addPost);
 
@@ -27,8 +25,7 @@ const hook = async (pb) => {
 		await pb.readFile("template.html"),
 		pb.extendedContext({title, postsList})
 	);
-	const style = await pb.renderLess(await pb.readFile("style.less"));
-	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
+	pb.writeFile("index.html", pb.renderPage({markup, title}));
 };
 
 

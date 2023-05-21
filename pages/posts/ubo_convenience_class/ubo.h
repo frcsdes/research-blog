@@ -1,9 +1,12 @@
+#pragma once
+
 //#include <OpenGL wrapper headers>
 #include <GL/gl.h>
 #include <tuple>
 
 
-namespace std140 {
+namespace std140
+{
     inline GLsizeiptr constexpr scal = sizeof(GLfloat);
     inline GLsizeiptr constexpr vec2 = 2 * scal;
     inline GLsizeiptr constexpr vec3 = 4 * scal;
@@ -14,30 +17,37 @@ namespace std140 {
 
 
 template<GLuint Bind, GLsizeiptr... Size>
-class UBO {
+class UBO
+{
 public:
-    UBO() {
+
+    UBO()
+    {
         glGenBuffers(1, &buffer_id_);
         glBindBuffer(GL_UNIFORM_BUFFER, buffer_id_);
         glBufferData(GL_UNIFORM_BUFFER, (Size + ...), nullptr, GL_STATIC_DRAW);
         glBindBufferRange(GL_UNIFORM_BUFFER, Bind, buffer_id_, 0, (Size + ...));
     }
 
-    ~UBO() {
+    ~UBO()
+    {
         glDeleteBuffers(1, &buffer_id_);
     }
 
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    void write(void const* data) const {
+    void write(void const* data) const
+    {
         glBindBuffer(GL_UNIFORM_BUFFER, buffer_id_);
         glBufferSubData(GL_UNIFORM_BUFFER, offset<I>(), size<I>(), data);
     }
 
 private:
+
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    static constexpr GLintptr offset() {
+    static constexpr GLintptr offset()
+    {
         if constexpr (I == 0)
             return 0;
         else
@@ -46,10 +56,12 @@ private:
 
     template<std::size_t I>
     requires (I < sizeof...(Size))
-    static constexpr GLsizeiptr size() {
+    static constexpr GLsizeiptr size()
+    {
         return std::get<I>(std::make_tuple(Size...));
     }
 
 private:
+
     GLuint buffer_id_ = 0;
 };

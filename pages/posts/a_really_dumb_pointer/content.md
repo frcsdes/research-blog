@@ -1,6 +1,6 @@
 ## Observer Pointers
 
-I like the idea of `std::observer_ptr` as a drop-in replacement for raw pointers that would explicitly *not* assume ownership.
+I like the idea of `std::observer_ptr` as a drop-in replacement for raw pointers that would explicitly refuse ownership.
 However, this experimental feature is too permissive to my taste, and does not prevent potential misuses:
 
 ```cpp20
@@ -18,19 +18,23 @@ The `DumbPointer` class template depends on the pointed `Type`:
 
 ```cpp20
 template<class Type>
-class DumbPointer {
+class DumbPointer
+{
 public:
+
     constexpr DumbPointer() noexcept {}
     constexpr DumbPointer(std::nullptr_t) noexcept {}
 
     /* ... */
 
-    constexpr Type* get() const noexcept {
+    constexpr Type* get() const noexcept
+    {
         return pointer_;
     }
 
 private:
-    Type* pointer_ = nullptr;
+
+    Type* pointer_{nullptr};
 };
 ```
 
@@ -63,15 +67,15 @@ constexpr DumbPointer(Smart<OtherType> const& pointer) noexcept :
 // At namespace scope
 template<template<class> class Pointer, class OtherType, class Type>
 concept IsConvertibleSmart =
-    std::convertible_to<OtherType*, Type*> && (
-        std::same_as<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
-        std::same_as<Pointer<OtherType>, std::shared_ptr<OtherType>>
-    );
+std::convertible_to<OtherType*, Type*> && (
+    std::same_as<Pointer<OtherType>, std::unique_ptr<OtherType>> ||
+    std::same_as<Pointer<OtherType>, std::shared_ptr<OtherType>>
+);
 ```
 
 I did not mark the constructor `explicit`, which is definitely debatable.
 The concept does not check if `get()` exists and returns what we expect, because this is already guaranteed for our two candidates here.
-It can be easily extended to support smart pointers from Boost, Qt, or your own implementation, in which case you should be more careful.
+It can be easily extended to support smart pointers from Boost, Qt, or your own implementation.
 
 To try and prevent misuse by design, we should delete the constructor if the smart pointer we are trying to convert from is an rvalue reference, kind of like `std::unique_ptr` prevents copy:
 

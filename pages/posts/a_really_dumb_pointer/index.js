@@ -2,6 +2,11 @@ const title = "A Really Dumb Pointer";
 
 const date = new Date("2020-11-14 EDT");
 
+const intro = "\
+I like the idea of <code>std::observer_ptr</code> as a drop-in replacement for raw pointers that would explicitly refuse ownership. \
+However, this experimental feature is too permissive to my taste, and does not prevent potential misuses.\
+";
+
 const tags = ["C++", "Templates"];
 
 const hook = async (pb) => {
@@ -11,4 +16,4 @@ const hook = async (pb) => {
 };
 
 
-module.exports = {title, date, tags, hook};
+module.exports = {title, date, intro, tags, hook};

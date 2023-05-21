@@ -79,8 +79,7 @@ const hook = async (pb) => {
 		await pb.readFile("template.html"),
 		pb.extendedContext({title, yearsMap})
 	);
-	const style = await pb.renderLess(await pb.readFile("style.less"));
-	pb.writeFile("index.html", pb.renderPage({markup, style, title}));
+	pb.writeFile("index.html", pb.renderPage({markup, title}));
 };
 
 
