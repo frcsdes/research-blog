@@ -19,8 +19,8 @@ const build = async () => {
 
 	Builder.setMixins(await fs.readFile("mixins.less"));
 	const builder = new Builder(dir.source, dir.build, {root: constants});
-	const sidebar = await builder.delegate("sidebar", "");
-	builder.delegate("pages", "", {sidebar});
+	const header = await builder.delegate("header", "");
+	builder.delegate("pages", "", {header});
 };
 
 const setup = async () => {

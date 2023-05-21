@@ -1,7 +1,7 @@
 #scope {
 
 > h4 > .link {
-	.colored-link(@g-gray-0);
+	.colored-link(var(--gray-0));
 }
 
 > .details {
@@ -11,16 +11,16 @@
 	flex-wrap: wrap;
 
 	&:not(:last-child) {
-		margin-bottom: @g-space-m;
+		margin-bottom: var(--space-m);
 	}
 }
 
 > .details + h3 {
-	margin-top: @g-space-m;
+	margin-top: var(--space-m);
 }
 
 > h3 + h4 {
-	margin-top: @g-space-s;
+	margin-top: var(--space-s);
 }
 
 }

@@ -4,19 +4,18 @@ const pages = [
 		url: "/"
 	},
 	{
-		label: "Publications",
-		url: "/publications/"
-	},
-	{
 		label: "Posts",
 		url: "/posts/"
+	},
+	{
+		label: "Publications",
+		url: "/publications/"
 	},
 	{
 		label: "Teaching",
 		url: "/teaching/"
 	},
 ];
-
 
 const hook = async (b) => {
 	const markup = b.renderHb(

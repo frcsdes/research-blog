@@ -1,65 +1,37 @@
 #scope {
 
 > figure {
-	.breakpoint(12; true; {
-		align-items: center;
-		flex-direction: column;
-	});
-	.breakpoint(34; true; {
-		align-items: flex-start;
-		flex-direction: row;
-	});
-
 	display: flex;
 	flex: none;
 	width: 100%;
 
 	&:not(:last-child) {
-		border-bottom: 1px solid @g-gray-3;
-		margin-bottom: @g-space-l;
-		padding-bottom: @g-space-l;
+		border-bottom: 1px solid var(--gray-3);
+		margin-bottom: var(--space-l);
+		padding-bottom: var(--space-l);
 	}
 
 	> img,
 	> figcaption {
-		max-width: 3 * @g-max-width / 4;
-		min-width: @g-max-width / 4;
+		max-width: calc(3 * var(--max-width / 4));
+		min-width: var(--max-width / 4);
 	}
 
 	> img {
-		.breakpoint(12; true; {
-			margin-bottom: 2 * @g-space-s;
-			margin-right: 0;
-			width: 100%;
-		});
-		.breakpoint(34; true; {
-			margin-bottom: 0;
-			margin-right: @g-space-m;
-			width: @g-max-width / 2;
-		});
-
 		flex: 1 1 0%;
 	}
 
 	> figcaption {
 		.flex(col);
-		.breakpoint(12; true; {
-			flex: none;
-			width: 100%;
-		});
-		.breakpoint(34; true; {
-			flex: 2 2 0%;
-			height: auto;
-		});
 
 		> .title {
-			font-family: @g-font-title;
+			font-family: var(--font-title);
 			font-size: 1.3em;
-			margin-bottom: @g-space-s;
+			margin-bottom: var(--space-s);
 		}
 
 		> .date {
-			margin: @g-space-s 0;
+			margin: var(--space-s 0);
 		}
 
 		> .resources {
@@ -70,7 +42,7 @@
 			> .link-wrapper ~ .link-wrapper {
 				&:before {
 					content: "-";
-					margin: 0 @g-space-s;
+					margin: 0 var(--space-s);
 				}
 			}
 		}

@@ -5,6 +5,11 @@ const less = require("less");
 
 // Handlebar setup
 const hb = require("handlebars");
+hb.registerHelper("internalLink", (url, label) => new hb.SafeString(
+	`<a href="${url}" class="link">${
+		label === "@" ? url : label
+	}</a>`
+));
 hb.registerHelper("link", (url, label) => new hb.SafeString(
 	`<a href="${url}" rel="noopener noreferrer" class="link">${
 		label === "@" ? url : label

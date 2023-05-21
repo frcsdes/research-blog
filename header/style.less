@@ -1,0 +1,43 @@
+header
+{
+	background-color: var(--gray-1);
+	display: block;
+	flex: initial;
+	padding: 0 var(--space-m);
+	position: relative;
+
+	> .links-list
+	{
+		display: flex;
+		flex-flow: row;
+		gap: var(--space-m);
+		margin: auto;
+		max-width: var(--max-width);
+		overflow: auto;
+		padding: var(--space-m) 0;
+
+		> .links-list-item
+		{
+			align-items: center;
+			color: var(--gray-4);
+			display: flex;
+			flex-flow: row;
+
+			.link
+			{
+				color: inherit;
+				flex: none;
+				font-family: var(--font-body);
+				font-size: 1.1rem;
+				font-weight: 600;
+				transition: color var(--duration-s) ease-in;
+			}
+
+			&:focus,
+			&:hover
+			{
+				color: var(--blue);
+			}
+		}
+	}
+}
