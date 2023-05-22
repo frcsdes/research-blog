@@ -2,36 +2,25 @@ header
 {
 	background-color: var(--gray-1);
 	display: block;
-	flex: initial;
 	padding: 0 var(--space-m);
-	position: relative;
 
-	> .links-list
+	> .links-container
 	{
-		display: flex;
-		flex-flow: row nowrap;
-		gap: var(--space-m);
 		margin: auto;
 		max-width: var(--max-width);
 		overflow: auto;
 		padding: var(--space-m) 0;
+		width: 100%;
+		white-space: nowrap;
+		word-spacing: var(--space-m);
 
-		> .links-list-item
+		> .link
 		{
-			align-items: center;
 			color: var(--gray-4);
-			display: flex;
-			flex-flow: row nowrap;
-
-			.link
-			{
-				color: inherit;
-				flex: none;
-				font-family: var(--font-body);
-				font-size: 1.1rem;
-				font-weight: 600;
-				transition: color var(--duration-s) ease-in;
-			}
+			font-size: 1.1rem;
+			font-weight: 600;
+			transition: color var(--duration-s) ease-in;
+			word-spacing: normal;
 
 			&:focus,
 			&:hover

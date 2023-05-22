@@ -49,6 +49,7 @@ html
 		--font-mono:  "Roboto Mono", monospace;
 
 		--border-radius: 3px;
+		--space-xs: 0.1rem;
 		--space-s: 0.5rem;
 		--space-m: 1.2rem;
 		--space-l: 2.6rem;
@@ -81,7 +82,6 @@ body
 	> main
 	{
 		padding: 0 var(--space-m);
-		position: relative;
 	}
 }
 
@@ -92,11 +92,6 @@ article
 	padding: var(--space-l) 0;
 	width: 100%;
 		
-	p
-	{
-		width: 100%;
-	}
-
 	p, pre
 	{
 		margin-bottom: var(--space-s);
@@ -206,8 +201,7 @@ article
 		line-height: normal;
 		margin: 0 calc(-1 * var(--space-m));
 		padding: var(--space-m) 0;
-		overflow-x: auto;
-		overflow-y: visible;
+		overflow: auto;
 	}
 
 	ol, ul
@@ -239,18 +233,10 @@ article
 		}
 	}
 
-	.tags-list
-	{
-		display: flex;
-		flex-flow: row wrap;
-		gap: var(--space-s);
-	}
-
 	.tag {
 		border: 1px solid var(--gray-0);
 		border-radius: var(--border-radius);
-		display: inline-block;
 		font-size: 0.8em;
-		padding: 0 var(--space-s);
+		padding: var(--space-xs) var(--space-s);
 	}
 }
