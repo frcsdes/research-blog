@@ -1,11 +1,16 @@
 <h1>{{title}}</h1>
 
-{{#each publicationsList}}
+{{#each publications}}
 <h2>{{title}}</h2>
 <figure>
 	<picture>
-		<source srcset="{{../root.images}}{{../publicationsDir}}{{image}}.webp" type="image/webp"/>
-		<img alt="{{title}}" src="{{../root.images}}{{../publicationsDir}}{{image}}.jpg"/>
+		<source srcset="./images/{{image}}.webp" type="image/webp"/>
+		<img
+			alt="{{title}}"
+			width="{{imageSize.width}}"
+			height="{{imageSize.height}}"
+			src="./images/{{image}}.jpg"
+		/>
 	</picture>
 	<figcaption>
 		<p>{{authors}}</p>

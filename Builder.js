@@ -2,6 +2,7 @@ const fs = require("fs/promises");
 const path = require("path");
 const ncp = require("ncp").ncp;
 const less = require("less");
+const imageSize = require("image-size");
 
 // Handlebar setup
 const hb = require("handlebars");
@@ -82,6 +83,13 @@ class Builder {
 		return fs.writeFile(path.join(this.#buildPath_, name), data);
 	}
 
+	async makeDir(name) {
+		const destination = path.join(this.#buildPath_, name);
+		return fs.access(destination, fs.W_OK).catch(
+			() => { fs.mkdir(destination); }
+		);
+	}
+
 	copyFile(name) {
 		ncp(
 			path.join(this.#sourcePath_, name),
@@ -107,6 +115,10 @@ class Builder {
 
 	renderMd(source) {
 		return md.render(source);
+	}
+
+	getImageSize(imagePath) {
+		return imageSize(path.join(this.#sourcePath_, imagePath));
 	}
 }
 
