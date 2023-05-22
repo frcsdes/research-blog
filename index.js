@@ -17,7 +17,6 @@ const build = async () => {
 	const visible = (filename) => !filename.includes("/.");
 	ncp(dir.static, dir.build, {filter: visible}, () => {});
 
-	Builder.setMixins(await fs.readFile("mixins.less"));
 	const builder = new Builder(dir.source, dir.build, {root: constants});
 	const header = await builder.delegate("header", "");
 	builder.delegate("pages", "", {header});

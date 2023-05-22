@@ -8,22 +8,17 @@ const hal = "HAL deposit";
 const doi = "Editor version";
 const web = "Website";
 
-const authors = ([head, ...tail]) =>
-	head
-		? tail.length > 0
-			? `${head}, ${authors(tail)}`
-			: head
-		: ""
+const formatAuthors = (authorsList) => authorsList.join(', ');
 
 const publicationsDir = "publications/";
 
 const publicationsList = [
 	{
 		image: "2022-HVL.jpg",
-		title: "Harmonics Virtual Lights : fast projection of luminance field on spherical harmonics for efficient rendering",
-		authors: authors([pier, frcs, dlyr, mths]),
+		title: "Harmonics Virtual Lights: Fast Projection of Luminance Field on Spherical Harmonics for Efficient Rendering",
+		authors: formatAuthors([pier, frcs, dlyr, mths]),
 		date: new Date("2022-05-27 EDT"),
-		journal: "Computer Graphics Forum",
+		journal: "Computer Graphics Forum 41",
 		links: [
 			{
 				label: doi,
@@ -38,7 +33,7 @@ const publicationsList = [
 	{
 		image: "2022-SLPM.jpg",
 		title: "Shadow Layers for Participating Media",
-		authors: authors([frcs, dlyr, mths]),
+		authors: formatAuthors([frcs, dlyr, mths]),
 		date: new Date("2022-01-03 EDT"),
 		journal: "Computer Graphics Forum 41",
 		links: [
@@ -55,7 +50,7 @@ const publicationsList = [
 	{
 		image: "2021-Thesis.jpg",
 		title: "PhD Thesis: Analysis of the Path Space for Light and Shadow Compositing",
-		authors: authors([frcs]),
+		authors: formatAuthors([frcs]),
 		date: new Date("2021-12-06 EDT"),
 		journal: "Université Toulouse 3 - Paul Sabatier",
 		links: [
@@ -76,7 +71,7 @@ const publicationsList = [
 	{
 		image: "2019-GISL.jpg",
 		title: "Global Illumination Shadow Layers",
-		authors: authors([frcs, dlyr, mths]),
+		authors: formatAuthors([frcs, dlyr, mths]),
 		date: new Date("2019-07-10 EDT"),
 		journal: "Computer Graphics Forum 38",
 		links: [
@@ -97,7 +92,7 @@ const publicationsList = [
 	{
 		image: "2018-AOPS.jpg",
 		title: "Analysis of Path Space for Layered Light Editing",
-		authors: authors([frcs, dlyr]),
+		authors: formatAuthors([frcs, dlyr]),
 		date: new Date("2018-12-14 EDT"),
 		journal: "Journées j.FIG 2018 Poitiers",
 		links: [

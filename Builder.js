@@ -35,8 +35,6 @@ class Builder {
 	#buildPath_
 	#context_
 
-	static #mixins_ = ""
-
 	// Constructor
 	constructor(sourcePath, buildPath, context) {
 		this.#sourcePath_ = sourcePath;
@@ -101,17 +99,14 @@ class Builder {
 	}
 
 	async renderLess(source) {
-		return less.render(`${Builder.#mixins_}\n${source}`)
+		return less
+			.render(source)
 			.catch((err) => { console.log(`Error rendering Less:\n${err}`); })
 			.then(({css}) => css);
 	}
 
 	renderMd(source) {
 		return md.render(source);
-	}
-
-	static setMixins(mixins) {
-		Builder.#mixins_ = mixins;
 	}
 }
 

@@ -1,17 +1,17 @@
 <h1>{{title}}</h1>
 
 {{#each publicationsList}}
+<h2>{{title}}</h2>
 <figure>
-	<img alt="{{title}}" src="{{../root.images}}{{../publicationsDir}}{{image}}">
+	<div class="image-wrapper">
+		<img alt="{{title}}" src="{{../root.images}}{{../publicationsDir}}{{image}}">
+	</div>
 	<figcaption>
-		<span class="title">{{title}}</span>
-		{{authors}}
-		<small class="date">{{journal}}, {{format date}}</small>
-		<div class="resources">
-			{{#each links}}
-				<span class="link-wrapper">{{link url label}}</span>
-			{{/each}}
-		</div>
+		<p>{{authors}}</p>
+		<p>{{journal}}, {{format date}}</p>
+		<ul>
+			{{#each links}}<li>{{link url label}}</li>{{/each}}
+		</ul>
 	</figcaption>
 </figure>
 {{/each}}

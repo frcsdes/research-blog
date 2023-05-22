@@ -1,51 +1,26 @@
-#scope {
+#scope
+{
 
-> figure {
+figure
+{
 	display: flex;
-	flex: none;
-	width: 100%;
+	flex-flow: row wrap;
+	gap: var(--space-m);
 
-	&:not(:last-child) {
-		border-bottom: 1px solid var(--gray-3);
-		margin-bottom: var(--space-l);
-		padding-bottom: var(--space-l);
+	> .image-wrapper
+	{
+		flex: 1 1 10em;
+
+		> img
+		{
+			height: auto;
+			width: 100%;
+		}
 	}
 
-	> img,
-	> figcaption {
-		max-width: calc(3 * var(--max-width / 4));
-		min-width: var(--max-width / 4);
-	}
-
-	> img {
-		flex: 1 1 0%;
-	}
-
-	> figcaption {
-		.flex(col);
-
-		> .title {
-			font-family: var(--font-title);
-			font-size: 1.3em;
-			margin-bottom: var(--space-s);
-		}
-
-		> .date {
-			margin: var(--space-s 0);
-		}
-
-		> .resources {
-			.flex(row);
-
-			align-items: center;
-
-			> .link-wrapper ~ .link-wrapper {
-				&:before {
-					content: "-";
-					margin: 0 var(--space-s);
-				}
-			}
-		}
+	> figcaption
+	{
+		flex: 2 2 20em;
 	}
 }
 

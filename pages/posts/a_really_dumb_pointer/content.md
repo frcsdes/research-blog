@@ -1,6 +1,6 @@
 ## Observer Pointers
 
-I like the idea of `std::observer_ptr` as a drop-in replacement for raw pointers that would explicitly refuse ownership.
+I like the idea of `std::observer_ptr` as a drop-in replacement for raw pointers that explicitly refuse ownership.
 However, this experimental feature is too permissive to my taste, and does not prevent potential misuses:
 
 ```cpp20

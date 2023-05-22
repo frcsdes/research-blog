@@ -31,7 +31,7 @@ html
 {
 	&:root
 	{
-		--gray-4: #FEFEFF;
+		--gray-4: #FFFFFF;
 		--gray-3: #CBCBCB;
 		--gray-2: #393838;
 		--gray-1: #161515;
@@ -57,23 +57,6 @@ html
 		--duration-m: 0.27s;
 		--duration-l: 0.5s;
 	}
-
-	@media (max-width: 600px)
-	{
-		font-size: 15px;
-	}
-	@media (min-width: 600px) and (max-width: 1200px)
-	{
-		font-size: 15.5px;
-	}
-	@media (min-width: 1200px) and (max-width: 2400px)
-	{
-		font-size: 16px;
-	}
-	@media (min-width: 2400px)
-	{
-		font-size: 17px;
-	}
 }
 
 body
@@ -81,7 +64,7 @@ body
 	background-color: var(--gray-4);
 	color: var(--gray-0);
 	display: flex;
-	flex-flow: column;
+	flex-flow: column nowrap;
 	font-family: var(--font-body);
 	font-weight: 400;
 	line-height: 1.5em;
@@ -109,7 +92,7 @@ article
 {
 	dislay: flex;
 	flex: none;
-	flex-flow: column;
+	flex-flow: column nowrap;
 	margin: auto;
 	max-width: var(--max-width);
 	padding: var(--space-l) 0;
@@ -128,17 +111,12 @@ article
 	{
 		margin-top: var(--space-s);
 	}
-	
-	i, em
-	{
-		font-style: italic;
-	}
 
 	h1, h2, h3
 	{
 		font-family: var(--font-title);
 		font-weight: 400;
-		line-height: 1.2em;
+		line-height: 1.3em;
 	}
 
 	h1
@@ -152,6 +130,7 @@ article
 	ol + h1,
 	ul + h1,
 	pre + h1,
+	figure + h1,
 	table + h1
 	{
 		margin-top: calc(2 * var(--space-l));
@@ -162,10 +141,12 @@ article
 		font-size: 1.5rem;
 		margin-bottom: var(--space-s);
 	}
+
 	p + h2,
 	ol + h2,
 	ul + h2,
 	pre + h2,
+	figure + h2,
 	table + h2
 	{
 		margin-top: calc(2 * var(--space-m));
@@ -181,6 +162,7 @@ article
 	ol + h3,
 	ul + h3,
 	pre + h3,
+	figure + h3,
 	table + h3
 	{
 		margin-top: var(--space-m);
@@ -196,6 +178,7 @@ article
 	ol + h4,
 	ul + h4,
 	pre + h4,
+	figure + h4,
 	table + h4
 	{
 		margin-top: var(--space-m);
@@ -224,7 +207,7 @@ article
 		color: var(--gray-4);
 		display: flex;
 		flex: none;
-		flex-flow: row;
+		flex-flow: row nowrap;
 		overflow-x: auto;
 		overflow-y: visible;
 		padding: var(--space-m);
@@ -299,8 +282,7 @@ article
 	.tags-list
 	{
 		display: flex;
-		flex-flow: row;
-		flex-wrap: wrap;
+		flex-flow: row wrap;
 		gap: var(--space-s);
 	}
 
