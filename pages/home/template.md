@@ -2,10 +2,10 @@
 
 ![My face]({{root.images}}my-face.jpg)
 
-#### Previsualization
+#### Previz
 
 I currently work as an R&D engineer at [Les Tontons Truqueurs](https://www.lestontonstruqueurs.com/).
-We deliver tailored VFX previsualization solutions for TV series and features films.
+We deliver tailored VFX previsualization solutions for TV series and feature films.
 
 #### Programming
 
@@ -19,7 +19,7 @@ The papers I contributed to are listed in the [publications](/publications) page
 
 #### Teaching
 
-I dedicate time to share what I understand about programming, computer graphics and rendering.
+I dedicate time to share what I understand about programming, computer graphics, and rendering.
 A history of the courses I have given is available on the [teaching](./teaching) page.
 
 #### Get in Touch

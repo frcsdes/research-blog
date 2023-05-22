@@ -52,8 +52,10 @@ private:
 };
 
 
-class Manager {
+class Manager
+{
 public:
+
     template<Reproducible Type, class... Args>
     Ticket<Type> emplace(Args&&... args)
     {

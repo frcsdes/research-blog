@@ -3,9 +3,10 @@
 {{#each publicationsList}}
 <h2>{{title}}</h2>
 <figure>
-	<div class="image-wrapper">
-		<img alt="{{title}}" src="{{../root.images}}{{../publicationsDir}}{{image}}">
-	</div>
+	<picture class="image-wrapper">
+		<source srcset="{{../root.images}}{{../publicationsDir}}{{image}}.webp" type="image/webp"/>
+		<img alt="{{title}}" src="{{../root.images}}{{../publicationsDir}}{{image}}.jpg"/>
+	</picture>
 	<figcaption>
 		<p>{{authors}}</p>
 		<p>{{journal}}, {{format date}}</p>

@@ -14,7 +14,7 @@ const publicationsDir = "publications/";
 
 const publicationsList = [
 	{
-		image: "2022-HVL.jpg",
+		image: "2022-HVL",
 		title: "Harmonics Virtual Lights: Fast Projection of Luminance Field on Spherical Harmonics for Efficient Rendering",
 		authors: formatAuthors([pier, frcs, dlyr, mths]),
 		date: new Date("2022-05-27 EDT"),
@@ -31,7 +31,7 @@ const publicationsList = [
 		],
 	},
 	{
-		image: "2022-SLPM.jpg",
+		image: "2022-SLPM",
 		title: "Shadow Layers for Participating Media",
 		authors: formatAuthors([frcs, dlyr, mths]),
 		date: new Date("2022-01-03 EDT"),
@@ -48,7 +48,7 @@ const publicationsList = [
 		],
 	},
 	{
-		image: "2021-Thesis.jpg",
+		image: "2021-Thesis",
 		title: "PhD Thesis: Analysis of the Path Space for Light and Shadow Compositing",
 		authors: formatAuthors([frcs]),
 		date: new Date("2021-12-06 EDT"),
@@ -69,7 +69,7 @@ const publicationsList = [
 		],
 	},
 	{
-		image: "2019-GISL.jpg",
+		image: "2019-GISL",
 		title: "Global Illumination Shadow Layers",
 		authors: formatAuthors([frcs, dlyr, mths]),
 		date: new Date("2019-07-10 EDT"),
@@ -90,7 +90,7 @@ const publicationsList = [
 		],
 	},
 	{
-		image: "2018-AOPS.jpg",
+		image: "2018-AOPS",
 		title: "Analysis of Path Space for Layered Light Editing",
 		authors: formatAuthors([frcs, dlyr]),
 		date: new Date("2018-12-14 EDT"),

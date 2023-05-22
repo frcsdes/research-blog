@@ -40,7 +40,9 @@ public:
 
     template<class... Args>
     explicit Ticket(Args const&... args) :
-        number_{/* hashing... */}
+        number_{
+            /* hashing... */
+        }
     {}
 
     std::size_t number() const
@@ -49,6 +51,7 @@ public:
     }
 
 private:
+
     std::size_t number_;
 };
 ```
