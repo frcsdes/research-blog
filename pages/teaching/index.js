@@ -2,6 +2,17 @@ const ups = "Université Paul Sabatier";
 const upv = "Université Paul Valery";
 
 const yearsMap = {
+	[`2023 - 2024, ${upv}`]: [
+		{
+			title: "Approche technique du rendu 3D",
+			tags: ["M2", "TP", "TW321CRI"],
+			url: "upv_m2_creanum_rendu",
+		},
+		{
+			title: "Création procédurale",
+			tags: ["M1", "TP", "TW212CRI"],
+		},
+	],
 	[`2022 - 2023, ${upv}`]: [
 		{
 			title: "Approche technique du rendu 3D",

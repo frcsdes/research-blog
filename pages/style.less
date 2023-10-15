@@ -11,7 +11,7 @@
 
 		// From google-webfonts-helper
 		src: url("@{path}.eot"); // IE9 Compat Modes
-		src: local("@{path}"),
+		src: local("@{family}"),
 		     url("@{path}.eot?#iefix") format("embedded-opentype"), // IE6-IE8
 		     url("@{path}.woff2") format("woff2"), // Super Modern Browsers
 		     url("@{path}.woff") format("woff"), // Modern Browsers
@@ -91,7 +91,7 @@ article
 	max-width: var(--max-width);
 	padding: var(--space-l) 0;
 	width: 100%;
-		
+
 	p, pre
 	{
 		margin-bottom: var(--space-s);
@@ -146,7 +146,7 @@ article
 		font-size: 1.3rem;
 		margin-bottom: var(--space-s);
 	}
-	
+
 	p + h3,
 	ol + h3,
 	ul + h3,
@@ -162,7 +162,7 @@ article
 		font-weight: bolder;
 		margin-bottom: var(--space-s);
 	}
-	
+
 	p + h4,
 	ol + h4,
 	ul + h4,

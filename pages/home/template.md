@@ -2,10 +2,14 @@
 
 ![My face]({{root.images}}my-face.jpg)
 
-#### Previz
+#### Virtual Production
 
 I currently work as an R&D engineer at [Les Tontons Truqueurs](https://www.lestontonstruqueurs.com/).
-We deliver tailored VFX previsualization solutions for TV series and feature films.
+We deliver tailored VFX virtual production solutions for TV series and feature films.
+
+#### OcSIGGRAPH
+
+I am a board member of [OcSIGGRAPH](http://www.ocsiggraph.org/), the association that organizes the Occitania ACM SIGGRAPH Chapter in the South of France.
 
 #### Programming
 
