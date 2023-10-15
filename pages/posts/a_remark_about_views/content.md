@@ -1,7 +1,6 @@
-C++ 20 brought us ``std::ranges`` to generalize iterators, and ``std::views`` to consume those ranges.
-When they became available, the only thing I really cared about was to bypass `begin()` and `end()` when manipulating containers.
-Since then, I realized that the introduction of ranges might be as important as that of iterators.
-In the following, I will go over a personal use case of ranges and views to illustrate my point.
+C++ 20 brought us [ranges](https://en.cppreference.com/w/cpp/ranges) as a generalization of iterators, and a number of views to manipulate those ranges expressively.
+Views can be leveraged to complement the interface of classes that expose a resource under different levels of abstraction.
+Let's explore this idea on a simple example: a class that holds a 2D image.
 
 ## Accessing Image Pixels
 
@@ -9,29 +8,33 @@ In computer graphics programs, we must be able to store images and access their 
 Assuming that our image is a rectangular collection of RGB pixels, a simple implementation will look like this:
 
 ```cpp20
-class Image {
-public:
-    struct Pixel {
-        float r;
-        float g;
-        float b;
-    };
+struct Pixel
+{
+    float r;
+    float g;
+    float b;
+};
 
+class Image
+{
 public:
+
     Image(std::size_t width, std::size_t height) :
         width_{width},
         height_{height},
-        buffer_{std::make_unique<Pixel[]>(getPixelCount())}
+        buffer_{getPixelCount()}
     {}
 
-    std::size_t getPixelCount() const {
-        return width_ * height_;
+    auto getPixelCount() const
+    {
+        return buffer_.size();
     }
 
 private:
+
     std::size_t width_;
     std::size_t height_;
-    std::unique_ptr<Pixel[]> buffer_;
+    std::vector<Pixel> buffer_;
 };
 ```
 
