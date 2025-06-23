@@ -9,7 +9,7 @@ We deliver tailored VFX virtual production solutions for TV series and feature f
 
 #### OcSIGGRAPH
 
-I am a board member of [OcSIGGRAPH](http://www.ocsiggraph.org/), the association that organizes the Occitania ACM SIGGRAPH Chapter in the South of France.
+I am a board member of [OcSIGGRAPH](http://www.ocsiggraph.org/), the association that organizes the Montpellier ACM SIGGRAPH Chapter in the South of France.
 
 #### Programming
 

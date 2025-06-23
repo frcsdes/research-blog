@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
-    "start": "http-server build",
+    "serve": "http-server build",
     "clean": "rm -r build/"
   },
   "author": "François Desrichard",

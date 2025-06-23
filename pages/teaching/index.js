@@ -2,6 +2,18 @@ const ups = "Université Paul Sabatier";
 const upv = "Université Paul Valery";
 
 const yearsMap = {
+	[`2024 - 2025, ${upv}`]: [
+		{
+			title: "Approche technique du rendu 3D",
+			tags: ["M2", "TP", "TW321CRI"],
+			url: "upv_m2_creanum_rendu",
+		},
+		{
+			title: "Création procédurale",
+			tags: ["M1", "TP", "TW212CRI"],
+			url: "upv_m1_creanum_procedural",
+		},
+	],
 	[`2023 - 2024, ${upv}`]: [
 		{
 			title: "Approche technique du rendu 3D",
@@ -11,6 +23,7 @@ const yearsMap = {
 		{
 			title: "Création procédurale",
 			tags: ["M1", "TP", "TW212CRI"],
+			url: "upv_m1_creanum_procedural",
 		},
 	],
 	[`2022 - 2023, ${upv}`]: [
@@ -78,12 +91,14 @@ const yearsMap = {
 
 
 const hook = async (pb) => {
-	const addYear = (year) => {
-		year.
-			filter((course) => course.url).
-			forEach(({url}) => { pb.delegate(url); });
-	};
-	Object.values(yearsMap).forEach(addYear);
+	// Extract all course URLs from the map
+	const all_urls = Object.values(yearsMap)
+		.flat()
+		.map(({url}) => url)
+		.filter((url) => url);
+
+	// Generate a page for each unique URL
+	[...new Set(all_urls)].forEach((url) => pb.delegate(url));
 
 	const title = "Teaching Resources";
 	const markup = pb.renderHb(

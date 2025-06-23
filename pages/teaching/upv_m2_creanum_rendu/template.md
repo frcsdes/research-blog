@@ -23,11 +23,14 @@
 
 **Matériaux surfaciques**
 
-- Documentation RenderMan du shader Disney ❤️\
-  <https://renderman.pixar.com/resources/RenderMan_20/PxrDisney.html>
+- Définition du modèle de surface OpenPBR ❤️\
+  <https://academysoftwarefoundation.github.io/OpenPBR/#model>
 
 - Article fondateur du shader Disney par Brent Burley, 2012\
   <https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf>
+
+- Tutoriel sur la couche Thin Film, Christopher 3D ❤️\
+  <https://www.youtube.com/watch?v=fbVq13f47-8>
 
 **Matériaux volumiques**
 
