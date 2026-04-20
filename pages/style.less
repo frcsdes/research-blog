@@ -110,7 +110,7 @@ html
 
 		--border-radius: 3px;
 		--space-xs: 0.1rem;
-		--space-s: 0.5rem;
+		--space-s: 0.4rem;
 		--space-m: 1.2rem;
 		--space-l: 2.6rem;
 		--max-width: 45rem;
@@ -152,13 +152,21 @@ article
 	padding: var(--space-l) 0;
 	width: 100%;
 
-	p, pre
+	p, figure, table,
+	ol, ul,
+	code, pre
 	{
 		margin-bottom: var(--space-s);
+
+		&:not(:first-child)
+		{
+			margin-top: var(--space-s);
+		}
 	}
-	pre + p
+
+	h1, h2, h3, h4, h5, h6
 	{
-		margin-top: var(--space-s);
+		margin-bottom: var(--space-s);
 	}
 
 	h1, h2, h3
@@ -172,65 +180,36 @@ article
 	{
 		font-size: 1.9rem;
 		font-weight: 500;
-		margin-bottom: var(--space-l);
-	}
 
-	p + h1,
-	ol + h1,
-	ul + h1,
-	pre + h1,
-	figure + h1,
-	table + h1
-	{
-		margin-top: calc(2 * var(--space-l));
+		&:not(:first-child)
+		{
+			margin-top: var(--space-l);
+		}
 	}
 
 	h2
 	{
 		font-size: 1.5rem;
-		margin-bottom: var(--space-s);
-	}
 
-	p + h2,
-	ol + h2,
-	ul + h2,
-	pre + h2,
-	figure + h2,
-	table + h2
-	{
-		margin-top: var(--space-l);
+		&:not(:first-child)
+		{
+			margin-top: var(--space-l);
+		}
 	}
 
 	h3
 	{
 		font-size: 1.3rem;
-		margin-bottom: var(--space-s);
-	}
 
-	p + h3,
-	ol + h3,
-	ul + h3,
-	pre + h3,
-	figure + h3,
-	table + h3
-	{
-		margin-top: var(--space-m);
+		&:not(:first-child)
+		{
+			margin-top: var(--space-m);
+		}
 	}
 
 	h4
 	{
 		font-weight: bolder;
-		margin-bottom: var(--space-s);
-	}
-
-	p + h4,
-	ol + h4,
-	ul + h4,
-	pre + h4,
-	figure + h4,
-	table + h4
-	{
-		margin-top: var(--space-m);
 	}
 
 	code
@@ -259,7 +238,6 @@ article
 		color: var(--gray-4);
 		font-size: 0.9em;
 		line-height: normal;
-		margin: 0 calc(-1 * var(--space-m));
 		padding: var(--space-m) 0;
 		overflow: auto;
 	}
@@ -267,7 +245,6 @@ article
 	ol, ul
 	{
 		list-style-position: outside;
-		margin-bottom: var(--space-s);
 		padding-left: 1.6em;
 	}
 

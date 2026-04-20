@@ -10,7 +10,7 @@
 
 [Slides de cours (PDF)](resources/2_Modelisation_lumiere.pdf)
 
-**Sources lumineuses**
+### Sources lumineuses
 
 - Page de Bartosz Ciechanowski sur la lumière et les ombres ❤️\
   <https://ciechanow.ski/lights-and-shadows/>
@@ -21,7 +21,7 @@
 - Documentation Blender sur les sky textures (Hosek-Wilkie etc.)\
   <https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html>
 
-**Matériaux surfaciques**
+### Matériaux surfaciques
 
 - Définition du modèle de surface OpenPBR ❤️\
   <https://academysoftwarefoundation.github.io/OpenPBR/#model>
@@ -32,7 +32,7 @@
 - Tutoriel sur la couche Thin Film, Christopher 3D ❤️\
   <https://www.youtube.com/watch?v=fbVq13f47-8>
 
-**Matériaux volumiques**
+### Matériaux volumiques
 
 - Extrait du livre PBRT sur la diffusion dans les volumes\
   <https://www.pbr-book.org/3ed-2018/Volume_Scattering/Volume_Scattering_Processes>
@@ -40,7 +40,7 @@
 - Dataset nuage mis à disposition par Disney Animation Studios
   <https://www.disneyanimation.com/resources/clouds/>
 
-**Caméras**
+### Caméras
 
 - Page de Bartosz Ciechanowski sur les caméras et les lentilles ❤️\
   <https://ciechanow.ski/cameras-and-lenses/>
@@ -52,7 +52,7 @@
 
 [Slide de cours (PDF)](resources/3_Path_Tracing.pdf)
 
-**Objectif du rendu 3D**
+### Objectif du rendu 3D
 
 - Dataset Box mis à disposition par l'université de Cornell\
   <https://www.graphics.cornell.edu/online/box/data.html>
@@ -60,7 +60,7 @@
 - Article Wikipédia sur l'équation du rendu\
   <https://fr.wikipedia.org/wiki/Équation_du_rendu>
 
-**Construction d'un chemin**
+### Construction d'un chemin
 
 - Présentation de Sebastian Herholz sur le Path Guiding, BCON 2022 ❤️\
   <https://www.youtube.com/watch?v=BS1JLbNqGxI>
@@ -71,7 +71,7 @@
 - Article de recherche correspondant au lien précédent\
   <https://perso.liris.cnrs.fr/david.coeurjolly/publications/heitz19.html>
 
-**Le bruit**
+### Le bruit
 
 - Documentation Blender sur la réduction du bruit avec Cycles ❤️\
   <https://docs.blender.org/manual/en/latest/render/cycles/optimizations/reducing_noise.html>
@@ -82,7 +82,7 @@
 - Add-on Blender SID (Super Image Denoiser)\
   <https://pidgeontools.gumroad.com/l/SuperImageDenoiser>
 
-**Complexité de calcul**
+### Complexité de calcul
 
 - Article d'Harold Serrano sur la construction des BVH\
   <https://www.haroldserrano.com/blog/visualizing-the-boundary-volume-hierarchy-collision-algorithm>
@@ -94,7 +94,7 @@
 
 [Slide de cours (PDF)](resources/4_Compositing.pdf)
 
-**Principe du compositing**
+### Principe du compositing
 
 - Livre en ligne de Chris Brejon, chapitre compositing ❤️\
   <https://chrisbrejon.com/cg-cinematography/chapter-9-compositing>
@@ -105,7 +105,7 @@
 - Introduction technique au format OpenEXR\
   <https://openexr.com/en/latest/TechnicalIntroduction.html>
 
-**Calques de données**
+### Calques de données
 
 - Dataset EXR mis à disposition par l'Academy Software Foundation\
   <https://github.com/AcademySoftwareFoundation/openexr-images>
@@ -113,7 +113,7 @@
 - Vidéo sur le relighting 2.5D dans Nuke par The Foundry\
   <https://www.youtube.com/watch?v=KWTiS2DV2CM>
 
-**Calques d'identifiants**
+### Calques d'identifiants
 
 - Poster Cryptomatte par Jonah Friedman et Andrew Jones, Psyop\
   <https://github.com/Psyop/Cryptomatte/raw/master/specification/IDmattes_poster.pdf>
@@ -121,7 +121,7 @@
 - Vidéo démo OpenEXR/Id par Philippe Llerena, Mercenaries Engineering\
   <https://www.youtube.com/watch?v=Ucn3KE3JDFA&t=238s>
 
-**Light Path Expressions**
+### Light Path Expressions
 
 - Article sur le compositing à l'aide de LPE avec Iray ❤️\
   <https://blog.irayrender.com/post/76948894710/compositing-with-light-path-expressions>

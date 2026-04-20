@@ -2,6 +2,8 @@
 
 {{#each publications}}
 <h2>{{title}}</h2>
+<p>{{authors}}</p>
+<p>{{format date}}, {{journal}}</p>
 <figure>
 	<picture>
 		<source srcset="./images/{{image}}.webp" type="image/webp"/>
@@ -13,11 +15,7 @@
 		/>
 	</picture>
 	<figcaption>
-		<p>{{authors}}</p>
-		<p>{{journal}}, {{format date}}</p>
-		<ul>
-			{{#each links}}<li>{{link url label}}</li>{{/each}}
-		</ul>
+		<ul>{{#each links}}<li>{{link url label}}</li>{{/each}}</ul>
 	</figcaption>
 </figure>
 {{/each}}

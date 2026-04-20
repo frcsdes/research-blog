@@ -80,10 +80,6 @@
 - Documentation Blender sur les champs\
   <https://docs.blender.org/manual/en/4.0/modeling/geometry_nodes/fields.html>
 
-### Attributs et domaines
-
-### Gestion des UV
-
 ### Utilisation des courbes
 
 - Référence générateur de rails procéduraux\
