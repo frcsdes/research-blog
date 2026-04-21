@@ -112,9 +112,8 @@ const hook = async (pb) => {
 
 		pb.copyFile(imagePath(".jpg"));
 		pb.copyFile(imagePath(".webp"));
-		const imageSize = pb.getImageSize(imagePath(".jpg"));
 
-		return {image, imageSize, authors: formatAuthors(authors), ...rest};
+		return {image, authors: formatAuthors(authors), ...rest};
 	};
 
 	await pb.makeDir("images");

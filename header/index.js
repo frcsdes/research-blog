@@ -22,9 +22,8 @@ const hook = async (b) => {
 		await b.readFile("template.html"),
 		b.extendedContext({pages})
 	);
-	const style = await b.renderLess(await b.readFile("style.less"));
 
-	return {markup, style};
+	return {markup};
 };
 
 

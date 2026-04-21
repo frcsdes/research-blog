@@ -1,8 +1,6 @@
 const fs = require("fs/promises");
 const path = require("path");
-const ncp = require("ncp").ncp;
 const less = require("less");
-const imageSize = require("image-size");
 
 // Handlebar setup
 const hb = require("handlebars");
@@ -20,15 +18,17 @@ hb.registerHelper("format", (date) => date.toISOString().slice(0, 10));
 
 // Markdown setup
 const {cpp20} = require("./languages");
-const md = require("markdown-it")();
-md.use(
-	require("markdown-it-highlightjs"),
-	{auto: false, register: {cpp20}},
-);
-md.use(
-	require("markdown-it-link-attributes"),
-	{attrs: {rel: "noopener noreferrer", class: "link"}},
-);
+const md = (
+	require("markdown-it")()
+	.use(
+		require("markdown-it-highlightjs"),
+		{auto: false, register: {cpp20}},
+	)
+	.use(
+		require("markdown-it-link-attributes"),
+		{attrs: {rel: "noopener noreferrer", class: "link"}},
+	)
+)
 
 
 class Builder {
@@ -91,9 +91,10 @@ class Builder {
 	}
 
 	copyFile(name) {
-		ncp(
+		fs.cp(
 			path.join(this.#sourcePath_, name),
-			path.join(this.#buildPath_, name)
+			path.join(this.#buildPath_, name),
+			{recursive: true},
 		);
 	}
 
@@ -115,10 +116,6 @@ class Builder {
 
 	renderMd(source) {
 		return md.render(source);
-	}
-
-	getImageSize(imagePath) {
-		return imageSize(path.join(this.#sourcePath_, imagePath));
 	}
 }
 

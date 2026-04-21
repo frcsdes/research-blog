@@ -1,14 +1,15 @@
 <h1>{{title}}</h1>
 
-{{#each yearsMap}}
-<h2>{{@key}}</h2>
+{{#each years}}
+<h2>{{label}}</h2>
 
-{{#each this}}
+{{#each courses}}
 {{#if url}}
-<h4>{{internalLink url title}}</h4>
+<h3>{{internalLink url title}}</h3>
 {{else}}
-<h4>{{title}}</h4>
+<h3>{{title}}</h3>
 {{/if}}
+<h4>{{location}}</h4>
 <p>
 	{{#each tags}}
 	<span class="tag">{{this}}</span>

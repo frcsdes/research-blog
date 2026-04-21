@@ -7,12 +7,7 @@
 <figure>
 	<picture>
 		<source srcset="./images/{{image}}.webp" type="image/webp"/>
-		<img
-			alt="{{title}}"
-			width="{{imageSize.width}}"
-			height="{{imageSize.height}}"
-			src="./images/{{image}}.jpg"
-		/>
+		<img alt="{{title}}" src="./images/{{image}}.jpg"/>
 	</picture>
 	<figcaption>
 		<ul>{{#each links}}<li>{{link url label}}</li>{{/each}}</ul>

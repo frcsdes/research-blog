@@ -2,7 +2,6 @@
   "name": "research-blog",
   "version": "1.0.0",
   "description": "François Desrichard's research blog",
-  "main": "index.js",
   "scripts": {
     "build": "node index.js",
     "serve": "http-server build",
@@ -14,11 +13,9 @@
     "handlebars": "^4.7.6",
     "highlight.js": "^10.3.1",
     "http-server": "^14.1.1",
-    "image-size": "^1.0.2",
     "less": "^3.12.2",
     "markdown-it": "^13.0.1",
-    "markdown-it-highlightjs": "^3.3.0",
-    "markdown-it-link-attributes": "^4.0.1",
-    "ncp": "^2.0.0"
+    "markdown-it-highlightjs": "^3.6.0",
+    "markdown-it-link-attributes": "^4.0.1"
   }
 }

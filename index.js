@@ -1,8 +1,6 @@
 const fs = require("fs/promises");
 const path = require("path");
-const ncp = require("ncp").ncp;
 
-const constants = require("./constants");
 const {Builder} = require("./Builder");
 
 
@@ -15,9 +13,9 @@ const dir = {
 
 const build = async () => {
 	const notGitIgnore = (filename) => !filename.includes(".gitignore");
-	ncp(dir.static, dir.build, {filter: notGitIgnore}, () => {});
+	fs.cp(dir.static, dir.build, {recursive: true, filter: notGitIgnore});
 
-	const builder = new Builder(dir.source, dir.build, {root: constants});
+	const builder = new Builder(dir.source, dir.build, {root: {images: "/images/"}});
 	const header = await builder.delegate("header", "");
 	builder.delegate("pages", "", {header});
 };
