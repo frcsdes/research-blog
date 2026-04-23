@@ -1,13 +1,21 @@
 const ups = "Université Toulouse 3 - Paul Sabatier";
 const upv = "Université Montpellier 3 - Paul Valéry";
+const xll = "École Polytechnique / ENS Louis-Lumière";
 
 const urlRendering = "upv_m2_creanum_rendu";
 const urlProcedural = "upv_m1_creanum_procedural";
+const urlSplatting = "xll_m1_xcin_gaussian_splatting";
 
 const years = [
 	{
 		label: "2025 - 2026",
 		courses: [
+			{
+				title: "3D Acquisition and Gaussian Splatting",
+				location: xll,
+				tags: ["M1", "Workshop"],
+				url: urlSplatting,
+			},
 			{
 				title: "Approche technique du rendu 3D",
 				location: upv,
